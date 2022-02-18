@@ -8,5 +8,10 @@ namespace EstoqueApp
         {
             InitializeComponent();
         }
+
+        private void lbl_link_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            LinkLabel.LinkLabel_Actions.OpenLinkOnBrowser();
+        }
     }
 }

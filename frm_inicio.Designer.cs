@@ -34,6 +34,8 @@
             this.movimentaçõesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.entradaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saídaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lbl_link = new System.Windows.Forms.LinkLabel();
+            this.lbl_criador1 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,7 +61,7 @@
             // cadastroToolStripMenuItem
             // 
             this.cadastroToolStripMenuItem.Name = "cadastroToolStripMenuItem";
-            this.cadastroToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.cadastroToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.cadastroToolStripMenuItem.Text = "Cadastro";
             // 
             // movimentaçõesToolStripMenuItem
@@ -83,11 +85,34 @@
             this.saídaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saídaToolStripMenuItem.Text = "Saída";
             // 
+            // lbl_link
+            // 
+            this.lbl_link.AutoSize = true;
+            this.lbl_link.Location = new System.Drawing.Point(73, 310);
+            this.lbl_link.Name = "lbl_link";
+            this.lbl_link.Size = new System.Drawing.Size(66, 13);
+            this.lbl_link.TabIndex = 1;
+            this.lbl_link.TabStop = true;
+            this.lbl_link.Text = "Vitor Ferreira";
+            this.lbl_link.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbl_link.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lbl_link_LinkClicked);
+            // 
+            // lbl_criador1
+            // 
+            this.lbl_criador1.AutoSize = true;
+            this.lbl_criador1.Location = new System.Drawing.Point(12, 310);
+            this.lbl_criador1.Name = "lbl_criador1";
+            this.lbl_criador1.Size = new System.Drawing.Size(55, 13);
+            this.lbl_criador1.TabIndex = 2;
+            this.lbl_criador1.Text = "Criado por";
+            // 
             // frm_inicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(558, 332);
+            this.Controls.Add(this.lbl_criador1);
+            this.Controls.Add(this.lbl_link);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.menuStrip1;
@@ -110,6 +135,8 @@
         private System.Windows.Forms.ToolStripMenuItem movimentaçõesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem entradaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saídaToolStripMenuItem;
+        private System.Windows.Forms.LinkLabel lbl_link;
+        private System.Windows.Forms.Label lbl_criador1;
     }
 }
 
