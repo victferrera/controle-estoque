@@ -9,3 +9,4 @@ C:\Users\Vitor\Desktop\Projetos\EstoqueApp\EstoqueApp\obj\Debug\EstoqueApp.cspro
 C:\Users\Vitor\Desktop\Projetos\EstoqueApp\EstoqueApp\obj\Debug\EstoqueApp.exe
 C:\Users\Vitor\Desktop\Projetos\EstoqueApp\EstoqueApp\obj\Debug\EstoqueApp.pdb
 C:\Users\Vitor\Desktop\Projetos\EstoqueApp\EstoqueApp\obj\Debug\EstoqueApp.frm_inicio.resources
+C:\Users\Vitor\Desktop\Projetos\EstoqueApp\EstoqueApp\obj\Debug\EstoqueApp.form_cad_produto.frm_cad_produto.resources

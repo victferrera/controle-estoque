@@ -46,6 +46,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enums\EStatusItem.cs" />
+    <Compile Include="form_cad_produto\frm_cad_produto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form_cad_produto\frm_cad_produto.Designer.cs">
+      <DependentUpon>frm_cad_produto.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_inicio.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -57,6 +64,9 @@
     <Compile Include="Modelos\Unidade.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="form_cad_produto\frm_cad_produto.resx">
+      <DependentUpon>frm_cad_produto.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frm_inicio.resx">
       <DependentUpon>frm_inicio.cs</DependentUpon>
     </EmbeddedResource>
@@ -81,6 +91,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="img\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

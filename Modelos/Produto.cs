@@ -10,5 +10,6 @@ namespace EstoqueApp.Modelos
         public EStatusItem Status { get; set; }
         public string CodBarras { get; set; }
         public Unidade Unidade { get; set; }
+        public decimal PrecoVenda { get; set; }
     }
 }

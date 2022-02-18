@@ -1,4 +1,5 @@
 ﻿using System.Windows.Forms;
+using EstoqueApp.form_cad_produto;
 
 namespace EstoqueApp
 {
@@ -18,6 +19,12 @@ namespace EstoqueApp
             {
                 MessageBox.Show("Não foi possível abrir o Link!");
             }
+        }
+
+        private void menu_produto_cadastro_Click(object sender, System.EventArgs e)
+        {
+            var novaTela = new frm_cad_produto();
+            novaTela.Show();
         }
     }
 }
