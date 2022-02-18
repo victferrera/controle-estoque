@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.frm_menu = new System.Windows.Forms.MenuStrip();
             this.produtosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cadastroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.movimentaçõesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -36,19 +36,19 @@
             this.saídaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lbl_link = new System.Windows.Forms.LinkLabel();
             this.lbl_criador1 = new System.Windows.Forms.Label();
-            this.menuStrip1.SuspendLayout();
+            this.frm_menu.SuspendLayout();
             this.SuspendLayout();
             // 
-            // menuStrip1
+            // frm_menu
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.frm_menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.produtosToolStripMenuItem,
             this.movimentaçõesToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(558, 24);
-            this.menuStrip1.TabIndex = 0;
-            this.menuStrip1.Text = "menuStrip1";
+            this.frm_menu.Location = new System.Drawing.Point(0, 0);
+            this.frm_menu.Name = "frm_menu";
+            this.frm_menu.Size = new System.Drawing.Size(558, 24);
+            this.frm_menu.TabIndex = 0;
+            this.frm_menu.Text = "frm_menu";
             // 
             // produtosToolStripMenuItem
             // 
@@ -113,15 +113,15 @@
             this.ClientSize = new System.Drawing.Size(558, 332);
             this.Controls.Add(this.lbl_criador1);
             this.Controls.Add(this.lbl_link);
-            this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.frm_menu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.MainMenuStrip = this.menuStrip1;
+            this.MainMenuStrip = this.frm_menu;
             this.MaximizeBox = false;
             this.Name = "frm_inicio";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Controle de Estoque";
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.frm_menu.ResumeLayout(false);
+            this.frm_menu.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -129,7 +129,7 @@
 
         #endregion
 
-        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.MenuStrip frm_menu;
         private System.Windows.Forms.ToolStripMenuItem produtosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cadastroToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem movimentaçõesToolStripMenuItem;
