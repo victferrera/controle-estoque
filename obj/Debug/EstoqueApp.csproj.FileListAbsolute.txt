@@ -1,0 +1,11 @@
+C:\Users\Vitor\Desktop\Projetos\EstoqueApp\EstoqueApp\bin\Debug\EstoqueApp.exe.config
+C:\Users\Vitor\Desktop\Projetos\EstoqueApp\EstoqueApp\bin\Debug\EstoqueApp.exe
+C:\Users\Vitor\Desktop\Projetos\EstoqueApp\EstoqueApp\bin\Debug\EstoqueApp.pdb
+C:\Users\Vitor\Desktop\Projetos\EstoqueApp\EstoqueApp\obj\Debug\EstoqueApp.csproj.AssemblyReference.cache
+C:\Users\Vitor\Desktop\Projetos\EstoqueApp\EstoqueApp\obj\Debug\EstoqueApp.csproj.SuggestedBindingRedirects.cache
+C:\Users\Vitor\Desktop\Projetos\EstoqueApp\EstoqueApp\obj\Debug\EstoqueApp.Properties.Resources.resources
+C:\Users\Vitor\Desktop\Projetos\EstoqueApp\EstoqueApp\obj\Debug\EstoqueApp.csproj.GenerateResource.cache
+C:\Users\Vitor\Desktop\Projetos\EstoqueApp\EstoqueApp\obj\Debug\EstoqueApp.csproj.CoreCompileInputs.cache
+C:\Users\Vitor\Desktop\Projetos\EstoqueApp\EstoqueApp\obj\Debug\EstoqueApp.exe
+C:\Users\Vitor\Desktop\Projetos\EstoqueApp\EstoqueApp\obj\Debug\EstoqueApp.pdb
+C:\Users\Vitor\Desktop\Projetos\EstoqueApp\EstoqueApp\obj\Debug\EstoqueApp.frm_inicio.resources
