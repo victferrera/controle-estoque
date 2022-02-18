@@ -53,6 +53,8 @@
       <DependentUpon>frm_inicio.cs</DependentUpon>
     </Compile>
     <Compile Include="LinkLabel_Actions.cs" />
+    <Compile Include="Modelos\Produto.cs" />
+    <Compile Include="Modelos\Unidade.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frm_inicio.resx">

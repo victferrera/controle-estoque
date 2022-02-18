@@ -11,7 +11,13 @@ namespace EstoqueApp
 
         private void lbl_link_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            LinkLabel.LinkLabel_Actions.OpenLinkOnBrowser();
+            try
+            {
+                LinkLabel.LinkLabel_Actions.OpenLinkOnBrowser();
+            }catch
+            {
+                MessageBox.Show("Não foi possível abrir o Link!");
+            }
         }
     }
 }
