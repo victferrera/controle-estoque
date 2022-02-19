@@ -47,6 +47,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enums\EStatusItem.cs" />
+    <Compile Include="form_cadaux_unidade\frm_cadaux_unidade.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form_cadaux_unidade\frm_cadaux_unidade.Designer.cs">
+      <DependentUpon>frm_cadaux_unidade.cs</DependentUpon>
+    </Compile>
     <Compile Include="form_cad_produto\frm_cad_produto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -64,6 +70,9 @@
     <Compile Include="Modelos\Unidade.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="form_cadaux_unidade\frm_cadaux_unidade.resx">
+      <DependentUpon>frm_cadaux_unidade.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="form_cad_produto\frm_cad_produto.resx">
       <DependentUpon>frm_cad_produto.cs</DependentUpon>
     </EmbeddedResource>

@@ -36,6 +36,8 @@
             this.saídaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lbl_link = new System.Windows.Forms.LinkLabel();
             this.lbl_criador1 = new System.Windows.Forms.Label();
+            this.cadastroAuxiliarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menu_cadaux_unidade = new System.Windows.Forms.ToolStripMenuItem();
             this.frm_menu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -43,7 +45,8 @@
             // 
             this.frm_menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.produtosToolStripMenuItem,
-            this.movimentaçõesToolStripMenuItem});
+            this.movimentaçõesToolStripMenuItem,
+            this.cadastroAuxiliarToolStripMenuItem});
             this.frm_menu.Location = new System.Drawing.Point(0, 0);
             this.frm_menu.Name = "frm_menu";
             this.frm_menu.Size = new System.Drawing.Size(558, 24);
@@ -107,6 +110,21 @@
             this.lbl_criador1.TabIndex = 2;
             this.lbl_criador1.Text = "Criado por";
             // 
+            // cadastroAuxiliarToolStripMenuItem
+            // 
+            this.cadastroAuxiliarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menu_cadaux_unidade});
+            this.cadastroAuxiliarToolStripMenuItem.Name = "cadastroAuxiliarToolStripMenuItem";
+            this.cadastroAuxiliarToolStripMenuItem.Size = new System.Drawing.Size(109, 20);
+            this.cadastroAuxiliarToolStripMenuItem.Text = "Cadastro Auxiliar";
+            // 
+            // menu_cadaux_unidade
+            // 
+            this.menu_cadaux_unidade.Name = "menu_cadaux_unidade";
+            this.menu_cadaux_unidade.Size = new System.Drawing.Size(180, 22);
+            this.menu_cadaux_unidade.Text = "Unidade";
+            this.menu_cadaux_unidade.Click += new System.EventHandler(this.menu_cadaux_unidade_Click);
+            // 
             // frm_inicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -138,6 +156,8 @@
         private System.Windows.Forms.ToolStripMenuItem saídaToolStripMenuItem;
         private System.Windows.Forms.LinkLabel lbl_link;
         private System.Windows.Forms.Label lbl_criador1;
+        private System.Windows.Forms.ToolStripMenuItem cadastroAuxiliarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem menu_cadaux_unidade;
     }
 }
 
