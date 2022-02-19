@@ -70,6 +70,7 @@
             // 
             // txtbox_cad_produto_codigo
             // 
+            this.txtbox_cad_produto_codigo.Enabled = false;
             this.txtbox_cad_produto_codigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtbox_cad_produto_codigo.Location = new System.Drawing.Point(83, 24);
             this.txtbox_cad_produto_codigo.Name = "txtbox_cad_produto_codigo";
@@ -89,6 +90,7 @@
             // 
             // txtbox_cad_produto_nome
             // 
+            this.txtbox_cad_produto_nome.Enabled = false;
             this.txtbox_cad_produto_nome.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtbox_cad_produto_nome.Location = new System.Drawing.Point(83, 123);
             this.txtbox_cad_produto_nome.Name = "txtbox_cad_produto_nome";
@@ -119,6 +121,7 @@
             // 
             // cbox_cad_produto_status
             // 
+            this.cbox_cad_produto_status.Enabled = false;
             this.cbox_cad_produto_status.FormattingEnabled = true;
             this.cbox_cad_produto_status.Location = new System.Drawing.Point(83, 72);
             this.cbox_cad_produto_status.Name = "cbox_cad_produto_status";
@@ -128,6 +131,7 @@
             // 
             // cbox_cad_produto_unidade
             // 
+            this.cbox_cad_produto_unidade.Enabled = false;
             this.cbox_cad_produto_unidade.FormattingEnabled = true;
             this.cbox_cad_produto_unidade.Location = new System.Drawing.Point(438, 74);
             this.cbox_cad_produto_unidade.Name = "cbox_cad_produto_unidade";
@@ -261,6 +265,7 @@
             // 
             // txtbox_cad_produto_venda
             // 
+            this.txtbox_cad_produto_venda.Enabled = false;
             this.txtbox_cad_produto_venda.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtbox_cad_produto_venda.Location = new System.Drawing.Point(84, 32);
             this.txtbox_cad_produto_venda.Name = "txtbox_cad_produto_venda";
@@ -280,6 +285,7 @@
             // 
             // txtbox_cad_produto_compra
             // 
+            this.txtbox_cad_produto_compra.Enabled = false;
             this.txtbox_cad_produto_compra.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtbox_cad_produto_compra.Location = new System.Drawing.Point(84, 60);
             this.txtbox_cad_produto_compra.Name = "txtbox_cad_produto_compra";
@@ -288,6 +294,7 @@
             // 
             // txtbox_cad_produto_descricao
             // 
+            this.txtbox_cad_produto_descricao.Enabled = false;
             this.txtbox_cad_produto_descricao.Location = new System.Drawing.Point(9, 187);
             this.txtbox_cad_produto_descricao.Multiline = true;
             this.txtbox_cad_produto_descricao.Name = "txtbox_cad_produto_descricao";
@@ -296,6 +303,7 @@
             // 
             // txtbox_cad_produto_barras
             // 
+            this.txtbox_cad_produto_barras.Enabled = false;
             this.txtbox_cad_produto_barras.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtbox_cad_produto_barras.Location = new System.Drawing.Point(167, 276);
             this.txtbox_cad_produto_barras.Name = "txtbox_cad_produto_barras";
