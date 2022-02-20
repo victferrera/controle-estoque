@@ -11,3 +11,9 @@ C:\Users\Vitor\Desktop\Projetos\EstoqueApp\EstoqueApp\obj\Debug\EstoqueApp.pdb
 C:\Users\Vitor\Desktop\Projetos\EstoqueApp\EstoqueApp\obj\Debug\EstoqueApp.frm_inicio.resources
 C:\Users\Vitor\Desktop\Projetos\EstoqueApp\EstoqueApp\obj\Debug\EstoqueApp.form_cad_produto.frm_cad_produto.resources
 C:\Users\Vitor\Desktop\Projetos\EstoqueApp\EstoqueApp\obj\Debug\EstoqueApp.form_cadaux_unidade.frm_cadaux_unidade.resources
+C:\Users\Vitor\Desktop\Projetos\EstoqueApp\EstoqueApp\bin\Debug\Dapper.dll
+C:\Users\Vitor\Desktop\Projetos\EstoqueApp\EstoqueApp\bin\Debug\System.Data.SqlClient.dll
+C:\Users\Vitor\Desktop\Projetos\EstoqueApp\EstoqueApp\bin\Debug\Dapper.xml
+C:\Users\Vitor\Desktop\Projetos\EstoqueApp\EstoqueApp\bin\Debug\System.Data.SqlClient.xml
+C:\Users\Vitor\Desktop\Projetos\EstoqueApp\EstoqueApp\obj\Debug\EstoqueApp.csproj.CopyComplete
+C:\Users\Vitor\Desktop\Projetos\EstoqueApp\EstoqueApp\obj\Debug\EstoqueApp.form_cad_pesquisa.frm_cad_pesquisa.resources

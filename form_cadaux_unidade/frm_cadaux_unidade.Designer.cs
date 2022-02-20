@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_cadaux_unidade));
             this.txtbox_cadaux_unidade_nome = new System.Windows.Forms.TextBox();
-            this.lbl_cadaux_unidade_nome = new System.Windows.Forms.Label();
+            this.lbl_cadaux_unidade_sigla = new System.Windows.Forms.Label();
             this.lbl_cadaux_unidade_desc = new System.Windows.Forms.Label();
             this.txtbox_cadaux_unidade_desc = new System.Windows.Forms.TextBox();
             this.btn_cadaux_unidade_pesquisar = new System.Windows.Forms.Button();
@@ -48,20 +48,21 @@
             this.txtbox_cadaux_unidade_nome.Enabled = false;
             this.txtbox_cadaux_unidade_nome.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtbox_cadaux_unidade_nome.Location = new System.Drawing.Point(6, 57);
+            this.txtbox_cadaux_unidade_nome.MaxLength = 2;
             this.txtbox_cadaux_unidade_nome.Name = "txtbox_cadaux_unidade_nome";
-            this.txtbox_cadaux_unidade_nome.Size = new System.Drawing.Size(355, 22);
+            this.txtbox_cadaux_unidade_nome.Size = new System.Drawing.Size(90, 22);
             this.txtbox_cadaux_unidade_nome.TabIndex = 17;
             // 
-            // lbl_cadaux_unidade_nome
+            // lbl_cadaux_unidade_sigla
             // 
-            this.lbl_cadaux_unidade_nome.AutoSize = true;
-            this.lbl_cadaux_unidade_nome.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_cadaux_unidade_nome.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lbl_cadaux_unidade_nome.Location = new System.Drawing.Point(2, 30);
-            this.lbl_cadaux_unidade_nome.Name = "lbl_cadaux_unidade_nome";
-            this.lbl_cadaux_unidade_nome.Size = new System.Drawing.Size(62, 24);
-            this.lbl_cadaux_unidade_nome.TabIndex = 16;
-            this.lbl_cadaux_unidade_nome.Text = "Nome";
+            this.lbl_cadaux_unidade_sigla.AutoSize = true;
+            this.lbl_cadaux_unidade_sigla.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_cadaux_unidade_sigla.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lbl_cadaux_unidade_sigla.Location = new System.Drawing.Point(2, 30);
+            this.lbl_cadaux_unidade_sigla.Name = "lbl_cadaux_unidade_sigla";
+            this.lbl_cadaux_unidade_sigla.Size = new System.Drawing.Size(51, 24);
+            this.lbl_cadaux_unidade_sigla.TabIndex = 16;
+            this.lbl_cadaux_unidade_sigla.Text = "Sigla";
             // 
             // lbl_cadaux_unidade_desc
             // 
@@ -78,6 +79,7 @@
             // 
             this.txtbox_cadaux_unidade_desc.Enabled = false;
             this.txtbox_cadaux_unidade_desc.Location = new System.Drawing.Point(6, 109);
+            this.txtbox_cadaux_unidade_desc.MaxLength = 60;
             this.txtbox_cadaux_unidade_desc.Multiline = true;
             this.txtbox_cadaux_unidade_desc.Name = "txtbox_cadaux_unidade_desc";
             this.txtbox_cadaux_unidade_desc.Size = new System.Drawing.Size(355, 70);
@@ -94,6 +96,7 @@
             this.btn_cadaux_unidade_pesquisar.Size = new System.Drawing.Size(70, 54);
             this.btn_cadaux_unidade_pesquisar.TabIndex = 22;
             this.btn_cadaux_unidade_pesquisar.UseVisualStyleBackColor = false;
+            this.btn_cadaux_unidade_pesquisar.Click += new System.EventHandler(this.btn_cadaux_unidade_pesquisar_Click);
             // 
             // btn_cadaux_unidade_salvar
             // 
@@ -106,6 +109,7 @@
             this.btn_cadaux_unidade_salvar.Size = new System.Drawing.Size(70, 54);
             this.btn_cadaux_unidade_salvar.TabIndex = 21;
             this.btn_cadaux_unidade_salvar.UseVisualStyleBackColor = false;
+            this.btn_cadaux_unidade_salvar.Click += new System.EventHandler(this.btn_cadaux_unidade_salvar_Click);
             // 
             // btn_cadaux_unidade_incluir
             // 
@@ -118,6 +122,7 @@
             this.btn_cadaux_unidade_incluir.Size = new System.Drawing.Size(70, 54);
             this.btn_cadaux_unidade_incluir.TabIndex = 20;
             this.btn_cadaux_unidade_incluir.UseVisualStyleBackColor = false;
+            this.btn_cadaux_unidade_incluir.Click += new System.EventHandler(this.btn_cadaux_unidade_incluir_Click);
             // 
             // lbl_cadaux_unidade_pesquisar
             // 
@@ -150,7 +155,7 @@
             // 
             this.grbox_cadaux_unidade_cadastro.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.grbox_cadaux_unidade_cadastro.Controls.Add(this.txtbox_cadaux_unidade_desc);
-            this.grbox_cadaux_unidade_cadastro.Controls.Add(this.lbl_cadaux_unidade_nome);
+            this.grbox_cadaux_unidade_cadastro.Controls.Add(this.lbl_cadaux_unidade_sigla);
             this.grbox_cadaux_unidade_cadastro.Controls.Add(this.txtbox_cadaux_unidade_nome);
             this.grbox_cadaux_unidade_cadastro.Controls.Add(this.lbl_cadaux_unidade_desc);
             this.grbox_cadaux_unidade_cadastro.Location = new System.Drawing.Point(11, 113);
@@ -188,7 +193,7 @@
         #endregion
 
         private System.Windows.Forms.TextBox txtbox_cadaux_unidade_nome;
-        private System.Windows.Forms.Label lbl_cadaux_unidade_nome;
+        private System.Windows.Forms.Label lbl_cadaux_unidade_sigla;
         private System.Windows.Forms.Label lbl_cadaux_unidade_desc;
         private System.Windows.Forms.TextBox txtbox_cadaux_unidade_desc;
         private System.Windows.Forms.Button btn_cadaux_unidade_pesquisar;
