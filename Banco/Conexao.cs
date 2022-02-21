@@ -22,8 +22,6 @@ namespace EstoqueApp.Banco
                 conexao = new SqlConnection(stringConexao);
                 return conexao;
             }
-
-            return null;
         }
     }
 }

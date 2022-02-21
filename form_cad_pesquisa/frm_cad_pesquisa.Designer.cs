@@ -29,12 +29,10 @@
         private void InitializeComponent()
         {
             this.grbox_cad_pesquisa_filtros = new System.Windows.Forms.GroupBox();
-            this.grid_cad_pesquisa_cadastros = new System.Windows.Forms.DataGridView();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.btn_cad_pesquisa_pesquisar = new System.Windows.Forms.Button();
-            this.rbtn_cad_pesquisa_sigla = new System.Windows.Forms.RadioButton();
-            this.rbtn_cad_pesquisa_descricao = new System.Windows.Forms.RadioButton();
-            this.rbtn_cad_pesquisa_codigo = new System.Windows.Forms.RadioButton();
+            this.txt_cad_pesquisa_filtro = new System.Windows.Forms.TextBox();
+            this.grid_cad_pesquisa_cadastros = new System.Windows.Forms.DataGridView();
+            this.lbl_cad_pesquisa_filtro = new System.Windows.Forms.Label();
             this.grbox_cad_pesquisa_filtros.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grid_cad_pesquisa_cadastros)).BeginInit();
             this.SuspendLayout();
@@ -42,74 +40,52 @@
             // grbox_cad_pesquisa_filtros
             // 
             this.grbox_cad_pesquisa_filtros.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.grbox_cad_pesquisa_filtros.Controls.Add(this.rbtn_cad_pesquisa_codigo);
-            this.grbox_cad_pesquisa_filtros.Controls.Add(this.rbtn_cad_pesquisa_descricao);
-            this.grbox_cad_pesquisa_filtros.Controls.Add(this.rbtn_cad_pesquisa_sigla);
+            this.grbox_cad_pesquisa_filtros.Controls.Add(this.lbl_cad_pesquisa_filtro);
             this.grbox_cad_pesquisa_filtros.Controls.Add(this.btn_cad_pesquisa_pesquisar);
-            this.grbox_cad_pesquisa_filtros.Controls.Add(this.textBox1);
+            this.grbox_cad_pesquisa_filtros.Controls.Add(this.txt_cad_pesquisa_filtro);
             this.grbox_cad_pesquisa_filtros.Location = new System.Drawing.Point(13, 5);
             this.grbox_cad_pesquisa_filtros.Name = "grbox_cad_pesquisa_filtros";
-            this.grbox_cad_pesquisa_filtros.Size = new System.Drawing.Size(775, 100);
+            this.grbox_cad_pesquisa_filtros.Size = new System.Drawing.Size(775, 77);
             this.grbox_cad_pesquisa_filtros.TabIndex = 0;
             this.grbox_cad_pesquisa_filtros.TabStop = false;
             this.grbox_cad_pesquisa_filtros.Text = "Filtros";
             // 
-            // grid_cad_pesquisa_cadastros
-            // 
-            this.grid_cad_pesquisa_cadastros.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grid_cad_pesquisa_cadastros.Location = new System.Drawing.Point(13, 138);
-            this.grid_cad_pesquisa_cadastros.Name = "grid_cad_pesquisa_cadastros";
-            this.grid_cad_pesquisa_cadastros.Size = new System.Drawing.Size(775, 300);
-            this.grid_cad_pesquisa_cadastros.TabIndex = 1;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(7, 68);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(569, 20);
-            this.textBox1.TabIndex = 0;
-            // 
             // btn_cad_pesquisa_pesquisar
             // 
-            this.btn_cad_pesquisa_pesquisar.Location = new System.Drawing.Point(583, 65);
+            this.btn_cad_pesquisa_pesquisar.Location = new System.Drawing.Point(583, 38);
             this.btn_cad_pesquisa_pesquisar.Name = "btn_cad_pesquisa_pesquisar";
             this.btn_cad_pesquisa_pesquisar.Size = new System.Drawing.Size(75, 23);
             this.btn_cad_pesquisa_pesquisar.TabIndex = 1;
             this.btn_cad_pesquisa_pesquisar.Text = "Pesquisar";
             this.btn_cad_pesquisa_pesquisar.UseVisualStyleBackColor = true;
+            this.btn_cad_pesquisa_pesquisar.Click += new System.EventHandler(this.btn_cad_pesquisa_pesquisar_Click);
             // 
-            // rbtn_cad_pesquisa_sigla
+            // txt_cad_pesquisa_filtro
             // 
-            this.rbtn_cad_pesquisa_sigla.AutoSize = true;
-            this.rbtn_cad_pesquisa_sigla.Location = new System.Drawing.Point(7, 20);
-            this.rbtn_cad_pesquisa_sigla.Name = "rbtn_cad_pesquisa_sigla";
-            this.rbtn_cad_pesquisa_sigla.Size = new System.Drawing.Size(48, 17);
-            this.rbtn_cad_pesquisa_sigla.TabIndex = 2;
-            this.rbtn_cad_pesquisa_sigla.TabStop = true;
-            this.rbtn_cad_pesquisa_sigla.Text = "Sigla";
-            this.rbtn_cad_pesquisa_sigla.UseVisualStyleBackColor = true;
+            this.txt_cad_pesquisa_filtro.Location = new System.Drawing.Point(7, 41);
+            this.txt_cad_pesquisa_filtro.Name = "txt_cad_pesquisa_filtro";
+            this.txt_cad_pesquisa_filtro.Size = new System.Drawing.Size(569, 20);
+            this.txt_cad_pesquisa_filtro.TabIndex = 0;
             // 
-            // rbtn_cad_pesquisa_descricao
+            // grid_cad_pesquisa_cadastros
             // 
-            this.rbtn_cad_pesquisa_descricao.AutoSize = true;
-            this.rbtn_cad_pesquisa_descricao.Location = new System.Drawing.Point(7, 43);
-            this.rbtn_cad_pesquisa_descricao.Name = "rbtn_cad_pesquisa_descricao";
-            this.rbtn_cad_pesquisa_descricao.Size = new System.Drawing.Size(73, 17);
-            this.rbtn_cad_pesquisa_descricao.TabIndex = 3;
-            this.rbtn_cad_pesquisa_descricao.TabStop = true;
-            this.rbtn_cad_pesquisa_descricao.Text = "Descrição";
-            this.rbtn_cad_pesquisa_descricao.UseVisualStyleBackColor = true;
+            this.grid_cad_pesquisa_cadastros.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.grid_cad_pesquisa_cadastros.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grid_cad_pesquisa_cadastros.Location = new System.Drawing.Point(13, 88);
+            this.grid_cad_pesquisa_cadastros.Name = "grid_cad_pesquisa_cadastros";
+            this.grid_cad_pesquisa_cadastros.Size = new System.Drawing.Size(775, 350);
+            this.grid_cad_pesquisa_cadastros.TabIndex = 1;
+            this.grid_cad_pesquisa_cadastros.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.grid_cad_pesquisa_cadastros_KeyPress);
             // 
-            // rbtn_cad_pesquisa_codigo
+            // lbl_cad_pesquisa_filtro
             // 
-            this.rbtn_cad_pesquisa_codigo.AutoSize = true;
-            this.rbtn_cad_pesquisa_codigo.Location = new System.Drawing.Point(83, 20);
-            this.rbtn_cad_pesquisa_codigo.Name = "rbtn_cad_pesquisa_codigo";
-            this.rbtn_cad_pesquisa_codigo.Size = new System.Drawing.Size(58, 17);
-            this.rbtn_cad_pesquisa_codigo.TabIndex = 4;
-            this.rbtn_cad_pesquisa_codigo.TabStop = true;
-            this.rbtn_cad_pesquisa_codigo.Text = "Código";
-            this.rbtn_cad_pesquisa_codigo.UseVisualStyleBackColor = true;
+            this.lbl_cad_pesquisa_filtro.AutoSize = true;
+            this.lbl_cad_pesquisa_filtro.Location = new System.Drawing.Point(7, 20);
+            this.lbl_cad_pesquisa_filtro.Name = "lbl_cad_pesquisa_filtro";
+            this.lbl_cad_pesquisa_filtro.Size = new System.Drawing.Size(483, 13);
+            this.lbl_cad_pesquisa_filtro.TabIndex = 2;
+            this.lbl_cad_pesquisa_filtro.Text = "Informe o NOME, DESCRIÇÃO ou CÓDIGO, deixe o campo em branco para trazer todos os" +
+    " registros!";
             // 
             // frm_cad_pesquisa
             // 
@@ -123,7 +99,6 @@
             this.Name = "frm_cad_pesquisa";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pesquisa";
-            this.Load += new System.EventHandler(this.frm_cad_pesquisa_Load);
             this.grbox_cad_pesquisa_filtros.ResumeLayout(false);
             this.grbox_cad_pesquisa_filtros.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grid_cad_pesquisa_cadastros)).EndInit();
@@ -135,10 +110,8 @@
 
         private System.Windows.Forms.GroupBox grbox_cad_pesquisa_filtros;
         private System.Windows.Forms.DataGridView grid_cad_pesquisa_cadastros;
-        private System.Windows.Forms.RadioButton rbtn_cad_pesquisa_codigo;
-        private System.Windows.Forms.RadioButton rbtn_cad_pesquisa_descricao;
-        private System.Windows.Forms.RadioButton rbtn_cad_pesquisa_sigla;
         private System.Windows.Forms.Button btn_cad_pesquisa_pesquisar;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txt_cad_pesquisa_filtro;
+        private System.Windows.Forms.Label lbl_cad_pesquisa_filtro;
     }
 }
