@@ -78,11 +78,13 @@
     <Compile Include="frm_inicio.Designer.cs">
       <DependentUpon>frm_inicio.cs</DependentUpon>
     </Compile>
+    <Compile Include="Interfaces\IUnidade.cs" />
     <Compile Include="LinkLabel_Actions.cs" />
     <Compile Include="Modelos\Produto.cs" />
     <Compile Include="Modelos\Unidade.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\UnidadeRepository.cs" />
     <EmbeddedResource Include="form_cadaux_unidade\frm_cadaux_unidade.resx">
       <DependentUpon>frm_cadaux_unidade.cs</DependentUpon>
     </EmbeddedResource>

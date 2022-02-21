@@ -1,15 +1,17 @@
 ﻿using System;
-using EstoqueApp.Banco;
+using EstoqueApp.Repository;
 using System.Windows.Forms;
-using Dapper;
 using EstoqueApp.form_cad_pesquisa;
 
 namespace EstoqueApp.form_cadaux_unidade
 {
     public partial class frm_cadaux_unidade : Form
     {
+        internal UnidadeRepository _repository;
         public frm_cadaux_unidade()
         {
+            _repository = new UnidadeRepository();
+
             InitializeComponent();
         }
 
@@ -21,26 +23,7 @@ namespace EstoqueApp.form_cadaux_unidade
                 return;
             }
 
-            using (var conexao = new Conexao().GetConexao())
-            {
-                var insertSql = @"
-                INSERT INTO [tbUnidade] VALUES(
-                @nome,
-                @descricao
-                )";
-
-                var linhasAfetadas = conexao.Execute(insertSql, new
-                {
-                    nome = txtbox_cadaux_unidade_nome.Text.ToUpper(),
-                    descricao = txtbox_cadaux_unidade_desc.Text
-                });
-
-                // 1 = linhas retornadas do insert
-                if (linhasAfetadas == 1)
-                    MessageBox.Show("Unidade cadastrada com sucesso!", "Aviso");
-                else
-                    MessageBox.Show("Ocorreu um erro ao cadastrar a unidade, contate o Administrador do Sistema!", "Aviso");
-            }
+            MessageBox.Show(_repository.Salvar(txtbox_cadaux_unidade_nome.Text.ToString(), txtbox_cadaux_unidade_desc.Text.ToString()));
 
             limparTxtBox();
         }
