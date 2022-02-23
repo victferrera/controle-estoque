@@ -17,3 +17,5 @@ C:\Users\Vitor\Desktop\Projetos\EstoqueApp\EstoqueApp\bin\Debug\Dapper.xml
 C:\Users\Vitor\Desktop\Projetos\EstoqueApp\EstoqueApp\bin\Debug\System.Data.SqlClient.xml
 C:\Users\Vitor\Desktop\Projetos\EstoqueApp\EstoqueApp\obj\Debug\EstoqueApp.csproj.CopyComplete
 C:\Users\Vitor\Desktop\Projetos\EstoqueApp\EstoqueApp\obj\Debug\EstoqueApp.form_cad_pesquisa.frm_cad_pesquisa.resources
+C:\Users\Vitor\Desktop\Projetos\EstoqueApp\EstoqueApp\bin\Debug\Dapper.Contrib.dll
+C:\Users\Vitor\Desktop\Projetos\EstoqueApp\EstoqueApp\bin\Debug\Dapper.Contrib.xml

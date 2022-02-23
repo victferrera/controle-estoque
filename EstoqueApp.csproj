@@ -36,6 +36,9 @@
     <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\Dapper.2.0.123\lib\net461\Dapper.dll</HintPath>
     </Reference>
+    <Reference Include="Dapper.Contrib, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Dapper.Contrib.2.0.78\lib\net461\Dapper.Contrib.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.SqlClient, Version=4.6.1.3, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -52,24 +55,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Banco\Conexao.cs" />
+    <Compile Include="Database\Connection.cs" />
     <Compile Include="Enums\EStatusItem.cs" />
-    <Compile Include="form_cadaux_unidade\frm_cadaux_unidade.cs">
+    <Compile Include="Telas\form_cadaux_unidade\frm_cadaux_unidade.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="form_cadaux_unidade\frm_cadaux_unidade.Designer.cs">
+    <Compile Include="Telas\form_cadaux_unidade\frm_cadaux_unidade.Designer.cs">
       <DependentUpon>frm_cadaux_unidade.cs</DependentUpon>
     </Compile>
-    <Compile Include="form_cad_pesquisa\frm_cad_pesquisa.cs">
+    <Compile Include="Telas\form_cad_pesquisa\frm_cad_pesquisa.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="form_cad_pesquisa\frm_cad_pesquisa.Designer.cs">
+    <Compile Include="Telas\form_cad_pesquisa\frm_cad_pesquisa.Designer.cs">
       <DependentUpon>frm_cad_pesquisa.cs</DependentUpon>
     </Compile>
-    <Compile Include="form_cad_produto\frm_cad_produto.cs">
+    <Compile Include="Telas\form_cad_produto\frm_cad_produto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="form_cad_produto\frm_cad_produto.Designer.cs">
+    <Compile Include="Telas\form_cad_produto\frm_cad_produto.Designer.cs">
       <DependentUpon>frm_cad_produto.cs</DependentUpon>
     </Compile>
     <Compile Include="frm_inicio.cs">
@@ -78,20 +81,19 @@
     <Compile Include="frm_inicio.Designer.cs">
       <DependentUpon>frm_inicio.cs</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\IUnidade.cs" />
     <Compile Include="LinkLabel_Actions.cs" />
     <Compile Include="Modelos\Produto.cs" />
-    <Compile Include="Modelos\Unidade.cs" />
+    <Compile Include="Modelos\UnidadeMedida.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repository\UnidadeRepository.cs" />
-    <EmbeddedResource Include="form_cadaux_unidade\frm_cadaux_unidade.resx">
+    <Compile Include="Repositories\Repository.cs" />
+    <EmbeddedResource Include="Telas\form_cadaux_unidade\frm_cadaux_unidade.resx">
       <DependentUpon>frm_cadaux_unidade.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="form_cad_pesquisa\frm_cad_pesquisa.resx">
+    <EmbeddedResource Include="Telas\form_cad_pesquisa\frm_cad_pesquisa.resx">
       <DependentUpon>frm_cad_pesquisa.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="form_cad_produto\frm_cad_produto.resx">
+    <EmbeddedResource Include="Telas\form_cad_produto\frm_cad_produto.resx">
       <DependentUpon>frm_cad_produto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_inicio.resx">
@@ -120,8 +122,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="img\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -9,7 +9,7 @@ namespace EstoqueApp.Modelos
         public string Descricao { get; set; }
         public EStatusItem Status { get; set; }
         public string CodBarras { get; set; }
-        public Unidade Unidade { get; set; }
+        public UnidadeMedida Unidade { get; set; }
         public decimal PrecoVenda { get; set; }
     }
 }
