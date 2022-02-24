@@ -128,6 +128,9 @@ namespace EstoqueApp.form_cadaux_unidade
 
             _uRepository.AlterarStatus(unidade);
 
+            var frmPesquisa = AtualizarDadosGridPesquisaUnidade();
+            frmPesquisa.Show();
+
             MessageBox.Show($"Status da unidade {txt_sigla.Text} alterado com sucesso!");
 
             this.Close();
@@ -139,7 +142,18 @@ namespace EstoqueApp.form_cadaux_unidade
 
             MessageBox.Show($"Unidade {txt_sigla.Text} removida!");
 
+
+            var frmPesquisa = AtualizarDadosGridPesquisaUnidade();
+            frmPesquisa.Show();
+
             this.Close();
+        }
+
+        private frm_cad_pesquisa AtualizarDadosGridPesquisaUnidade()
+        {
+            var formAntigo = (frm_cad_pesquisa)Application.OpenForms["frm_cad_pesquisa"];
+            formAntigo.AtualizarDataGrid();
+            return formAntigo;
         }
     }
 }

@@ -47,11 +47,12 @@ namespace EstoqueApp.Repositories
 
         }
 
-        public void Remover(int id)
+        public IEnumerable<TModel> Remover(int id)
         {
             var model = _connection.Get<TModel>(id);
             if (model != null)
                 _connection.Delete<TModel>(model);
+            return Pesquisar("");
         }
     }
 }

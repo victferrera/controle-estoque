@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.grbox_cad_pesquisa_filtros = new System.Windows.Forms.GroupBox();
+            this.lbl_filtro = new System.Windows.Forms.Label();
             this.lbl_cad_pesquisa_filtro = new System.Windows.Forms.Label();
             this.btn_cad_pesquisa_pesquisar = new System.Windows.Forms.Button();
             this.txt_cad_pesquisa_filtro = new System.Windows.Forms.TextBox();
             this.grid_cad_pesquisa_cadastros = new System.Windows.Forms.DataGridView();
-            this.lbl_filtro = new System.Windows.Forms.Label();
             this.grbox_cad_pesquisa_filtros.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grid_cad_pesquisa_cadastros)).BeginInit();
             this.SuspendLayout();
@@ -51,6 +51,16 @@
             this.grbox_cad_pesquisa_filtros.TabIndex = 0;
             this.grbox_cad_pesquisa_filtros.TabStop = false;
             this.grbox_cad_pesquisa_filtros.Text = "Filtro";
+            // 
+            // lbl_filtro
+            // 
+            this.lbl_filtro.AutoSize = true;
+            this.lbl_filtro.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_filtro.Location = new System.Drawing.Point(7, 22);
+            this.lbl_filtro.Name = "lbl_filtro";
+            this.lbl_filtro.Size = new System.Drawing.Size(410, 16);
+            this.lbl_filtro.TabIndex = 3;
+            this.lbl_filtro.Text = "Para realizar a pesquisa informe Código, Sigla, Descrição ou Status";
             // 
             // lbl_cad_pesquisa_filtro
             // 
@@ -87,16 +97,6 @@
             this.grid_cad_pesquisa_cadastros.Size = new System.Drawing.Size(775, 350);
             this.grid_cad_pesquisa_cadastros.TabIndex = 1;
             this.grid_cad_pesquisa_cadastros.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.grid_cad_pesquisa_cadastros_KeyPress);
-            // 
-            // lbl_filtro
-            // 
-            this.lbl_filtro.AutoSize = true;
-            this.lbl_filtro.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_filtro.Location = new System.Drawing.Point(7, 22);
-            this.lbl_filtro.Name = "lbl_filtro";
-            this.lbl_filtro.Size = new System.Drawing.Size(410, 16);
-            this.lbl_filtro.TabIndex = 3;
-            this.lbl_filtro.Text = "Para realizar a pesquisa informe Código, Sigla, Descrição ou Status";
             // 
             // frm_cad_pesquisa
             // 

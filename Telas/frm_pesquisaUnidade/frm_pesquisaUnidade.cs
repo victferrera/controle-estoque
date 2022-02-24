@@ -18,9 +18,7 @@ namespace EstoqueApp.form_cad_pesquisa
 
         private void btn_cad_pesquisa_pesquisar_Click(object sender, EventArgs e)
         {
-            var retornoPesquisa = _repository.Pesquisar(txt_cad_pesquisa_filtro.Text.ToString());
-
-            grid_cad_pesquisa_cadastros.DataSource = retornoPesquisa;
+            AtualizarDataGrid();
         }
 
         private void grid_cad_pesquisa_cadastros_KeyPress(object sender, KeyPressEventArgs e)
@@ -28,6 +26,13 @@ namespace EstoqueApp.form_cad_pesquisa
             var unidade = grid_cad_pesquisa_cadastros.CurrentRow.Cells;
             var frm = new frm_cadaux_unidade();
             frm.abrirFormParaEditarUnidade(unidade);
+        }
+
+        public void AtualizarDataGrid()
+        {
+            var retornoPesquisa = _repository.Pesquisar(txt_cad_pesquisa_filtro.Text.ToString());
+
+            grid_cad_pesquisa_cadastros.DataSource = retornoPesquisa;
         }
     }
 }
