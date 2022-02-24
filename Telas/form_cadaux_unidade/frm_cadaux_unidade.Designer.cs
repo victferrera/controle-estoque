@@ -44,6 +44,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btn_remover = new System.Windows.Forms.Button();
+            this.btn_alteraStatus = new System.Windows.Forms.Button();
             this.grbox_cadaux_unidade_cadastro.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -221,6 +223,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btn_remover);
+            this.groupBox1.Controls.Add(this.btn_alteraStatus);
             this.groupBox1.Controls.Add(this.btn_pesquisar);
             this.groupBox1.Controls.Add(this.btn_novo);
             this.groupBox1.Controls.Add(this.btn_salvar);
@@ -230,6 +234,34 @@
             this.groupBox1.TabIndex = 28;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ações";
+            // 
+            // btn_remover
+            // 
+            this.btn_remover.BackColor = System.Drawing.SystemColors.Control;
+            this.btn_remover.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_remover.Enabled = false;
+            this.btn_remover.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_remover.Location = new System.Drawing.Point(554, 19);
+            this.btn_remover.Name = "btn_remover";
+            this.btn_remover.Size = new System.Drawing.Size(83, 25);
+            this.btn_remover.TabIndex = 24;
+            this.btn_remover.Text = "Remover";
+            this.btn_remover.UseVisualStyleBackColor = false;
+            this.btn_remover.Click += new System.EventHandler(this.btn_remover_Click);
+            // 
+            // btn_alteraStatus
+            // 
+            this.btn_alteraStatus.BackColor = System.Drawing.SystemColors.Control;
+            this.btn_alteraStatus.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_alteraStatus.Enabled = false;
+            this.btn_alteraStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_alteraStatus.Location = new System.Drawing.Point(643, 19);
+            this.btn_alteraStatus.Name = "btn_alteraStatus";
+            this.btn_alteraStatus.Size = new System.Drawing.Size(83, 25);
+            this.btn_alteraStatus.TabIndex = 23;
+            this.btn_alteraStatus.Text = "Inativar";
+            this.btn_alteraStatus.UseVisualStyleBackColor = false;
+            this.btn_alteraStatus.Click += new System.EventHandler(this.btn_alteraStatus_Click);
             // 
             // frm_cadaux_unidade
             // 
@@ -272,5 +304,10 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ComboBox cb_status;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btn_remover;
+        private System.Windows.Forms.Button btn_alteraStatus;
+        //variaveis auxiliares
+        private System.String aux_status;
+        private System.String aux_id;
     }
 }

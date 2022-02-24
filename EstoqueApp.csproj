@@ -57,6 +57,7 @@
   <ItemGroup>
     <Compile Include="Database\Connection.cs" />
     <Compile Include="Enums\EStatusItem.cs" />
+    <Compile Include="Repositories\UnidadeRepository.cs" />
     <Compile Include="Telas\form_cadaux_unidade\frm_cadaux_unidade.cs">
       <SubType>Form</SubType>
     </Compile>
