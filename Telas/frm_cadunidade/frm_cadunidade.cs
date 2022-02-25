@@ -29,6 +29,7 @@ namespace EstoqueApp.form_cadaux_unidade
                 return;
             }
 
+
             var unidade = new UnidadeMedida()
             {
                 Sigla = txt_sigla.Text,
@@ -38,7 +39,18 @@ namespace EstoqueApp.form_cadaux_unidade
                 Status = cb_status.SelectedItem.ToString()
             };
 
-            MessageBox.Show(_repository.Salvar(unidade));
+            if (aux_id != String.Empty)
+            {
+                unidade.Id = int.Parse(aux_id);
+                _uRepository.Update(unidade);
+                MessageBox.Show("Dados do produto alterados");
+                this.Close();
+            }
+            else
+                MessageBox.Show(_repository.Salvar(unidade));
+
+            var frm = AtualizarDadosGridPesquisaUnidade();
+
 
             limparTxtBox();
         }

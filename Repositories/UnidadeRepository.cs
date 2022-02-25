@@ -28,5 +28,10 @@ namespace EstoqueApp.Repositories
             }
 
         }
+
+        public void Update(UnidadeMedida unidade)
+        {
+            _connection.Update<UnidadeMedida>(unidade);
+        }
     }
 }
