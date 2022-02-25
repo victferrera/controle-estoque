@@ -1,6 +1,6 @@
 ﻿namespace EstoqueApp.Enums
 {
-    internal enum EStatusItem
+    internal enum EStatus
     {
         ATIVO,
         INATIVO

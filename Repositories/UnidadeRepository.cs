@@ -16,14 +16,14 @@ namespace EstoqueApp.Repositories
 
         public void AlterarStatus(UnidadeMedida unidade)
         {
-            if (unidade.Status == EStatusItem.ATIVO.ToString())
+            if (unidade.Status == EStatus.ATIVO.ToString())
             {
-                unidade.Status = EStatusItem.INATIVO.ToString();
+                unidade.Status = EStatus.INATIVO.ToString();
                 _connection.Update<UnidadeMedida>(unidade);
             }
             else
             {
-                unidade.Status = EStatusItem.ATIVO.ToString();
+                unidade.Status = EStatus.ATIVO.ToString();
                 _connection.Update<UnidadeMedida>(unidade);
             }
 

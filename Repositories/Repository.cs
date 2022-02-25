@@ -54,5 +54,10 @@ namespace EstoqueApp.Repositories
                 _connection.Delete<TModel>(model);
             return Pesquisar("");
         }
+
+        public IEnumerable<TModel> Pesquisar()
+        {
+            return _connection.GetAll<TModel>();
+        }
     }
 }

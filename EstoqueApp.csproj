@@ -56,7 +56,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Database\Connection.cs" />
-    <Compile Include="Enums\EStatusItem.cs" />
+    <Compile Include="Enums\EStatus.cs" />
     <Compile Include="Repositories\UnidadeRepository.cs" />
     <Compile Include="Telas\frm_cadunidade\frm_cadunidade.cs">
       <SubType>Form</SubType>

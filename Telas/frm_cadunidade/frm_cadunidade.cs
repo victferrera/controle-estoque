@@ -90,7 +90,7 @@ namespace EstoqueApp.form_cadaux_unidade
             btn_alteraStatus.Enabled = true;
             btn_remover.Enabled = true;
 
-            if (aux_status == EStatusItem.INATIVO.ToString())
+            if (aux_status == EStatus.INATIVO.ToString())
                 btn_alteraStatus.Text = "Ativar";
             else
                 btn_alteraStatus.Text = "Inativar";
@@ -100,17 +100,17 @@ namespace EstoqueApp.form_cadaux_unidade
 
         private void frm_cadaux_unidade_Load(object sender, EventArgs e)
         {
-            if (aux_status == EStatusItem.ATIVO.ToString())
+            if (aux_status == EStatus.ATIVO.ToString())
             {
-                cb_status.DataSource = new List<EStatusItem>() { EStatusItem.ATIVO, EStatusItem.INATIVO };
+                cb_status.DataSource = new List<EStatus>() { EStatus.ATIVO, EStatus.INATIVO };
             }
-            else if (aux_status == EStatusItem.INATIVO.ToString())
+            else if (aux_status == EStatus.INATIVO.ToString())
             {
-                cb_status.DataSource = new List<EStatusItem>() { EStatusItem.INATIVO, EStatusItem.ATIVO };
+                cb_status.DataSource = new List<EStatus>() { EStatus.INATIVO, EStatus.ATIVO };
             }
             else
             {
-                cb_status.DataSource = new List<EStatusItem>() { EStatusItem.ATIVO, EStatusItem.INATIVO };
+                cb_status.DataSource = new List<EStatus>() { EStatus.ATIVO, EStatus.INATIVO };
             }
         }
 
