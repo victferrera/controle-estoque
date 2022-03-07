@@ -1,37 +1,52 @@
 ﻿using Dapper.Contrib.Extensions;
 using EstoqueApp.Modelos;
-using EstoqueApp.Database;
-using System.Data.SqlClient;
 using EstoqueApp.Enums;
+using Dapper;
+using System;
+using System.Collections.Generic;
 
 namespace EstoqueApp.Repositories
 {
-    internal class UnidadeRepository
+    internal class UnidadeRepository : BaseRepository<Unidade>
     {
-        private SqlConnection _connection;
-        public UnidadeRepository()
+        public UnidadeRepository() : base()
         {
-            _connection = new Connection().GetConnection();
         }
 
-        public void AlterarStatus(UnidadeMedida unidade)
+        public void AlterarStatus(Unidade unidade)
         {
-            if (unidade.Status == EStatus.ATIVO.ToString())
+            if (unidade.Status == EStatus.ATIVO)
             {
-                unidade.Status = EStatus.INATIVO.ToString();
-                _connection.Update<UnidadeMedida>(unidade);
+                unidade.Status = EStatus.INATIVO;
+                _connection.Update<Unidade>(unidade);
             }
             else
             {
-                unidade.Status = EStatus.ATIVO.ToString();
-                _connection.Update<UnidadeMedida>(unidade);
+                unidade.Status = EStatus.ATIVO;
+                _connection.Update<Unidade>(unidade);
             }
 
         }
 
-        public void Update(UnidadeMedida unidade)
+        public IEnumerable<dynamic> GetByFilter(string filter)
         {
-            _connection.Update<UnidadeMedida>(unidade);
+            var param = "%"+filter+"";
+
+            var query = @"
+            SELECT * FROM [Unidade]
+            WHERE
+            [CodigoUnidade] like @prm OR
+            [Sigla] like @prm OR
+            [Descricao] like @prm
+            ";
+            try
+            {
+                var consulta = _connection.Query<Unidade>(query, new {prm = param});
+                return consulta;
+            }catch(Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
     }
 }

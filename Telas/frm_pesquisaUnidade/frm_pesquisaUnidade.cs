@@ -8,31 +8,23 @@ namespace EstoqueApp.form_cad_pesquisa
 {
     public partial class frm_cad_pesquisa : Form
     {
-        internal Repository<UnidadeMedida> _repository;
+        internal UnidadeRepository _repository;
         public frm_cad_pesquisa()
         {
-            _repository = new Repository<UnidadeMedida>();
+            _repository = new UnidadeRepository();
 
             InitializeComponent();
         }
 
         private void btn_cad_pesquisa_pesquisar_Click(object sender, EventArgs e)
         {
-            AtualizarDataGrid();
+            grid_cad_pesquisa_cadastros.DataSource = _repository.GetByFilter(txt_cad_pesquisa_filtro.Text);
         }
 
         private void grid_cad_pesquisa_cadastros_KeyPress(object sender, KeyPressEventArgs e)
         {
             var unidade = grid_cad_pesquisa_cadastros.CurrentRow.Cells;
             var frm = new frm_cadaux_unidade();
-            frm.abrirFormParaEditarUnidade(unidade);
-        }
-
-        public void AtualizarDataGrid()
-        {
-            var retornoPesquisa = _repository.Pesquisar(txt_cad_pesquisa_filtro.Text.ToString());
-
-            grid_cad_pesquisa_cadastros.DataSource = retornoPesquisa;
         }
     }
 }

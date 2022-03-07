@@ -9,10 +9,10 @@ namespace EstoqueApp.form_cad_produto
 {
     public partial class frm_cad_produto : Form
     {
-        internal Repository<UnidadeMedida> _repository;
+        internal UnidadeRepository _repository;
         public frm_cad_produto()
         {
-            _repository = new Repository<UnidadeMedida>();
+            _repository = new UnidadeRepository();
             InitializeComponent();
         }
 
@@ -35,7 +35,7 @@ namespace EstoqueApp.form_cad_produto
             cbox_cad_produto_status.Enabled = true;
             cbox_cad_produto_status.DataSource = new List<EStatus>{ EStatus.ATIVO, EStatus.INATIVO };
 
-            cbox_cad_produto_unidade.DataSource = _repository.Pesquisar();
+            //cbox_cad_produto_unidade.DataSource = _repository.Pesquisar();
             cbox_cad_produto_unidade.DisplayMember = "Sigla".Trim();
             cbox_cad_produto_unidade.ValueMember = "Id";
             cbox_cad_produto_unidade.Enabled = true;

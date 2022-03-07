@@ -10,67 +10,60 @@ namespace EstoqueApp.form_cadaux_unidade
 {
     public partial class frm_cadaux_unidade : Form
     {
-        internal Repository<UnidadeMedida> _repository;
-        internal UnidadeRepository _uRepository;
+        internal UnidadeRepository _repository;
+        internal Unidade unidadeMedida = null;
 
         public frm_cadaux_unidade()
         {
-            _repository = new Repository<UnidadeMedida>();
-            _uRepository = new UnidadeRepository();
+            _repository = new UnidadeRepository();
 
             InitializeComponent();
         }
 
         private void btn_salvar_Click(object sender, EventArgs e)
         {
-            if (txt_sigla.Text == String.Empty || txt_descabrev.Text == String.Empty || cb_status.SelectedItem == null)
+            if (txt_sigla.Text == String.Empty || cb_status.SelectedItem == null)
             {
                 MessageBox.Show("Por favor, preencha os campos corretamente!", "Aviso");
                 return;
             }
 
-
-            var unidade = new UnidadeMedida()
+            if(unidadeMedida == null)
             {
-                Sigla = txt_sigla.Text,
-                DescAbrev = txt_descabrev.Text,
-                DescCompleta = txt_desccomp.Text,
-                FatorConversao = txt_fatorconv.Text == "" || txt_fatorconv != null ? 0 : int.Parse(txt_fatorconv.Text),
-                Status = cb_status.SelectedItem.ToString()
-            };
+                var unidade = new Unidade()
+                {
+                    Sigla = txt_sigla.Text,
+                    Descricao = txt_descricao.Text,
+                    Status = (EStatus)cb_status.SelectedItem
+                };
 
-            if (aux_id != String.Empty)
-            {
-                unidade.Id = int.Parse(aux_id);
-                _uRepository.Update(unidade);
-                MessageBox.Show("Dados do produto alterados");
-                this.Close();
+                _repository.Save(unidade);
+
+                MessageBox.Show("Unidade salva com sucesso!","Alerta!");
+
+                unidade = null;
             }
-            else
-                MessageBox.Show(_repository.Salvar(unidade));
-
-            var frm = AtualizarDadosGridPesquisaUnidade();
-
-
-            limparTxtBox();
+            LimparCampos();
         }
 
         private void btn_novo_Click(object sender, EventArgs e)
         {
-            limparTxtBox();
+            LimparCampos();
+            HabilitarCampos();
         }
 
-        private void limparTxtBox()
+        private void LimparCampos()
         {
-            txt_desccomp.Text = String.Empty;
+            txt_descricao.Text = String.Empty;
             txt_sigla.Text = String.Empty;
-            txt_descabrev.Text = String.Empty;
-            txt_fatorconv.Text = String.Empty;
+            txt_descricao.Text = String.Empty;
+        }
 
-            txt_desccomp.Enabled = true;
+        private void HabilitarCampos()
+        {
+            txt_descricao.Enabled = true;
             txt_sigla.Enabled = true;
-            txt_descabrev.Enabled = true;
-            txt_fatorconv.Enabled = true;
+            txt_descricao.Enabled = true;
             cb_status.Enabled = true;
         }
 
@@ -79,93 +72,15 @@ namespace EstoqueApp.form_cadaux_unidade
             var frm_pesquisa = new frm_cad_pesquisa();
             frm_pesquisa.Show();
         }
-
-        internal void abrirFormParaEditarUnidade(DataGridViewCellCollection unidade)
+        private frm_cad_pesquisa AtualizarDadosGridPesquisaUnidade()
         {
-            //populando os textbox e variáveis auxiliares
-            aux_id = unidade["Id"].Value.ToString();
-            txt_sigla.Text = unidade["Sigla"].Value.ToString();
-            txt_descabrev.Text = unidade["DescAbrev"].Value.ToString();
-            txt_desccomp.Text = unidade["DescCompleta"].Value.ToString();
-            txt_fatorconv.Text = unidade["FatorConversao"].Value.ToString();
-            aux_status = unidade["Status"].Value.ToString();
-
-
-            //alterando o layout dos btn e dos txtbox
-            btn_novo.Visible = false;
-            btn_pesquisar.Visible = false;
-            btn_salvar.Location = btn_novo.Location;
-            txt_sigla.Enabled = true;
-            txt_descabrev.Enabled = true;
-            txt_desccomp.Enabled = true;
-            txt_fatorconv.Enabled = true;
-            btn_alteraStatus.Enabled = true;
-            btn_remover.Enabled = true;
-
-            if (aux_status == EStatus.INATIVO.ToString())
-                btn_alteraStatus.Text = "Ativar";
-            else
-                btn_alteraStatus.Text = "Inativar";
-
-            this.Show();
+            var formAntigo = (frm_cad_pesquisa)Application.OpenForms["frm_cad_pesquisa"];
+            return formAntigo;
         }
 
         private void frm_cadaux_unidade_Load(object sender, EventArgs e)
         {
-            if (aux_status == EStatus.ATIVO.ToString())
-            {
-                cb_status.DataSource = new List<EStatus>() { EStatus.ATIVO, EStatus.INATIVO };
-            }
-            else if (aux_status == EStatus.INATIVO.ToString())
-            {
-                cb_status.DataSource = new List<EStatus>() { EStatus.INATIVO, EStatus.ATIVO };
-            }
-            else
-            {
-                cb_status.DataSource = new List<EStatus>() { EStatus.ATIVO, EStatus.INATIVO };
-            }
-        }
-
-        private void btn_alteraStatus_Click(object sender, EventArgs e)
-        {
-            var unidade = new UnidadeMedida()
-            {
-                Id = int.Parse(aux_id),
-                Sigla = txt_sigla.Text,
-                DescAbrev = txt_descabrev.Text,
-                DescCompleta = txt_desccomp.Text,
-                FatorConversao = int.Parse(txt_fatorconv.Text),
-                Status =  aux_status
-            };
-
-            _uRepository.AlterarStatus(unidade);
-
-            var frmPesquisa = AtualizarDadosGridPesquisaUnidade();
-            frmPesquisa.Show();
-
-            MessageBox.Show($"Status da unidade {txt_sigla.Text} alterado com sucesso!");
-
-            this.Close();
-        }
-
-        private void btn_remover_Click(object sender, EventArgs e)
-        {
-            _repository.Remover(int.Parse(aux_id));
-
-            MessageBox.Show($"Unidade {txt_sigla.Text} removida!");
-
-
-            var frmPesquisa = AtualizarDadosGridPesquisaUnidade();
-            frmPesquisa.Show();
-
-            this.Close();
-        }
-
-        private frm_cad_pesquisa AtualizarDadosGridPesquisaUnidade()
-        {
-            var formAntigo = (frm_cad_pesquisa)Application.OpenForms["frm_cad_pesquisa"];
-            formAntigo.AtualizarDataGrid();
-            return formAntigo;
+            cb_status.DataSource = new List<EStatus>() { EStatus.ATIVO, EStatus.INATIVO };
         }
     }
 }

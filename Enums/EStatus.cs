@@ -2,7 +2,7 @@
 {
     internal enum EStatus
     {
-        ATIVO,
-        INATIVO
+        ATIVO = 1,
+        INATIVO = 2
     }
 }
