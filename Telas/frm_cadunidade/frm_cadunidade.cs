@@ -42,6 +42,8 @@ namespace EstoqueApp.form_cadaux_unidade
                 MessageBox.Show("Unidade salva com sucesso!","Alerta!");
 
                 unidade = null;
+
+                LimparCampos();
             }
             else
             {
@@ -50,9 +52,9 @@ namespace EstoqueApp.form_cadaux_unidade
                 _repository.Update(unidadeMedida);
                 MessageBox.Show("Unidade alterada com sucesso!","Alerta!");
                 AtualizarGridView();
-                unidadeMedida = null;
+                var frmPesUnidade = (frm_cad_pesquisa)Application.OpenForms["frm_cad_pesquisa"];
+                frmPesUnidade.BringToFront();
             }
-            LimparCampos();
         }
 
         private void btn_novo_Click(object sender, EventArgs e)
