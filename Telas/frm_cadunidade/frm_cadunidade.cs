@@ -85,7 +85,6 @@ namespace EstoqueApp.form_cadaux_unidade
         {
             var frmPesquisa = (frm_cad_pesquisa)Application.OpenForms["frm_cad_pesquisa"];
             frmPesquisa.grid_cad_pesquisa_cadastros.DataSource = _repository.GetByFilter("");
-            this.Close();
         }
 
         private void frm_cadaux_unidade_Load(object sender, EventArgs e)
@@ -103,12 +102,26 @@ namespace EstoqueApp.form_cadaux_unidade
                 Status = (EStatus)unidade["Status"].Value
             };
 
-            HabilitarCampos();
+            txt_sigla.Enabled = true;
+            txt_descricao.Enabled = true;
             cb_status.Enabled = false;
+            btn_novo.Enabled = false;
+            btn_pesquisar.Enabled = false;
+            btn_remover.Enabled = true;
+            btn_alteraStatus.Enabled = true;
 
             txt_sigla.Text = unidadeMedida.Sigla;
             txt_descricao.Text = unidadeMedida.Descricao;
             cb_status.Text = unidade["Status"].Value.ToString();
+        }
+
+        private void btn_remover_Click(object sender, EventArgs e)
+        {
+            _repository.Remove(unidadeMedida);
+            MessageBox.Show("Unidade Removida!", "Alerta!");
+            AtualizarGridView();
+            var frmPesUnidade = (frm_cad_pesquisa)Application.OpenForms["frm_cad_pesquisa"];
+            frmPesUnidade.BringToFront();
         }
     }
 }

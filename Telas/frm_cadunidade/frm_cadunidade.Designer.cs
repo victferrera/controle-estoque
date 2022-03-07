@@ -199,6 +199,7 @@
             this.btn_remover.TabIndex = 24;
             this.btn_remover.Text = "Remover";
             this.btn_remover.UseVisualStyleBackColor = false;
+            this.btn_remover.Click += new System.EventHandler(this.btn_remover_Click);
             // 
             // btn_alteraStatus
             // 

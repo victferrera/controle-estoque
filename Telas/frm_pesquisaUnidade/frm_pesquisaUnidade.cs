@@ -27,5 +27,14 @@ namespace EstoqueApp.form_cad_pesquisa
             frm.OpenFormToEdit(unidade);
             frm.BringToFront();
         }
+
+        protected override void OnClosed(EventArgs e)
+        {
+            var frmCadUnidade = (frm_cadaux_unidade)Application.OpenForms["frm_cadaux_unidade"];
+            frmCadUnidade.Close();
+
+            var newFrmCadUnidade = new frm_cadaux_unidade();
+            newFrmCadUnidade.Show();
+        }
     }
 }

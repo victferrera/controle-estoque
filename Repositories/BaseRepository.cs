@@ -36,7 +36,14 @@ namespace EstoqueApp.Repositories
 
         public void Remove(T model)
         {
-
+            try
+            {
+                _connection.Delete<T>(model);
+            }
+            catch(Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         public void Get(T model)
