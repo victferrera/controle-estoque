@@ -49,6 +49,7 @@ namespace EstoqueApp.form_cadaux_unidade
                 unidadeMedida.Descricao = txt_descricao.Text;
                 _repository.Update(unidadeMedida);
                 MessageBox.Show("Unidade alterada com sucesso!","Alerta!");
+                AtualizarGridView();
                 unidadeMedida = null;
             }
             LimparCampos();
@@ -80,10 +81,11 @@ namespace EstoqueApp.form_cadaux_unidade
             var frm_pesquisa = new frm_cad_pesquisa();
             frm_pesquisa.Show();
         }
-        private frm_cad_pesquisa AtualizarDadosGridPesquisaUnidade()
+        private void AtualizarGridView()
         {
-            var formAntigo = (frm_cad_pesquisa)Application.OpenForms["frm_cad_pesquisa"];
-            return formAntigo;
+            var frmPesquisa = (frm_cad_pesquisa)Application.OpenForms["frm_cad_pesquisa"];
+            frmPesquisa.grid_cad_pesquisa_cadastros.DataSource = _repository.GetByFilter("");
+            this.Close();
         }
 
         private void frm_cadaux_unidade_Load(object sender, EventArgs e)

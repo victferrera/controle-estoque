@@ -120,7 +120,7 @@
         #endregion
 
         private System.Windows.Forms.GroupBox grbox_cad_pesquisa_filtros;
-        private System.Windows.Forms.DataGridView grid_cad_pesquisa_cadastros;
+        internal System.Windows.Forms.DataGridView grid_cad_pesquisa_cadastros;
         private System.Windows.Forms.Button btn_cad_pesquisa_pesquisar;
         private System.Windows.Forms.TextBox txt_cad_pesquisa_filtro;
         private System.Windows.Forms.Label lbl_cad_pesquisa_filtro;

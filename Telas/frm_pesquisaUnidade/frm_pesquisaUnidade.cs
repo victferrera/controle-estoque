@@ -2,7 +2,6 @@
 using System.Windows.Forms;
 using EstoqueApp.form_cadaux_unidade;
 using EstoqueApp.Repositories;
-using EstoqueApp.Modelos;
 
 namespace EstoqueApp.form_cad_pesquisa
 {
@@ -26,7 +25,7 @@ namespace EstoqueApp.form_cad_pesquisa
             var unidade = grid_cad_pesquisa_cadastros.CurrentRow.Cells;
             var frm = (frm_cadaux_unidade)Application.OpenForms["frm_cadaux_unidade"];
             frm.OpenFormToEdit(unidade);
-            this.Close();
+            frm.BringToFront();
         }
     }
 }
