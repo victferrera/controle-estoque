@@ -104,6 +104,11 @@ namespace EstoqueApp.form_cadaux_unidade
                 Status = (EStatus)unidade["Status"].Value
             };
 
+            if (unidadeMedida.Status == EStatus.ATIVO)
+                btn_alteraStatus.Text = "Inativar";
+            else
+                btn_alteraStatus.Text = "Ativar";
+
             txt_sigla.Enabled = true;
             txt_descricao.Enabled = true;
             cb_status.Enabled = false;
@@ -123,6 +128,21 @@ namespace EstoqueApp.form_cadaux_unidade
             MessageBox.Show("Unidade Removida!", "Alerta!");
             AtualizarGridView();
             var frmPesUnidade = (frm_cad_pesquisa)Application.OpenForms["frm_cad_pesquisa"];
+            frmPesUnidade.BringToFront();
+        }
+
+        private void btn_alteraStatus_Click(object sender, EventArgs e)
+        {
+            if (unidadeMedida.Status == EStatus.ATIVO)
+                unidadeMedida.Status = EStatus.INATIVO;
+            else
+                unidadeMedida.Status = EStatus.ATIVO;
+
+            _repository.Update(unidadeMedida);
+
+            var frmPesUnidade = (frm_cad_pesquisa)Application.OpenForms["frm_cad_pesquisa"];
+            MessageBox.Show("Status alterado com sucesso!");
+            AtualizarGridView();
             frmPesUnidade.BringToFront();
         }
     }

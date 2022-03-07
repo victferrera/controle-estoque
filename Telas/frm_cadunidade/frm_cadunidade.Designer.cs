@@ -213,6 +213,7 @@
             this.btn_alteraStatus.TabIndex = 23;
             this.btn_alteraStatus.Text = "Inativar";
             this.btn_alteraStatus.UseVisualStyleBackColor = false;
+            this.btn_alteraStatus.Click += new System.EventHandler(this.btn_alteraStatus_Click);
             // 
             // frm_cadaux_unidade
             // 
