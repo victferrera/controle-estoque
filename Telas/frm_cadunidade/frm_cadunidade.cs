@@ -43,6 +43,14 @@ namespace EstoqueApp.form_cadaux_unidade
 
                 unidade = null;
             }
+            else
+            {
+                unidadeMedida.Sigla = txt_sigla.Text.ToUpper();
+                unidadeMedida.Descricao = txt_descricao.Text;
+                _repository.Update(unidadeMedida);
+                MessageBox.Show("Unidade alterada com sucesso!","Alerta!");
+                unidadeMedida = null;
+            }
             LimparCampos();
         }
 
@@ -81,6 +89,24 @@ namespace EstoqueApp.form_cadaux_unidade
         private void frm_cadaux_unidade_Load(object sender, EventArgs e)
         {
             cb_status.DataSource = new List<EStatus>() { EStatus.ATIVO, EStatus.INATIVO };
+        }
+
+        public void OpenFormToEdit(DataGridViewCellCollection unidade)
+        {
+            unidadeMedida = new Unidade()
+            {
+                CodigoUnidade = int.Parse(unidade["CodigoUnidade"].Value.ToString()),
+                Sigla = unidade["Sigla"].Value.ToString(),
+                Descricao = unidade["Descricao"].Value.ToString(),
+                Status = (EStatus)unidade["Status"].Value
+            };
+
+            HabilitarCampos();
+            cb_status.Enabled = false;
+
+            txt_sigla.Text = unidadeMedida.Sigla;
+            txt_descricao.Text = unidadeMedida.Descricao;
+            cb_status.Text = unidade["Status"].Value.ToString();
         }
     }
 }

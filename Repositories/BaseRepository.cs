@@ -23,6 +23,17 @@ namespace EstoqueApp.Repositories
             }
         }
 
+        public void Update(T model)
+        {
+            try
+            {
+                _connection.Update<T>(model);
+            }catch(Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+
         public void Remove(T model)
         {
 

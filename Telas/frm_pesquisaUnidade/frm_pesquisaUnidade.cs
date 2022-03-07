@@ -24,7 +24,9 @@ namespace EstoqueApp.form_cad_pesquisa
         private void grid_cad_pesquisa_cadastros_KeyPress(object sender, KeyPressEventArgs e)
         {
             var unidade = grid_cad_pesquisa_cadastros.CurrentRow.Cells;
-            var frm = new frm_cadaux_unidade();
+            var frm = (frm_cadaux_unidade)Application.OpenForms["frm_cadaux_unidade"];
+            frm.OpenFormToEdit(unidade);
+            this.Close();
         }
     }
 }
