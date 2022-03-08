@@ -233,6 +233,7 @@
             this.btn_pesquisar.TabIndex = 23;
             this.btn_pesquisar.Text = "Pesquisar";
             this.btn_pesquisar.UseVisualStyleBackColor = false;
+            this.btn_pesquisar.Click += new System.EventHandler(this.btn_pesquisar_Click);
             // 
             // btn_salvar
             // 

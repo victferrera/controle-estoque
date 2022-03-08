@@ -4,6 +4,7 @@ using EstoqueApp.Enums;
 using EstoqueApp.Repositories;
 using EstoqueApp.Modelos;
 using System.Collections.Generic;
+using EstoqueApp.Telas.frm_pesquisaProduto;
 
 namespace EstoqueApp.form_cad_produto
 {
@@ -64,6 +65,12 @@ namespace EstoqueApp.form_cad_produto
             _produtoRepository.Save(produto);
             MessageBox.Show("Produto salvo com sucesso!","Alerta!");
             InicializacaoLimpezaCampos();
+        }
+
+        private void btn_pesquisar_Click(object sender, EventArgs e)
+        {
+            var frmPesquisa = new frm_pesquisa_produto();
+            frmPesquisa.Show();
         }
     }
 }

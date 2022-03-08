@@ -19,3 +19,4 @@ C:\Users\Vitor\Desktop\Projetos\EstoqueApp\EstoqueApp\obj\Debug\EstoqueApp.cspro
 C:\Users\Vitor\Desktop\Projetos\EstoqueApp\EstoqueApp\obj\Debug\EstoqueApp.form_cad_pesquisa.frm_cad_pesquisa.resources
 C:\Users\Vitor\Desktop\Projetos\EstoqueApp\EstoqueApp\bin\Debug\Dapper.Contrib.dll
 C:\Users\Vitor\Desktop\Projetos\EstoqueApp\EstoqueApp\bin\Debug\Dapper.Contrib.xml
+C:\Users\Vitor\Desktop\Projetos\EstoqueApp\EstoqueApp\obj\Debug\EstoqueApp.Telas.frm_pesquisaProduto.frm_pesquisa_produto.resources
