@@ -29,7 +29,10 @@ namespace EstoqueApp.Telas.frm_pesquisaProduto
         {
             var produto = grid_produtos.CurrentRow.Cells;
 
+            
             var frmCadProd = (frm_cad_produto)Application.OpenForms["frm_cad_produto"];
+            if (frmCadProd == null)
+                frmCadProd = new frm_cad_produto();
 
             frmCadProd.OpenFormToEdit(produto);
 

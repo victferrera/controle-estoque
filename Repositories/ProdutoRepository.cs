@@ -37,6 +37,37 @@ namespace EstoqueApp.Repositories
 
         }
 
+        public override void Update(Produto produto)
+        {
+            try
+            {
+                var query = @"UPDATE [Produto] SET 
+                    Nome = @nome,
+                    Descricao = @descricao,
+                    Status = @status,
+                    PrecoVenda = @pvenda,
+                    PrecoCompra = @pcompra,
+                    CodigoUnidade = @cunidade
+                    WHERE CodigoProduto = @cproduto";
+
+                _connection.Query<Produto>(query, new
+                {
+                    cproduto = produto.CodigoProduto,
+                    nome = produto.Nome,
+                    descricao = produto.Descricao,
+                    status = produto.Status,
+                    pvenda = produto.PrecoVenda,
+                    pcompra = produto.PrecoCompra,
+                    cunidade = produto.unidade.CodigoUnidade
+                });
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+
+        }
+
         public IEnumerable<Produto> GetByFilter(string filtro)
         {
             var param1 = "%"+filtro+"%";

@@ -26,7 +26,7 @@ namespace EstoqueApp.Repositories
             }
         }
 
-        public void Update(T model)
+        public virtual void Update(T model)
         {
             try
             {

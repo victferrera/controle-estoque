@@ -54,19 +54,62 @@ namespace EstoqueApp.form_cad_produto
 
         private void btn_salvar_Click(object sender, EventArgs e)
         {
-            produto = new Produto()
+            if (produto is null)
             {
-                Nome = txtbox_cad_produto_nome.Text,
-                Descricao = txtbox_cad_produto_descricao.Text,
-                unidade = new Unidade() { CodigoUnidade = int.Parse(cbox_cad_produto_unidade.SelectedValue.ToString()) } ,
-                Status = (EStatus)cbox_cad_produto_status.SelectedItem,
-                PrecoCompra = double.Parse(txtbox_cad_produto_compra.Text),
-                PrecoVenda = double.Parse(txtbox_cad_produto_venda.Text)
-            };
+                produto = new Produto()
+                {
+                    Nome = txtbox_cad_produto_nome.Text,
+                    Descricao = txtbox_cad_produto_descricao.Text,
+                    unidade = new Unidade() { CodigoUnidade = int.Parse(cbox_cad_produto_unidade.SelectedValue.ToString()) },
+                    Status = (EStatus)cbox_cad_produto_status.SelectedItem,
+                    PrecoCompra = double.Parse(txtbox_cad_produto_compra.Text),
+                    PrecoVenda = double.Parse(txtbox_cad_produto_venda.Text)
+                };
 
-            _produtoRepository.Save(produto);
-            MessageBox.Show("Produto salvo com sucesso!", "Alerta!");
-            InicializacaoLimpezaCampos();
+                _produtoRepository.Save(produto);
+                MessageBox.Show("Produto salvo com sucesso!", "Alerta!");
+
+                var frmPesquisa = (frm_pesquisa_produto)Application.OpenForms["frm_pesquisa_produto"];
+                if (frmPesquisa == null)
+                {
+                    frmPesquisa = new frm_pesquisa_produto(); 
+                    frmPesquisa.AtualizarGrid();
+                }
+                else
+                {
+                    frmPesquisa.AtualizarGrid();
+                }
+
+                this.Close();
+                InicializacaoLimpezaCampos();
+
+            }
+            else
+            {
+                produto.Nome = txtbox_cad_produto_nome.Text;
+                produto.Descricao = txtbox_cad_produto_descricao.Text;
+                produto.unidade = new Unidade() { CodigoUnidade = int.Parse(cbox_cad_produto_unidade.SelectedValue.ToString()) };
+                produto.Status = (EStatus)cbox_cad_produto_status.SelectedItem;
+                produto.PrecoCompra = double.Parse(txtbox_cad_produto_compra.Text);
+                produto.PrecoVenda = double.Parse(txtbox_cad_produto_venda.Text);
+
+                _produtoRepository.Update(produto);
+                MessageBox.Show("Produto alterado com sucesso!", "Alerta!");
+
+                var frmPesquisa = (frm_pesquisa_produto)Application.OpenForms["frm_pesquisa_produto"];
+                if (frmPesquisa == null)
+                {
+                    frmPesquisa = new frm_pesquisa_produto();
+                    frmPesquisa.AtualizarGrid();
+                }
+                else
+                {
+                    frmPesquisa.AtualizarGrid();
+                }
+
+                this.Close();
+                InicializacaoLimpezaCampos();
+            }
         }
 
         private void btn_pesquisar_Click(object sender, EventArgs e)
@@ -96,14 +139,34 @@ namespace EstoqueApp.form_cad_produto
 
             var frmCadProduto = (frm_cad_produto)Application.OpenForms["frm_cad_produto"];
 
-            frmCadProduto.txtbox_cad_produto_nome.Text = produto.Nome;
-            frmCadProduto.txtbox_cad_produto_descricao.Text = produto.Descricao;
-            frmCadProduto.txtbox_cad_produto_venda.Text = produto.PrecoVenda.ToString();
-            frmCadProduto.txtbox_cad_produto_compra.Text = produto.PrecoCompra.ToString();
-            frmCadProduto.cbox_cad_produto_status.Text = produto.Status.ToString();
-            frmCadProduto.cbox_cad_produto_unidade.Text = produto.unidade.Sigla;
+            if (frmCadProduto == null)
+            {
+                frmCadProduto = new frm_cad_produto();
+                frmCadProduto.produto = produto;
+                frmCadProduto.InicializacaoLimpezaCampos();
+                frmCadProduto.txtbox_cad_produto_nome.Text = produto.Nome;
+                frmCadProduto.txtbox_cad_produto_descricao.Text = produto.Descricao;
+                frmCadProduto.txtbox_cad_produto_venda.Text = produto.PrecoVenda.ToString();
+                frmCadProduto.txtbox_cad_produto_compra.Text = produto.PrecoCompra.ToString();
+                frmCadProduto.cbox_cad_produto_status.Text = produto.Status.ToString();
+                frmCadProduto.cbox_cad_produto_unidade.Text = produto.unidade.Sigla;
 
-            frmCadProduto.BringToFront();
+                frmCadProduto.btn_novo.Enabled = false;
+                frmCadProduto.btn_pesquisar.Enabled = false;
+
+                frmCadProduto.Show();
+            }
+            else
+            {
+                frmCadProduto.txtbox_cad_produto_nome.Text = produto.Nome;
+                frmCadProduto.txtbox_cad_produto_descricao.Text = produto.Descricao;
+                frmCadProduto.txtbox_cad_produto_venda.Text = produto.PrecoVenda.ToString();
+                frmCadProduto.txtbox_cad_produto_compra.Text = produto.PrecoCompra.ToString();
+                frmCadProduto.cbox_cad_produto_status.Text = produto.Status.ToString();
+                frmCadProduto.cbox_cad_produto_unidade.Text = produto.unidade.Sigla;
+                frmCadProduto.BringToFront();
+            }
+
         }
 
         private void btn_remover_Click(object sender, EventArgs e)
