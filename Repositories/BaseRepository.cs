@@ -4,6 +4,7 @@ using Dapper.Contrib.Extensions;
 using Dapper;
 using System;
 using System.Collections.Generic;
+using EstoqueApp.Modelos;
 
 namespace EstoqueApp.Repositories
 {
@@ -14,7 +15,7 @@ namespace EstoqueApp.Repositories
         {
             _connection = new Connection().GetConnection();
         }
-        public void Save(T model)
+        public virtual void Save(T model)
         {
             try
             {

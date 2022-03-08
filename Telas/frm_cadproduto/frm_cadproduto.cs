@@ -27,6 +27,8 @@ namespace EstoqueApp.form_cad_produto
 
         public void InicializacaoLimpezaCampos()
         {
+            btn_remover.Enabled = true;
+
             txtbox_cad_produto_nome.Text = String.Empty;
             txtbox_cad_produto_nome.Enabled = true;
 
@@ -35,7 +37,7 @@ namespace EstoqueApp.form_cad_produto
 
 
             cbox_cad_produto_status.Enabled = true;
-            cbox_cad_produto_status.DataSource = new List<EStatus>{ EStatus.ATIVO, EStatus.INATIVO };
+            cbox_cad_produto_status.DataSource = new List<EStatus> { EStatus.ATIVO, EStatus.INATIVO };
 
             cbox_cad_produto_unidade.DataSource = _unidadeRepository.GetByStatus(1);
             cbox_cad_produto_unidade.DisplayMember = "Sigla";
@@ -56,14 +58,14 @@ namespace EstoqueApp.form_cad_produto
             {
                 Nome = txtbox_cad_produto_nome.Text,
                 Descricao = txtbox_cad_produto_descricao.Text,
-                CodigoUnidade = int.Parse(cbox_cad_produto_unidade.SelectedValue.ToString()),
+                unidade = new Unidade() { CodigoUnidade = int.Parse(cbox_cad_produto_unidade.SelectedValue.ToString()) } ,
                 Status = (EStatus)cbox_cad_produto_status.SelectedItem,
                 PrecoCompra = double.Parse(txtbox_cad_produto_compra.Text),
                 PrecoVenda = double.Parse(txtbox_cad_produto_venda.Text)
             };
 
             _produtoRepository.Save(produto);
-            MessageBox.Show("Produto salvo com sucesso!","Alerta!");
+            MessageBox.Show("Produto salvo com sucesso!", "Alerta!");
             InicializacaoLimpezaCampos();
         }
 
@@ -71,6 +73,53 @@ namespace EstoqueApp.form_cad_produto
         {
             var frmPesquisa = new frm_pesquisa_produto();
             frmPesquisa.Show();
+        }
+
+        public void OpenFormToEdit(DataGridViewCellCollection produtoGrid)
+        {
+            InicializacaoLimpezaCampos();
+
+            btn_novo.Enabled = false;
+            btn_pesquisar.Enabled = false;
+
+            produto = new Produto()
+            {
+                CodigoProduto = int.Parse(produtoGrid["CodigoProduto"].Value.ToString()),
+                Nome = produtoGrid["Nome"].Value.ToString(),
+                Descricao = produtoGrid["Descricao"].Value.ToString(),
+                Status = (EStatus)produtoGrid["Status"].Value,
+                unidade = (Unidade)produtoGrid["unidade"].Value,
+                PrecoCompra = double.Parse(produtoGrid["PrecoCompra"].Value.ToString()),
+                PrecoVenda = double.Parse(produtoGrid["PrecoVenda"].Value.ToString())
+            };
+
+
+            var frmCadProduto = (frm_cad_produto)Application.OpenForms["frm_cad_produto"];
+
+            frmCadProduto.txtbox_cad_produto_nome.Text = produto.Nome;
+            frmCadProduto.txtbox_cad_produto_descricao.Text = produto.Descricao;
+            frmCadProduto.txtbox_cad_produto_venda.Text = produto.PrecoVenda.ToString();
+            frmCadProduto.txtbox_cad_produto_compra.Text = produto.PrecoCompra.ToString();
+            frmCadProduto.cbox_cad_produto_status.Text = produto.Status.ToString();
+            frmCadProduto.cbox_cad_produto_unidade.Text = produto.unidade.Sigla;
+
+            frmCadProduto.BringToFront();
+        }
+
+        private void btn_remover_Click(object sender, EventArgs e)
+        {
+            _produtoRepository.Remove(produto);
+            AtualizarGrid();
+            MessageBox.Show("Produto removido com sucesso!", "Alerta!");
+            InicializacaoLimpezaCampos();
+        }
+
+        public void AtualizarGrid()
+        {
+            var consulta = _produtoRepository.GetByFilter("");
+            var frmPesquisa = (frm_pesquisa_produto)Application.OpenForms["frm_pesquisa_produto"];
+            frmPesquisa.grid_produtos.DataSource = consulta;
+            frmPesquisa.BringToFront();
         }
     }
 }

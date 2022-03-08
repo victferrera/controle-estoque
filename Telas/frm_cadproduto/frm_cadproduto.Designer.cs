@@ -46,6 +46,7 @@
             this.btn_pesquisar = new System.Windows.Forms.Button();
             this.btn_salvar = new System.Windows.Forms.Button();
             this.btn_novo = new System.Windows.Forms.Button();
+            this.btn_remover = new System.Windows.Forms.Button();
             this.grbox_cad_produto.SuspendLayout();
             this.grbox_cad_produto_precos.SuspendLayout();
             this.gb_acoes.SuspendLayout();
@@ -212,6 +213,7 @@
             // gb_acoes
             // 
             this.gb_acoes.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.gb_acoes.Controls.Add(this.btn_remover);
             this.gb_acoes.Controls.Add(this.btn_pesquisar);
             this.gb_acoes.Controls.Add(this.btn_salvar);
             this.gb_acoes.Controls.Add(this.btn_novo);
@@ -261,6 +263,20 @@
             this.btn_novo.UseVisualStyleBackColor = false;
             this.btn_novo.Click += new System.EventHandler(this.btn_novo_Click);
             // 
+            // btn_remover
+            // 
+            this.btn_remover.BackColor = System.Drawing.SystemColors.Control;
+            this.btn_remover.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_remover.Enabled = false;
+            this.btn_remover.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_remover.Location = new System.Drawing.Point(604, 28);
+            this.btn_remover.Name = "btn_remover";
+            this.btn_remover.Size = new System.Drawing.Size(80, 25);
+            this.btn_remover.TabIndex = 24;
+            this.btn_remover.Text = "Remover";
+            this.btn_remover.UseVisualStyleBackColor = false;
+            this.btn_remover.Click += new System.EventHandler(this.btn_remover_Click);
+            // 
             // frm_cad_produto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -302,5 +318,6 @@
         private System.Windows.Forms.Button btn_pesquisar;
         private System.Windows.Forms.Button btn_salvar;
         private System.Windows.Forms.Button btn_novo;
+        private System.Windows.Forms.Button btn_remover;
     }
 }
