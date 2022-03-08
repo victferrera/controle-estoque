@@ -1,7 +1,9 @@
 ﻿using System.Data.SqlClient;
 using EstoqueApp.Database;
 using Dapper.Contrib.Extensions;
+using Dapper;
 using System;
+using System.Collections.Generic;
 
 namespace EstoqueApp.Repositories
 {
@@ -46,14 +48,11 @@ namespace EstoqueApp.Repositories
             }
         }
 
-        public void Get(T model)
+        public IEnumerable<T> GetByStatus(int statusId)
         {
+            var query = @"SELECT [Sigla], [CodigoUnidade] FROM [Unidade] WHERE [Status] = @prm";
 
-        }
-
-        public void GetAll()
-        {
-
+            return _connection.Query<T>(query, new {prm = statusId});
         }
     }
 }

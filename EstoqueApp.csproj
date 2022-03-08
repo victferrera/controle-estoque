@@ -58,6 +58,7 @@
     <Compile Include="Database\Connection.cs" />
     <Compile Include="Enums\EStatus.cs" />
     <Compile Include="Repositories\BaseRepository.cs" />
+    <Compile Include="Repositories\ProdutoRepository.cs" />
     <Compile Include="Repositories\UnidadeRepository.cs" />
     <Compile Include="Telas\frm_cadunidade\frm_cadunidade.cs">
       <SubType>Form</SubType>

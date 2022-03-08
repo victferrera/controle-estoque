@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lbl_cad_produto_codigo = new System.Windows.Forms.Label();
-            this.txtbox_cad_produto_codigo = new System.Windows.Forms.TextBox();
             this.lbl_cad_produto_nome = new System.Windows.Forms.Label();
             this.txtbox_cad_produto_nome = new System.Windows.Forms.TextBox();
             this.lbl_cad_produto_descricao = new System.Windows.Forms.Label();
@@ -38,8 +36,6 @@
             this.cbox_cad_produto_unidade = new System.Windows.Forms.ComboBox();
             this.lbl_cad_produto_unidade = new System.Windows.Forms.Label();
             this.grbox_cad_produto = new System.Windows.Forms.GroupBox();
-            this.txtbox_cad_produto_barras = new System.Windows.Forms.TextBox();
-            this.lbl_cad_produto_barras = new System.Windows.Forms.Label();
             this.txtbox_cad_produto_descricao = new System.Windows.Forms.TextBox();
             this.grbox_cad_produto_precos = new System.Windows.Forms.GroupBox();
             this.lbl_cad_produto_compra = new System.Windows.Forms.Label();
@@ -47,33 +43,13 @@
             this.lbl_cad_produto_venda = new System.Windows.Forms.Label();
             this.txtbox_cad_produto_venda = new System.Windows.Forms.TextBox();
             this.gb_acoes = new System.Windows.Forms.GroupBox();
-            this.btn_novo = new System.Windows.Forms.Button();
-            this.btn_salvar = new System.Windows.Forms.Button();
             this.btn_pesquisar = new System.Windows.Forms.Button();
+            this.btn_salvar = new System.Windows.Forms.Button();
+            this.btn_novo = new System.Windows.Forms.Button();
             this.grbox_cad_produto.SuspendLayout();
             this.grbox_cad_produto_precos.SuspendLayout();
             this.gb_acoes.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // lbl_cad_produto_codigo
-            // 
-            this.lbl_cad_produto_codigo.AutoSize = true;
-            this.lbl_cad_produto_codigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_cad_produto_codigo.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lbl_cad_produto_codigo.Location = new System.Drawing.Point(5, 22);
-            this.lbl_cad_produto_codigo.Name = "lbl_cad_produto_codigo";
-            this.lbl_cad_produto_codigo.Size = new System.Drawing.Size(71, 24);
-            this.lbl_cad_produto_codigo.TabIndex = 0;
-            this.lbl_cad_produto_codigo.Text = "Código";
-            // 
-            // txtbox_cad_produto_codigo
-            // 
-            this.txtbox_cad_produto_codigo.Enabled = false;
-            this.txtbox_cad_produto_codigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtbox_cad_produto_codigo.Location = new System.Drawing.Point(83, 24);
-            this.txtbox_cad_produto_codigo.Name = "txtbox_cad_produto_codigo";
-            this.txtbox_cad_produto_codigo.Size = new System.Drawing.Size(117, 22);
-            this.txtbox_cad_produto_codigo.TabIndex = 1;
             // 
             // lbl_cad_produto_nome
             // 
@@ -152,13 +128,9 @@
             // grbox_cad_produto
             // 
             this.grbox_cad_produto.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.grbox_cad_produto.Controls.Add(this.txtbox_cad_produto_barras);
-            this.grbox_cad_produto.Controls.Add(this.lbl_cad_produto_barras);
             this.grbox_cad_produto.Controls.Add(this.txtbox_cad_produto_descricao);
             this.grbox_cad_produto.Controls.Add(this.grbox_cad_produto_precos);
-            this.grbox_cad_produto.Controls.Add(this.lbl_cad_produto_codigo);
             this.grbox_cad_produto.Controls.Add(this.cbox_cad_produto_unidade);
-            this.grbox_cad_produto.Controls.Add(this.txtbox_cad_produto_codigo);
             this.grbox_cad_produto.Controls.Add(this.lbl_cad_produto_unidade);
             this.grbox_cad_produto.Controls.Add(this.lbl_cad_produto_nome);
             this.grbox_cad_produto.Controls.Add(this.txtbox_cad_produto_nome);
@@ -168,30 +140,10 @@
             this.grbox_cad_produto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grbox_cad_produto.Location = new System.Drawing.Point(6, 12);
             this.grbox_cad_produto.Name = "grbox_cad_produto";
-            this.grbox_cad_produto.Size = new System.Drawing.Size(703, 443);
+            this.grbox_cad_produto.Size = new System.Drawing.Size(703, 405);
             this.grbox_cad_produto.TabIndex = 13;
             this.grbox_cad_produto.TabStop = false;
             this.grbox_cad_produto.Text = "Novo Cadastro";
-            // 
-            // txtbox_cad_produto_barras
-            // 
-            this.txtbox_cad_produto_barras.Enabled = false;
-            this.txtbox_cad_produto_barras.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtbox_cad_produto_barras.Location = new System.Drawing.Point(167, 276);
-            this.txtbox_cad_produto_barras.Name = "txtbox_cad_produto_barras";
-            this.txtbox_cad_produto_barras.Size = new System.Drawing.Size(517, 22);
-            this.txtbox_cad_produto_barras.TabIndex = 15;
-            // 
-            // lbl_cad_produto_barras
-            // 
-            this.lbl_cad_produto_barras.AutoSize = true;
-            this.lbl_cad_produto_barras.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_cad_produto_barras.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lbl_cad_produto_barras.Location = new System.Drawing.Point(5, 273);
-            this.lbl_cad_produto_barras.Name = "lbl_cad_produto_barras";
-            this.lbl_cad_produto_barras.Size = new System.Drawing.Size(156, 24);
-            this.lbl_cad_produto_barras.TabIndex = 14;
-            this.lbl_cad_produto_barras.Text = "Código de Barras";
             // 
             // txtbox_cad_produto_descricao
             // 
@@ -210,7 +162,7 @@
             this.grbox_cad_produto_precos.Controls.Add(this.lbl_cad_produto_venda);
             this.grbox_cad_produto_precos.Controls.Add(this.txtbox_cad_produto_venda);
             this.grbox_cad_produto_precos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grbox_cad_produto_precos.Location = new System.Drawing.Point(9, 311);
+            this.grbox_cad_produto_precos.Location = new System.Drawing.Point(9, 280);
             this.grbox_cad_produto_precos.Name = "grbox_cad_produto_precos";
             this.grbox_cad_produto_precos.Size = new System.Drawing.Size(675, 97);
             this.grbox_cad_produto_precos.TabIndex = 12;
@@ -263,12 +215,37 @@
             this.gb_acoes.Controls.Add(this.btn_pesquisar);
             this.gb_acoes.Controls.Add(this.btn_salvar);
             this.gb_acoes.Controls.Add(this.btn_novo);
-            this.gb_acoes.Location = new System.Drawing.Point(6, 461);
+            this.gb_acoes.Location = new System.Drawing.Point(6, 423);
             this.gb_acoes.Name = "gb_acoes";
             this.gb_acoes.Size = new System.Drawing.Size(703, 59);
             this.gb_acoes.TabIndex = 14;
             this.gb_acoes.TabStop = false;
             this.gb_acoes.Text = "Ações";
+            // 
+            // btn_pesquisar
+            // 
+            this.btn_pesquisar.BackColor = System.Drawing.SystemColors.Control;
+            this.btn_pesquisar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_pesquisar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_pesquisar.Location = new System.Drawing.Point(181, 28);
+            this.btn_pesquisar.Name = "btn_pesquisar";
+            this.btn_pesquisar.Size = new System.Drawing.Size(80, 25);
+            this.btn_pesquisar.TabIndex = 23;
+            this.btn_pesquisar.Text = "Pesquisar";
+            this.btn_pesquisar.UseVisualStyleBackColor = false;
+            // 
+            // btn_salvar
+            // 
+            this.btn_salvar.BackColor = System.Drawing.SystemColors.Control;
+            this.btn_salvar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_salvar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_salvar.Location = new System.Drawing.Point(95, 28);
+            this.btn_salvar.Name = "btn_salvar";
+            this.btn_salvar.Size = new System.Drawing.Size(80, 25);
+            this.btn_salvar.TabIndex = 22;
+            this.btn_salvar.Text = "Salvar";
+            this.btn_salvar.UseVisualStyleBackColor = false;
+            this.btn_salvar.Click += new System.EventHandler(this.btn_salvar_Click);
             // 
             // btn_novo
             // 
@@ -283,36 +260,12 @@
             this.btn_novo.UseVisualStyleBackColor = false;
             this.btn_novo.Click += new System.EventHandler(this.btn_novo_Click);
             // 
-            // btn_salvar
-            // 
-            this.btn_salvar.BackColor = System.Drawing.SystemColors.Control;
-            this.btn_salvar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_salvar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_salvar.Location = new System.Drawing.Point(95, 28);
-            this.btn_salvar.Name = "btn_salvar";
-            this.btn_salvar.Size = new System.Drawing.Size(80, 25);
-            this.btn_salvar.TabIndex = 22;
-            this.btn_salvar.Text = "Salvar";
-            this.btn_salvar.UseVisualStyleBackColor = false;
-            // 
-            // btn_pesquisar
-            // 
-            this.btn_pesquisar.BackColor = System.Drawing.SystemColors.Control;
-            this.btn_pesquisar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_pesquisar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_pesquisar.Location = new System.Drawing.Point(181, 28);
-            this.btn_pesquisar.Name = "btn_pesquisar";
-            this.btn_pesquisar.Size = new System.Drawing.Size(80, 25);
-            this.btn_pesquisar.TabIndex = 23;
-            this.btn_pesquisar.Text = "Pesquisar";
-            this.btn_pesquisar.UseVisualStyleBackColor = false;
-            // 
             // frm_cad_produto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(717, 532);
+            this.ClientSize = new System.Drawing.Size(717, 492);
             this.Controls.Add(this.gb_acoes);
             this.Controls.Add(this.grbox_cad_produto);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -330,9 +283,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label lbl_cad_produto_codigo;
-        private System.Windows.Forms.TextBox txtbox_cad_produto_codigo;
         private System.Windows.Forms.Label lbl_cad_produto_nome;
         private System.Windows.Forms.TextBox txtbox_cad_produto_nome;
         private System.Windows.Forms.Label lbl_cad_produto_descricao;
@@ -347,8 +297,6 @@
         private System.Windows.Forms.Label lbl_cad_produto_venda;
         private System.Windows.Forms.TextBox txtbox_cad_produto_venda;
         private System.Windows.Forms.TextBox txtbox_cad_produto_descricao;
-        private System.Windows.Forms.TextBox txtbox_cad_produto_barras;
-        private System.Windows.Forms.Label lbl_cad_produto_barras;
         private System.Windows.Forms.GroupBox gb_acoes;
         private System.Windows.Forms.Button btn_pesquisar;
         private System.Windows.Forms.Button btn_salvar;
