@@ -12,6 +12,5 @@ namespace EstoqueApp.Modelos
         public string Sigla { get; set; }
         public string Descricao { get; set; }
         public EStatus Status { get; set; }
-        public IEnumerable<Produto> produtos { get; set; }
     }
 }

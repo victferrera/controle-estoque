@@ -2,6 +2,8 @@
 using System.Windows.Forms;
 using EstoqueApp.Repositories;
 using EstoqueApp.form_cad_produto;
+using System.Linq;
+using EstoqueApp.Modelos;
 
 namespace EstoqueApp.Telas.frm_pesquisaProduto
 {
@@ -22,7 +24,12 @@ namespace EstoqueApp.Telas.frm_pesquisaProduto
         private void btn_pesquisar_Click(object sender, EventArgs e)
         {
             grid_produtos.Visible = true;
-            grid_produtos.DataSource = _produtoRepository.GetByFilter(txt_filtro.Text);
+
+            var queryResult = _produtoRepository.GetByFilter(txt_filtro.Text);
+
+            var customColumns = from col in queryResult select new { Codigo = col.CodigoProduto, Nome = col.Nome, Descricao = col.Descricao, Status = col.Status, Compra = col.PrecoCompra, Venda = col.PrecoVenda, Unidade = col.unidade.Sigla};
+
+            grid_produtos.DataSource = customColumns.ToList();
         }
 
         private void grid_produtos_KeyPress(object sender, KeyPressEventArgs e)

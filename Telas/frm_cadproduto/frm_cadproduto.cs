@@ -127,13 +127,13 @@ namespace EstoqueApp.form_cad_produto
 
             produto = new Produto()
             {
-                CodigoProduto = int.Parse(produtoGrid["CodigoProduto"].Value.ToString()),
+                CodigoProduto = int.Parse(produtoGrid["Codigo"].Value.ToString()),
                 Nome = produtoGrid["Nome"].Value.ToString(),
                 Descricao = produtoGrid["Descricao"].Value.ToString(),
                 Status = (EStatus)produtoGrid["Status"].Value,
-                unidade = (Unidade)produtoGrid["unidade"].Value,
-                PrecoCompra = double.Parse(produtoGrid["PrecoCompra"].Value.ToString()),
-                PrecoVenda = double.Parse(produtoGrid["PrecoVenda"].Value.ToString())
+                unidade = new Unidade() { Sigla = produtoGrid["Unidade"].Value.ToString() },
+                PrecoCompra = double.Parse(produtoGrid["Compra"].Value.ToString()),
+                PrecoVenda = double.Parse(produtoGrid["Venda"].Value.ToString())
             };
 
 
