@@ -34,5 +34,12 @@ namespace EstoqueApp.Telas.frm_pesquisaProduto
             frmCadProd.OpenFormToEdit(produto);
 
         }
+
+        public void AtualizarGrid()
+        {
+            var consulta = _produtoRepository.GetByFilter("");
+            grid_produtos.DataSource = consulta;
+            BringToFront();
+        }
     }
 }

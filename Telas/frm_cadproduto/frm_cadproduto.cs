@@ -108,18 +108,11 @@ namespace EstoqueApp.form_cad_produto
 
         private void btn_remover_Click(object sender, EventArgs e)
         {
-            _produtoRepository.Remove(produto);
-            AtualizarGrid();
-            MessageBox.Show("Produto removido com sucesso!", "Alerta!");
-            InicializacaoLimpezaCampos();
-        }
-
-        public void AtualizarGrid()
-        {
-            var consulta = _produtoRepository.GetByFilter("");
             var frmPesquisa = (frm_pesquisa_produto)Application.OpenForms["frm_pesquisa_produto"];
-            frmPesquisa.grid_produtos.DataSource = consulta;
-            frmPesquisa.BringToFront();
+            _produtoRepository.Remove(produto);
+            frmPesquisa.AtualizarGrid();
+            MessageBox.Show("Produto removido com sucesso!", "Alerta!");
+            this.Close();
         }
     }
 }
