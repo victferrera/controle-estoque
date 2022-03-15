@@ -1,59 +1,66 @@
 ﻿using System.Data.SqlClient;
 using EstoqueApp.Database;
 using Dapper.Contrib.Extensions;
-using Dapper;
 using System;
-using System.Collections.Generic;
-using EstoqueApp.Modelos;
+using Autofac;
+using EstoqueApp.Interfaces;
 
 namespace EstoqueApp.Repositories
 {
-    internal class BaseRepository<T> where T: class
+    internal abstract class BaseRepository<T> : IBaseService<T> where T : class
     {
-        public SqlConnection _connection { get; set; }
-        public BaseRepository()
-        {
-            _connection = new Connection().GetConnection();
-        }
         public virtual void Save(T model)
         {
-            try
+            using (var scope = Program.Container.BeginLifetimeScope())
             {
-                _connection.Insert<T>(model);
-            }catch(Exception e)
-            {
-                throw new Exception(e.Message);
+                var Connection = scope.Resolve<Connection>();
+
+                var connection = Connection.CreateConnection();
+
+                try
+                {
+                    connection.Insert<T>(model);
+                }
+                catch (Exception e)
+                {
+                    throw new Exception(e.Message);
+                }
             }
+
         }
 
         public virtual void Update(T model)
         {
-            try
+            using (var scope = Program.Container.BeginLifetimeScope())
             {
-                _connection.Update<T>(model);
-            }catch(Exception e)
-            {
-                throw new Exception(e.Message);
+                var connection = scope.Resolve<Connection>().CreateConnection();
+
+                try
+                {
+                    connection.Update<T>(model);
+                }
+                catch (Exception e)
+                {
+                    throw new Exception(e.Message);
+                }
             }
         }
 
         public void Remove(T model)
         {
-            try
+            using (var scope = Program.Container.BeginLifetimeScope())
             {
-                _connection.Delete<T>(model);
-            }
-            catch(Exception e)
-            {
-                throw new Exception(e.Message);
-            }
-        }
+                var connection = scope.Resolve<Connection>().CreateConnection();
 
-        public IEnumerable<T> GetByStatus(int statusId)
-        {
-            var query = @"SELECT [Sigla], [CodigoUnidade] FROM [Unidade] WHERE [Status] = @prm";
-
-            return _connection.Query<T>(query, new {prm = statusId});
+                try
+                {
+                    connection.Update<T>(model);
+                }
+                catch (Exception e)
+                {
+                    throw new Exception(e.Message);
+                }
+            }
         }
     }
 }

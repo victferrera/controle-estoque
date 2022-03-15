@@ -1,52 +1,73 @@
 ﻿using Dapper.Contrib.Extensions;
 using EstoqueApp.Modelos;
 using EstoqueApp.Enums;
+using Autofac;
 using Dapper;
 using System;
 using System.Collections.Generic;
+using EstoqueApp.Database;
 
 namespace EstoqueApp.Repositories
 {
     internal class UnidadeRepository : BaseRepository<Unidade>
     {
-        public UnidadeRepository() : base()
-        {
-        }
-
         public void AlterarStatus(Unidade unidade)
         {
-            if (unidade.Status == EStatus.ATIVO)
+            using (var scope = Program.Container.BeginLifetimeScope())
             {
-                unidade.Status = EStatus.INATIVO;
-                _connection.Update<Unidade>(unidade);
-            }
-            else
-            {
-                unidade.Status = EStatus.ATIVO;
-                _connection.Update<Unidade>(unidade);
-            }
+                var connection = scope.Resolve<Connection>().CreateConnection();
 
+                if (unidade.Status == EStatus.ATIVO)
+                {
+                    unidade.Status = EStatus.INATIVO;
+                    connection.Update<Unidade>(unidade);
+                }
+                else
+                {
+                    unidade.Status = EStatus.ATIVO;
+                    connection.Update<Unidade>(unidade);
+                }
+            }
         }
 
         public IEnumerable<dynamic> GetByFilter(string filter)
         {
-            var param = "%"+filter+"";
+            using (var scope = Program.Container.BeginLifetimeScope())
+            {
+                var connection = scope.Resolve<Connection>().CreateConnection();
 
-            var query = @"
-            SELECT * FROM [Unidade]
-            WHERE
-            [CodigoUnidade] like @prm OR
-            [Sigla] like @prm OR
-            [Descricao] like @prm
-            ";
-            try
+                var param = "%" + filter + "";
+
+                var query = @"
+                    SELECT * FROM [Unidade]
+                    WHERE
+                    [CodigoUnidade] like @prm OR
+                    [Sigla] like @prm OR
+                    [Descricao] like @prm
+                    ";
+                try
+                {
+                    var consulta = connection.Query<Unidade>(query, new { prm = param });
+                    return consulta;
+                }
+                catch (Exception e)
+                {
+                    throw new Exception(e.Message);
+                }
+            }
+        }
+
+        public IEnumerable<Unidade> GetByStatus(int statusId)
+        {
+            using (var scope = Program.Container.BeginLifetimeScope())
             {
-                var consulta = _connection.Query<Unidade>(query, new {prm = param});
-                return consulta;
-            }catch(Exception e)
-            {
-                throw new Exception(e.Message);
+                var connection = scope.Resolve<Connection>().CreateConnection();
+
+                var query = @"SELECT [Sigla], [CodigoUnidade] FROM [Unidade] WHERE [Status] = @prm";
+
+                return connection.Query<Unidade>(query, new { prm = statusId });
             }
         }
     }
 }
+

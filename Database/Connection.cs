@@ -1,21 +1,16 @@
-﻿using System.Data.SqlClient;
+﻿using EstoqueApp.Interfaces;
+using System.Data.SqlClient;
 
 namespace EstoqueApp.Database
 {
-    internal class Connection
+    internal class Connection : IConnectionService
     {
-        private const string USER = "sa";
-        private const string PASSWORD = "123";
+        private string Connection_String = $@"Server=PC\SQLEXPRESS;Database=EstoqueDB;Trusted_Connection=true";
 
-        private string CONNECTION_STRING = $@"Server=PC\SQLEXPRESS;Database=estoquedb;User Id={USER};password={PASSWORD}";
-        private SqlConnection CONNECTION = null;
-
-        public SqlConnection GetConnection()
+        public SqlConnection CreateConnection()
         {
-            if (CONNECTION == null)
-                return CONNECTION = new SqlConnection(CONNECTION_STRING);
-            else
-                return CONNECTION;
+           var Connection = new SqlConnection(Connection_String);
+           return Connection;
         }
     }
 }
