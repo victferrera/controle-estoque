@@ -5,18 +5,16 @@ using EstoqueApp.Repositories;
 using EstoqueApp.Modelos;
 using System.Collections.Generic;
 using EstoqueApp.Telas.frm_pesquisaProduto;
+using EstoqueApp.Interfaces;
+using Autofac;
 
 namespace EstoqueApp.form_cad_produto
 {
     public partial class frm_cad_produto : Form
     {
-        internal UnidadeRepository _unidadeRepository;
-        internal ProdutoRepository _produtoRepository;
         internal Produto produto = null;
         public frm_cad_produto()
         {
-            _produtoRepository = new ProdutoRepository();
-            _unidadeRepository = new UnidadeRepository();
             InitializeComponent();
         }
 
@@ -27,88 +25,101 @@ namespace EstoqueApp.form_cad_produto
 
         public void InicializacaoLimpezaCampos()
         {
-            btn_remover.Enabled = true;
+            using(var scope = Program.Container.BeginLifetimeScope())
+            {
+                var unidadeRepository = scope.Resolve<IUnidadeRepository>();
 
-            txtbox_cad_produto_nome.Text = String.Empty;
-            txtbox_cad_produto_nome.Enabled = true;
+                btn_remover.Enabled = true;
 
-            txtbox_cad_produto_descricao.Text = String.Empty;
-            txtbox_cad_produto_descricao.Enabled = true;
+                txtbox_cad_produto_nome.Text = String.Empty;
+                txtbox_cad_produto_nome.Enabled = true;
 
-
-            cbox_cad_produto_status.Enabled = true;
-            cbox_cad_produto_status.DataSource = new List<EStatus> { EStatus.ATIVO, EStatus.INATIVO };
-
-            cbox_cad_produto_unidade.DataSource = _unidadeRepository.GetByStatus(1);
-            cbox_cad_produto_unidade.DisplayMember = "Sigla";
-            cbox_cad_produto_unidade.ValueMember = "CodigoUnidade";
-            cbox_cad_produto_unidade.Enabled = true;
+                txtbox_cad_produto_descricao.Text = String.Empty;
+                txtbox_cad_produto_descricao.Enabled = true;
 
 
-            txtbox_cad_produto_venda.Text = String.Empty;
-            txtbox_cad_produto_venda.Enabled = true;
+                cbox_cad_produto_status.Enabled = true;
+                cbox_cad_produto_status.DataSource = new List<EStatus> { EStatus.ATIVO, EStatus.INATIVO };
 
-            txtbox_cad_produto_compra.Text = String.Empty;
-            txtbox_cad_produto_compra.Enabled = true;
+                cbox_cad_produto_unidade.DataSource = unidadeRepository.GetByStatus(1);
+                cbox_cad_produto_unidade.DisplayMember = "Sigla";
+                cbox_cad_produto_unidade.ValueMember = "CodigoUnidade";
+                cbox_cad_produto_unidade.Enabled = true;
+
+
+                txtbox_cad_produto_venda.Text = String.Empty;
+                txtbox_cad_produto_venda.Enabled = true;
+
+                txtbox_cad_produto_compra.Text = String.Empty;
+                txtbox_cad_produto_compra.Enabled = true;
+            }
+            
         }
 
         private void btn_salvar_Click(object sender, EventArgs e)
         {
-            if (produto is null)
+            using (var scope = Program.Container.BeginLifetimeScope())
             {
-                produto = new Produto()
-                {
-                    Nome = txtbox_cad_produto_nome.Text,
-                    Descricao = txtbox_cad_produto_descricao.Text,
-                    unidade = new Unidade() { CodigoUnidade = int.Parse(cbox_cad_produto_unidade.SelectedValue.ToString()) },
-                    Status = (EStatus)cbox_cad_produto_status.SelectedItem,
-                    PrecoCompra = double.Parse(txtbox_cad_produto_compra.Text),
-                    PrecoVenda = double.Parse(txtbox_cad_produto_venda.Text)
-                };
+                var produtoRepository = scope.Resolve<IProdutoRepository>();
 
-                _produtoRepository.Save(produto);
-                MessageBox.Show("Produto salvo com sucesso!", "Alerta!");
-
-                var frmPesquisa = (frm_pesquisa_produto)Application.OpenForms["frm_pesquisa_produto"];
-                if (frmPesquisa == null)
+                if (produto is null)
                 {
-                    frmPesquisa = new frm_pesquisa_produto(); 
-                    frmPesquisa.PreencherGrid();
+                    produto = new Produto()
+                    {
+                        Nome = txtbox_cad_produto_nome.Text,
+                        Descricao = txtbox_cad_produto_descricao.Text,
+                        unidade = new Unidade() { CodigoUnidade = int.Parse(cbox_cad_produto_unidade.SelectedValue.ToString()) },
+                        Status = (EStatus)cbox_cad_produto_status.SelectedItem,
+                        PrecoCompra = double.Parse(txtbox_cad_produto_compra.Text),
+                        PrecoVenda = double.Parse(txtbox_cad_produto_venda.Text)
+                    };
+
+                    produtoRepository.Save(produto);
+
+                    MessageBox.Show("Produto salvo com sucesso!", "Alerta!");
+
+                    var frmPesquisa = (frm_pesquisa_produto)Application.OpenForms["frm_pesquisa_produto"];
+                    if (frmPesquisa == null)
+                    {
+                        frmPesquisa = new frm_pesquisa_produto();
+                        frmPesquisa.PreencherGrid();
+                    }
+                    else
+                    {
+                        frmPesquisa.PreencherGrid();
+                    }
+
+                    this.Close();
+                    InicializacaoLimpezaCampos();
+
                 }
                 else
                 {
-                    frmPesquisa.PreencherGrid();
+                    produto.Nome = txtbox_cad_produto_nome.Text;
+                    produto.Descricao = txtbox_cad_produto_descricao.Text;
+                    produto.unidade = new Unidade() { CodigoUnidade = int.Parse(cbox_cad_produto_unidade.SelectedValue.ToString()) };
+                    produto.Status = (EStatus)cbox_cad_produto_status.SelectedItem;
+                    produto.PrecoCompra = double.Parse(txtbox_cad_produto_compra.Text);
+                    produto.PrecoVenda = double.Parse(txtbox_cad_produto_venda.Text);
+
+                    produtoRepository.Update(produto);
+
+                    MessageBox.Show("Produto alterado com sucesso!", "Alerta!");
+
+                    var frmPesquisa = (frm_pesquisa_produto)Application.OpenForms["frm_pesquisa_produto"];
+                    if (frmPesquisa == null)
+                    {
+                        frmPesquisa = new frm_pesquisa_produto();
+                        frmPesquisa.PreencherGrid();
+                    }
+                    else
+                    {
+                        frmPesquisa.PreencherGrid();
+                    }
+
+                    this.Close();
+                    InicializacaoLimpezaCampos();
                 }
-
-                this.Close();
-                InicializacaoLimpezaCampos();
-
-            }
-            else
-            {
-                produto.Nome = txtbox_cad_produto_nome.Text;
-                produto.Descricao = txtbox_cad_produto_descricao.Text;
-                produto.unidade = new Unidade() { CodigoUnidade = int.Parse(cbox_cad_produto_unidade.SelectedValue.ToString()) };
-                produto.Status = (EStatus)cbox_cad_produto_status.SelectedItem;
-                produto.PrecoCompra = double.Parse(txtbox_cad_produto_compra.Text);
-                produto.PrecoVenda = double.Parse(txtbox_cad_produto_venda.Text);
-
-                _produtoRepository.Update(produto);
-                MessageBox.Show("Produto alterado com sucesso!", "Alerta!");
-
-                var frmPesquisa = (frm_pesquisa_produto)Application.OpenForms["frm_pesquisa_produto"];
-                if (frmPesquisa == null)
-                {
-                    frmPesquisa = new frm_pesquisa_produto();
-                    frmPesquisa.PreencherGrid();
-                }
-                else
-                {
-                    frmPesquisa.PreencherGrid();
-                }
-
-                this.Close();
-                InicializacaoLimpezaCampos();
             }
         }
 
@@ -171,11 +182,16 @@ namespace EstoqueApp.form_cad_produto
 
         private void btn_remover_Click(object sender, EventArgs e)
         {
-            var frmPesquisa = (frm_pesquisa_produto)Application.OpenForms["frm_pesquisa_produto"];
-            _produtoRepository.Remove(produto);
-            frmPesquisa.PreencherGrid();
-            MessageBox.Show("Produto removido com sucesso!", "Alerta!");
-            this.Close();
+            using (var scope = Program.Container.BeginLifetimeScope())
+            {
+                var produtoRepository = scope.Resolve<IProdutoRepository>();
+
+                var frmPesquisa = (frm_pesquisa_produto)Application.OpenForms["frm_pesquisa_produto"];
+                produtoRepository.Remove(produto);
+                frmPesquisa.PreencherGrid();
+                MessageBox.Show("Produto removido com sucesso!", "Alerta!");
+                this.Close();
+            }
         }
     }
 }

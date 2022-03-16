@@ -15,6 +15,7 @@ namespace EstoqueApp
             var builder = new ContainerBuilder();
             builder.RegisterType<Connection>().As<IConnectionService>();
             builder.RegisterType<UnidadeRepository>().As<IUnidadeRepository>();
+            builder.RegisterType<ProdutoRepository>().As<IProdutoRepository>();
             Container = builder.Build();
             
 

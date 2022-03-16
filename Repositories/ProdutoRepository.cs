@@ -2,16 +2,12 @@
 using EstoqueApp.Modelos;
 using System.Collections.Generic;
 using System;
-using Dapper.Contrib.Extensions;
-using System.Linq;
-using EstoqueApp.Enums;
 using Autofac;
-using EstoqueApp.Database;
 using EstoqueApp.Interfaces;
 
 namespace EstoqueApp.Repositories
 {
-    internal class ProdutoRepository : BaseRepository<Produto>
+    internal class ProdutoRepository : BaseRepository<Produto>, IProdutoRepository
     {
         public override void Save(Produto produto)
         {
