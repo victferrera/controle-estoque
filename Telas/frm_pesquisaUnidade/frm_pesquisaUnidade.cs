@@ -1,23 +1,26 @@
 ﻿using System;
 using System.Windows.Forms;
+using Autofac;
 using EstoqueApp.form_cadaux_unidade;
+using EstoqueApp.Interfaces;
 using EstoqueApp.Repositories;
 
 namespace EstoqueApp.form_cad_pesquisa
 {
     public partial class frm_cad_pesquisa : Form
     {
-        internal UnidadeRepository _repository;
         public frm_cad_pesquisa()
         {
-            _repository = new UnidadeRepository();
-
             InitializeComponent();
         }
 
         private void btn_cad_pesquisa_pesquisar_Click(object sender, EventArgs e)
         {
-            grid_cad_pesquisa_cadastros.DataSource = _repository.GetByFilter(txt_cad_pesquisa_filtro.Text);
+            using (var scope = Program.Container.BeginLifetimeScope())
+            {
+                var repository = scope.Resolve<IUnidadeRepository>();
+                grid_cad_pesquisa_cadastros.DataSource = repository.GetByFilter(txt_cad_pesquisa_filtro.Text);
+            }
         }
 
         private void grid_cad_pesquisa_cadastros_KeyPress(object sender, KeyPressEventArgs e)
