@@ -6,6 +6,7 @@ using Dapper;
 using System;
 using System.Collections.Generic;
 using EstoqueApp.Database;
+using EstoqueApp.Interfaces;
 
 namespace EstoqueApp.Repositories
 {
@@ -15,7 +16,7 @@ namespace EstoqueApp.Repositories
         {
             using (var scope = Program.Container.BeginLifetimeScope())
             {
-                var connection = scope.Resolve<Connection>().CreateConnection();
+                var connection = scope.Resolve<IConnectionService>().CreateConnection();
 
                 if (unidade.Status == EStatus.ATIVO)
                 {
@@ -34,7 +35,7 @@ namespace EstoqueApp.Repositories
         {
             using (var scope = Program.Container.BeginLifetimeScope())
             {
-                var connection = scope.Resolve<Connection>().CreateConnection();
+                var connection = scope.Resolve<IConnectionService>().CreateConnection();
 
                 var param = "%" + filter + "";
 
@@ -61,7 +62,7 @@ namespace EstoqueApp.Repositories
         {
             using (var scope = Program.Container.BeginLifetimeScope())
             {
-                var connection = scope.Resolve<Connection>().CreateConnection();
+                var connection = scope.Resolve<IConnectionService>().CreateConnection();
 
                 var query = @"SELECT [Sigla], [CodigoUnidade] FROM [Unidade] WHERE [Status] = @prm";
 

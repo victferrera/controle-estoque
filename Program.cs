@@ -12,7 +12,7 @@ namespace EstoqueApp
         static void Main()
         {
             var builder = new ContainerBuilder();
-            builder.RegisterType<Connection>().AsSelf();
+            builder.RegisterType<Connection>().As<IConnectionService>();
             Container = builder.Build();
             
 

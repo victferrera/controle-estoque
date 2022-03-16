@@ -13,7 +13,7 @@ namespace EstoqueApp.Repositories
         {
             using (var scope = Program.Container.BeginLifetimeScope())
             {
-                var connection = scope.Resolve<Connection>().CreateConnection();
+                var connection = scope.Resolve<IConnectionService>().CreateConnection();
 
                 try
                 {
@@ -31,7 +31,7 @@ namespace EstoqueApp.Repositories
         {
             using (var scope = Program.Container.BeginLifetimeScope())
             {
-                var connection = scope.Resolve<Connection>().CreateConnection();
+                var connection = scope.Resolve<IConnectionService>().CreateConnection();
 
                 try
                 {
@@ -48,7 +48,7 @@ namespace EstoqueApp.Repositories
         {
             using (var scope = Program.Container.BeginLifetimeScope())
             {
-                var connection = scope.Resolve<Connection>().CreateConnection();
+                var connection = scope.Resolve<IConnectionService>().CreateConnection();
 
                 try
                 {
