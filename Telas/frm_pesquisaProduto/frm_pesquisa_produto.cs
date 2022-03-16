@@ -5,15 +5,15 @@ using EstoqueApp.form_cad_produto;
 using System.Linq;
 using EstoqueApp.Modelos;
 using System.Collections.Generic;
+using Autofac;
+using EstoqueApp.Interfaces;
 
 namespace EstoqueApp.Telas.frm_pesquisaProduto
 {
     public partial class frm_pesquisa_produto : Form
     {
-        internal ProdutoRepository _produtoRepository;
         public frm_pesquisa_produto()
         {
-            _produtoRepository = new ProdutoRepository();
             InitializeComponent();
         }
         private void btn_pesquisar_Click(object sender, EventArgs e)
@@ -38,14 +38,19 @@ namespace EstoqueApp.Telas.frm_pesquisaProduto
 
         public void PreencherGrid(string filtro = "")
         {
-            var consulta = _produtoRepository.GetByFilter(filtro);
+            using (var scope = Program.Container.BeginLifetimeScope())
+            {
+                var produtoRepository = scope.Resolve<IProdutoRepository>();
 
-            var customColumns = from col in consulta select new { Codigo = col.CodigoProduto, Nome = col.Nome, Descricao = col.Descricao, Status = col.Status, Compra = col.PrecoCompra, Venda = col.PrecoVenda, Unidade = col.unidade.Sigla };
-            
-            // IEnumerable<> não funciona como fonte para o DataGrid, necessário converter para List<>;
-            grid_produtos.DataSource = customColumns.ToList();
-            
-            BringToFront();
+                var consulta = produtoRepository.GetByFilter(filtro);
+
+                var customColumns = from col in consulta select new { Codigo = col.CodigoProduto, Nome = col.Nome, Descricao = col.Descricao, Status = col.Status, Compra = col.PrecoCompra, Venda = col.PrecoVenda, Unidade = col.unidade.Sigla };
+
+                // IEnumerable<> não funciona como fonte para o DataGrid, necessário converter para List<>;
+                grid_produtos.DataSource = customColumns.ToList();
+
+                BringToFront();
+            }
         }
     }
 }
