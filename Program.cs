@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using EstoqueApp.Database;
 using EstoqueApp.Interfaces;
+using EstoqueApp.Repositories;
 using System;
 using System.Windows.Forms;
 
@@ -13,6 +14,7 @@ namespace EstoqueApp
         {
             var builder = new ContainerBuilder();
             builder.RegisterType<Connection>().As<IConnectionService>();
+            builder.RegisterType<UnidadeRepository>().As<IUnidadeRepository>();
             Container = builder.Build();
             
 

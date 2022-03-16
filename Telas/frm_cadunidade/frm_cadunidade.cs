@@ -1,59 +1,62 @@
 ﻿using System;
-using EstoqueApp.Repositories;
+using Autofac;
 using System.Windows.Forms;
 using EstoqueApp.form_cad_pesquisa;
 using EstoqueApp.Enums;
 using System.Collections.Generic;
 using EstoqueApp.Modelos;
+using EstoqueApp.Interfaces;
 
 namespace EstoqueApp.form_cadaux_unidade
 {
     public partial class frm_cadaux_unidade : Form
     {
-        internal UnidadeRepository _repository;
         internal Unidade unidadeMedida = null;
 
         public frm_cadaux_unidade()
         {
-            _repository = new UnidadeRepository();
-
             InitializeComponent();
         }
 
         private void btn_salvar_Click(object sender, EventArgs e)
         {
-            if (txt_sigla.Text == String.Empty || cb_status.SelectedItem == null)
+            using (var scope = Program.Container.BeginLifetimeScope())
             {
-                MessageBox.Show("Por favor, preencha os campos corretamente!", "Aviso");
-                return;
-            }
+                var repository = scope.Resolve<IUnidadeRepository>();
 
-            if(unidadeMedida == null)
-            {
-                var unidade = new Unidade()
+                if (txt_sigla.Text == String.Empty || cb_status.SelectedItem == null)
                 {
-                    Sigla = txt_sigla.Text,
-                    Descricao = txt_descricao.Text,
-                    Status = (EStatus)cb_status.SelectedItem
-                };
+                    MessageBox.Show("Por favor, preencha os campos corretamente!", "Aviso");
+                    return;
+                }
 
-                _repository.Save(unidade);
+                if (unidadeMedida == null)
+                {
+                    var unidade = new Unidade()
+                    {
+                        Sigla = txt_sigla.Text,
+                        Descricao = txt_descricao.Text,
+                        Status = (EStatus)cb_status.SelectedItem
+                    };
 
-                MessageBox.Show("Unidade salva com sucesso!","Alerta!");
+                    repository.Save(unidade);
 
-                unidade = null;
+                    MessageBox.Show("Unidade salva com sucesso!", "Alerta!");
 
-                LimparCampos();
-            }
-            else
-            {
-                unidadeMedida.Sigla = txt_sigla.Text.ToUpper();
-                unidadeMedida.Descricao = txt_descricao.Text;
-                _repository.Update(unidadeMedida);
-                MessageBox.Show("Unidade alterada com sucesso!","Alerta!");
-                AtualizarGridView();
-                var frmPesUnidade = (frm_cad_pesquisa)Application.OpenForms["frm_cad_pesquisa"];
-                frmPesUnidade.BringToFront();
+                    unidade = null;
+
+                    LimparCampos();
+                }
+                else
+                {
+                    unidadeMedida.Sigla = txt_sigla.Text.ToUpper();
+                    unidadeMedida.Descricao = txt_descricao.Text;
+                    repository.Update(unidadeMedida);
+                    MessageBox.Show("Unidade alterada com sucesso!", "Alerta!");
+                    AtualizarGridView();
+                    var frmPesUnidade = (frm_cad_pesquisa)Application.OpenForms["frm_cad_pesquisa"];
+                    frmPesUnidade.BringToFront();
+                }
             }
         }
 
@@ -85,8 +88,12 @@ namespace EstoqueApp.form_cadaux_unidade
         }
         private void AtualizarGridView()
         {
-            var frmPesquisa = (frm_cad_pesquisa)Application.OpenForms["frm_cad_pesquisa"];
-            frmPesquisa.grid_cad_pesquisa_cadastros.DataSource = _repository.GetByFilter("");
+            using (var scope = Program.Container.BeginLifetimeScope())
+            {
+                var repository = scope.Resolve<IUnidadeRepository>();
+                var frmPesquisa = (frm_cad_pesquisa)Application.OpenForms["frm_cad_pesquisa"];
+                frmPesquisa.grid_cad_pesquisa_cadastros.DataSource = repository.GetByFilter("");
+            }
         }
 
         private void frm_cadaux_unidade_Load(object sender, EventArgs e)
@@ -124,11 +131,16 @@ namespace EstoqueApp.form_cadaux_unidade
 
         private void btn_remover_Click(object sender, EventArgs e)
         {
-            _repository.Remove(unidadeMedida);
-            MessageBox.Show("Unidade Removida!", "Alerta!");
-            AtualizarGridView();
-            var frmPesUnidade = (frm_cad_pesquisa)Application.OpenForms["frm_cad_pesquisa"];
-            frmPesUnidade.BringToFront();
+            using (var scope = Program.Container.BeginLifetimeScope())
+            {
+                var repository = scope.Resolve<IUnidadeRepository>();
+
+                repository.Remove(unidadeMedida);
+                MessageBox.Show("Unidade Removida!", "Alerta!");
+                AtualizarGridView();
+                var frmPesUnidade = (frm_cad_pesquisa)Application.OpenForms["frm_cad_pesquisa"];
+                frmPesUnidade.BringToFront();
+            }
         }
 
         private void btn_alteraStatus_Click(object sender, EventArgs e)
@@ -138,12 +150,19 @@ namespace EstoqueApp.form_cadaux_unidade
             else
                 unidadeMedida.Status = EStatus.ATIVO;
 
-            _repository.Update(unidadeMedida);
 
-            var frmPesUnidade = (frm_cad_pesquisa)Application.OpenForms["frm_cad_pesquisa"];
-            MessageBox.Show("Status alterado com sucesso!");
-            AtualizarGridView();
-            frmPesUnidade.BringToFront();
+            using (var scope = Program.Container.BeginLifetimeScope())
+            {
+                var repository = scope.Resolve<IUnidadeRepository>();
+
+                repository.Update(unidadeMedida);
+
+                var frmPesUnidade = (frm_cad_pesquisa)Application.OpenForms["frm_cad_pesquisa"];
+                MessageBox.Show("Status alterado com sucesso!");
+                AtualizarGridView();
+                frmPesUnidade.BringToFront();
+
+            }
         }
     }
 }

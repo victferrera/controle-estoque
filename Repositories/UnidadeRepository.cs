@@ -10,8 +10,12 @@ using EstoqueApp.Interfaces;
 
 namespace EstoqueApp.Repositories
 {
-    internal class UnidadeRepository : BaseRepository<Unidade>
+    internal class UnidadeRepository : BaseRepository<Unidade>,IUnidadeRepository
     {
+        public UnidadeRepository()
+        {
+
+        }
         public void AlterarStatus(Unidade unidade)
         {
             using (var scope = Program.Container.BeginLifetimeScope())
@@ -31,7 +35,7 @@ namespace EstoqueApp.Repositories
             }
         }
 
-        public IEnumerable<dynamic> GetByFilter(string filter)
+        public IEnumerable<Unidade> GetByFilter(string filter)
         {
             using (var scope = Program.Container.BeginLifetimeScope())
             {
