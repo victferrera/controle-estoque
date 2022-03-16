@@ -4,6 +4,7 @@ using EstoqueApp.Repositories;
 using EstoqueApp.form_cad_produto;
 using System.Linq;
 using EstoqueApp.Modelos;
+using System.Collections.Generic;
 
 namespace EstoqueApp.Telas.frm_pesquisaProduto
 {
@@ -15,21 +16,11 @@ namespace EstoqueApp.Telas.frm_pesquisaProduto
             _produtoRepository = new ProdutoRepository();
             InitializeComponent();
         }
-
-        private void frm_pesquisa_produto_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void btn_pesquisar_Click(object sender, EventArgs e)
         {
+            PreencherGrid(txt_filtro.Text);
+
             grid_produtos.Visible = true;
-
-            var queryResult = _produtoRepository.GetByFilter(txt_filtro.Text);
-
-            var customColumns = from col in queryResult select new { Codigo = col.CodigoProduto, Nome = col.Nome, Descricao = col.Descricao, Status = col.Status, Compra = col.PrecoCompra, Venda = col.PrecoVenda, Unidade = col.unidade.Sigla};
-
-            grid_produtos.DataSource = customColumns.ToList();
         }
 
         private void grid_produtos_KeyPress(object sender, KeyPressEventArgs e)
@@ -45,10 +36,14 @@ namespace EstoqueApp.Telas.frm_pesquisaProduto
 
         }
 
-        public void AtualizarGrid()
+        public void PreencherGrid(string filtro = "")
         {
-            var consulta = _produtoRepository.GetByFilter("");
-            grid_produtos.DataSource = consulta;
+            var consulta = _produtoRepository.GetByFilter(filtro);
+
+            var customColumns = from col in consulta select new { Codigo = col.CodigoProduto, Nome = col.Nome, Descricao = col.Descricao, Status = col.Status, Compra = col.PrecoCompra, Venda = col.PrecoVenda, Unidade = col.unidade.Sigla };
+            
+            grid_produtos.DataSource = customColumns.ToList();
+            
             BringToFront();
         }
     }

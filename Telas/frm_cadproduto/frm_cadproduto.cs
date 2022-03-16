@@ -73,11 +73,11 @@ namespace EstoqueApp.form_cad_produto
                 if (frmPesquisa == null)
                 {
                     frmPesquisa = new frm_pesquisa_produto(); 
-                    frmPesquisa.AtualizarGrid();
+                    frmPesquisa.PreencherGrid();
                 }
                 else
                 {
-                    frmPesquisa.AtualizarGrid();
+                    frmPesquisa.PreencherGrid();
                 }
 
                 this.Close();
@@ -100,11 +100,11 @@ namespace EstoqueApp.form_cad_produto
                 if (frmPesquisa == null)
                 {
                     frmPesquisa = new frm_pesquisa_produto();
-                    frmPesquisa.AtualizarGrid();
+                    frmPesquisa.PreencherGrid();
                 }
                 else
                 {
-                    frmPesquisa.AtualizarGrid();
+                    frmPesquisa.PreencherGrid();
                 }
 
                 this.Close();
@@ -173,7 +173,7 @@ namespace EstoqueApp.form_cad_produto
         {
             var frmPesquisa = (frm_pesquisa_produto)Application.OpenForms["frm_pesquisa_produto"];
             _produtoRepository.Remove(produto);
-            frmPesquisa.AtualizarGrid();
+            frmPesquisa.PreencherGrid();
             MessageBox.Show("Produto removido com sucesso!", "Alerta!");
             this.Close();
         }

@@ -99,7 +99,6 @@
             this.Name = "frm_pesquisa_produto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pesquisa de Produto";
-            this.Load += new System.EventHandler(this.frm_pesquisa_produto_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grid_produtos)).EndInit();
