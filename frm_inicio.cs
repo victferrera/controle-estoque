@@ -1,6 +1,7 @@
 ﻿using System.Windows.Forms;
 using EstoqueApp.form_cad_produto;
 using EstoqueApp.form_cadaux_unidade;
+using EstoqueApp.Telas.frm_cadlocalestoque;
 
 namespace EstoqueApp
 {
@@ -31,6 +32,12 @@ namespace EstoqueApp
         private void menu_cadaux_unidade_Click(object sender, System.EventArgs e)
         {
             var novaTela = new frm_cadaux_unidade();
+            novaTela.Show();
+        }
+
+        private void localToolStripMenuItem_Click(object sender, System.EventArgs e)
+        {
+            var novaTela = new frm_cadLocalEstoque();
             novaTela.Show();
         }
     }
