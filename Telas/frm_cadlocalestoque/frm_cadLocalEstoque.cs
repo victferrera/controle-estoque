@@ -38,12 +38,21 @@ namespace EstoqueApp.Telas.frm_cadlocalestoque
                 {
                     repository.Save(novoLocal);
                     MessageBox.Show("Local de estoque salvo com sucesso!", "Alerta");
+                    LimparCampos();
                 }
                 catch (Exception ex)
                 {
+                    LimparCampos();
                     throw new   (ex.Message);
                 }
             }
+        }
+
+        private void LimparCampos()
+        {
+            num_codigo.Value = 0;
+            txt_nome.Text = String.Empty;
+            rt_descricao.Text = String.Empty;
         }
     }
 }
