@@ -4,6 +4,7 @@ using Dapper;
 using Autofac;
 using System;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace EstoqueApp.Repositories
 {
@@ -63,6 +64,29 @@ namespace EstoqueApp.Repositories
                 }).FirstOrDefault();
 
                 return local;
+            }
+        }
+
+        public List<LocalEstoque> GetLocalByFilter(string filtro = "")
+        {
+            using (var scope = Program.Container.BeginLifetimeScope())
+            {
+                var connection = scope.Resolve<IConnectionService>().CreateConnection();
+
+                var query = 
+                    @"SELECT * FROM 
+                    [LocalEstoque] 
+                    WHERE 
+                    Codigo like @p1 OR 
+                    Nome like @p1 OR 
+                    Descricao like @p1";
+
+                var localEstoqueList = connection.Query<LocalEstoque>(query, new
+                {
+                    p1 = "%"+filtro+"%"
+                });
+
+                return localEstoqueList.ToList();
             }
         }
     }
