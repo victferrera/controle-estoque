@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using Autofac;
 using EstoqueApp.Interfaces;
 using EstoqueApp.Modelos;
+using EstoqueApp.Telas.frm_pesquisalocalestoque;
 
 namespace EstoqueApp.Telas.frm_cadlocalestoque
 {
@@ -53,6 +54,16 @@ namespace EstoqueApp.Telas.frm_cadlocalestoque
             num_codigo.Value = 0;
             txt_nome.Text = String.Empty;
             rt_descricao.Text = String.Empty;
+        }
+
+        private void btn_pesquisar_Click(object sender, EventArgs e)
+        {
+            var formPesquisa = (frm_pesquisaLocalEstoque)Application.OpenForms["frm_pesquisaLocalEstoque"];
+
+            if (formPesquisa == null)
+                formPesquisa = new frm_pesquisaLocalEstoque();
+
+            formPesquisa.Show();
         }
     }
 }

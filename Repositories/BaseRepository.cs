@@ -1,6 +1,4 @@
-﻿using System.Data.SqlClient;
-using EstoqueApp.Database;
-using Dapper.Contrib.Extensions;
+﻿using Dapper.Contrib.Extensions;
 using System;
 using Autofac;
 using EstoqueApp.Interfaces;

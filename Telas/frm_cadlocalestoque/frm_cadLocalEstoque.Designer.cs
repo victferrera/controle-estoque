@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.gp_info = new System.Windows.Forms.GroupBox();
+            this.btn_pesquisar = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.rt_descricao = new System.Windows.Forms.RichTextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -42,6 +43,7 @@
             // 
             // gp_info
             // 
+            this.gp_info.Controls.Add(this.btn_pesquisar);
             this.gp_info.Controls.Add(this.label3);
             this.gp_info.Controls.Add(this.rt_descricao);
             this.gp_info.Controls.Add(this.label2);
@@ -55,6 +57,16 @@
             this.gp_info.TabIndex = 8;
             this.gp_info.TabStop = false;
             this.gp_info.Text = "Informações";
+            // 
+            // btn_pesquisar
+            // 
+            this.btn_pesquisar.Location = new System.Drawing.Point(85, 275);
+            this.btn_pesquisar.Name = "btn_pesquisar";
+            this.btn_pesquisar.Size = new System.Drawing.Size(75, 23);
+            this.btn_pesquisar.TabIndex = 15;
+            this.btn_pesquisar.Text = "Pesquisar";
+            this.btn_pesquisar.UseVisualStyleBackColor = true;
+            this.btn_pesquisar.Click += new System.EventHandler(this.btn_pesquisar_Click);
             // 
             // label3
             // 
@@ -149,5 +161,6 @@
         private System.Windows.Forms.NumericUpDown num_codigo;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btn_cadastrar;
+        private System.Windows.Forms.Button btn_pesquisar;
     }
 }
