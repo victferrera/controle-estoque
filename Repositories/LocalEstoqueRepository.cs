@@ -35,7 +35,8 @@ namespace EstoqueApp.Repositories
                         p2 = model.Nome,
                         p3 = model.Descricao
                     });
-                } catch (Exception e)
+                }
+                catch (Exception e)
                 {
                     throw new(e.Message);
                 }
@@ -130,10 +131,40 @@ namespace EstoqueApp.Repositories
                         p3 = local.Descricao,
                         p4 = localResult.Id
                     });
-                    MessageBox.Show("Informações alteradas com sucesso!","Alerta");
-                }catch(Exception e)
+                    MessageBox.Show("Informações alteradas com sucesso!", "Alerta");
+                }
+                catch (Exception e)
                 {
                     MessageBox.Show(e.Message);
+                }
+            }
+        }
+
+        public void DeletaLocal(int id)
+        {
+            using (var scope = Program.Container.BeginLifetimeScope())
+            {
+                var connection = scope.Resolve<IConnectionService>().CreateConnection();
+
+                var local = ProcurarLocalPorId(id);
+
+                if (local != null)
+                {
+                    try
+                    {
+                        var query = "DELETE FROM [LocalEstoque] WHERE Id = @p1";
+
+                        connection.Execute(query, new
+                        {
+                            p1 = id
+                        });
+
+                        MessageBox.Show("Local de Estoque removido!","Alerta!");
+                    }
+                    catch (Exception e)
+                    {
+                        MessageBox.Show(e.Message);
+                    }
                 }
             }
         }

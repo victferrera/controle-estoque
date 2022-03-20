@@ -38,12 +38,14 @@
             this.num_codigo = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.btn_cadastrar = new System.Windows.Forms.Button();
+            this.btn_remover = new System.Windows.Forms.Button();
             this.gp_info.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.num_codigo)).BeginInit();
             this.SuspendLayout();
             // 
             // gp_info
             // 
+            this.gp_info.Controls.Add(this.btn_remover);
             this.gp_info.Controls.Add(this.btn_editar);
             this.gp_info.Controls.Add(this.btn_pesquisar);
             this.gp_info.Controls.Add(this.label3);
@@ -144,6 +146,16 @@
             this.btn_cadastrar.UseVisualStyleBackColor = true;
             this.btn_cadastrar.Click += new System.EventHandler(this.btn_cadastrar_Click);
             // 
+            // btn_remover
+            // 
+            this.btn_remover.Location = new System.Drawing.Point(388, 275);
+            this.btn_remover.Name = "btn_remover";
+            this.btn_remover.Size = new System.Drawing.Size(75, 23);
+            this.btn_remover.TabIndex = 17;
+            this.btn_remover.Text = "Remover";
+            this.btn_remover.UseVisualStyleBackColor = true;
+            this.btn_remover.Click += new System.EventHandler(this.btn_remover_Click);
+            // 
             // frm_cadLocalEstoque
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -176,5 +188,6 @@
         private System.Windows.Forms.Button btn_cadastrar;
         private System.Windows.Forms.Button btn_pesquisar;
         private System.Windows.Forms.Button btn_editar;
+        private System.Windows.Forms.Button btn_remover;
     }
 }

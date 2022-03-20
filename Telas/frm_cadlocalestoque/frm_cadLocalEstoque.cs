@@ -72,6 +72,7 @@ namespace EstoqueApp.Telas.frm_cadlocalEstoque
             LimparCampos();
 
             btn_cadastrar.Visible = false;
+            btn_remover.Visible = true;
 
             btn_editar.Visible = true;
             btn_editar.Location = btn_cadastrar.Location;
@@ -94,6 +95,7 @@ namespace EstoqueApp.Telas.frm_cadlocalEstoque
 
         private void frm_cadLocalEstoque_Load(object sender, EventArgs e)
         {
+            btn_remover.Visible = false;
             btn_editar.Visible = false;
         }
 
@@ -109,6 +111,16 @@ namespace EstoqueApp.Telas.frm_cadlocalEstoque
                 var repository = scope.Resolve<ILocalEstoqueRepository>();
 
                 repository.EditaLocal(LocalParaEditar);
+            }
+        }
+
+        private void btn_remover_Click(object sender, EventArgs e)
+        {
+            using (var scope = Program.Container.BeginLifetimeScope())
+            {
+                var repository = scope.Resolve<ILocalEstoqueRepository>();
+
+                repository.DeletaLocal(LocalParaEditar.Id);
             }
         }
     }
