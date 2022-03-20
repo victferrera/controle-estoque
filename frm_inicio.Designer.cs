@@ -40,6 +40,9 @@
             this.localToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lbl_link = new System.Windows.Forms.LinkLabel();
             this.lbl_criador1 = new System.Windows.Forms.Label();
+            this.cadastroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fornecedorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.clienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.frm_menu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -96,7 +99,8 @@
             // 
             this.cadastroAuxiliarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menu_cadaux_unidade,
-            this.estoqueToolStripMenuItem});
+            this.estoqueToolStripMenuItem,
+            this.cadastroToolStripMenuItem});
             this.cadastroAuxiliarToolStripMenuItem.Name = "cadastroAuxiliarToolStripMenuItem";
             this.cadastroAuxiliarToolStripMenuItem.Size = new System.Drawing.Size(109, 20);
             this.cadastroAuxiliarToolStripMenuItem.Text = "Cadastro Auxiliar";
@@ -146,6 +150,27 @@
             this.lbl_criador1.TabIndex = 2;
             this.lbl_criador1.Text = "Criado por";
             // 
+            // cadastroToolStripMenuItem
+            // 
+            this.cadastroToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fornecedorToolStripMenuItem,
+            this.clienteToolStripMenuItem});
+            this.cadastroToolStripMenuItem.Name = "cadastroToolStripMenuItem";
+            this.cadastroToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cadastroToolStripMenuItem.Text = "Cadastro";
+            // 
+            // fornecedorToolStripMenuItem
+            // 
+            this.fornecedorToolStripMenuItem.Name = "fornecedorToolStripMenuItem";
+            this.fornecedorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.fornecedorToolStripMenuItem.Text = "Fornecedor";
+            // 
+            // clienteToolStripMenuItem
+            // 
+            this.clienteToolStripMenuItem.Name = "clienteToolStripMenuItem";
+            this.clienteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.clienteToolStripMenuItem.Text = "Cliente";
+            // 
             // frm_inicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -182,6 +207,9 @@
         private System.Windows.Forms.ToolStripMenuItem menu_cadaux_unidade;
         private System.Windows.Forms.ToolStripMenuItem estoqueToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem localToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cadastroToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem fornecedorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem clienteToolStripMenuItem;
     }
 }
 
