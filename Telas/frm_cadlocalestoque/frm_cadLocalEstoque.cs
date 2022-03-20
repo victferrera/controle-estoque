@@ -5,10 +5,11 @@ using EstoqueApp.Interfaces;
 using EstoqueApp.Modelos;
 using EstoqueApp.Telas.frm_pesquisalocalestoque;
 
-namespace EstoqueApp.Telas.frm_cadlocalestoque
+namespace EstoqueApp.Telas.frm_cadlocalEstoque
 {
     public partial class frm_cadLocalEstoque : Form
     {
+        private LocalEstoque LocalParaEditar;
         public frm_cadLocalEstoque()
         {
             InitializeComponent();
@@ -20,7 +21,7 @@ namespace EstoqueApp.Telas.frm_cadlocalestoque
             {
                 var repository = scope.Resolve<ILocalEstoqueRepository>();
 
-                var local = repository.ProcurarLocalPorCodigo(int.Parse(num_codigo.Value.ToString()));
+                LocalEstoque local = repository.ProcurarLocalPorCodigo(int.Parse(num_codigo.Value.ToString()));
 
                 if (local != null)
                 {
@@ -44,7 +45,7 @@ namespace EstoqueApp.Telas.frm_cadlocalestoque
                 catch (Exception ex)
                 {
                     LimparCampos();
-                    throw new   (ex.Message);
+                    throw new(ex.Message);
                 }
             }
         }
@@ -64,6 +65,51 @@ namespace EstoqueApp.Telas.frm_cadlocalestoque
                 formPesquisa = new frm_pesquisaLocalEstoque();
 
             formPesquisa.Show();
+        }
+
+        internal void OpenFormToEdit(int codigo)
+        {
+            LimparCampos();
+
+            btn_cadastrar.Visible = false;
+
+            btn_editar.Visible = true;
+            btn_editar.Location = btn_cadastrar.Location;
+
+            LocalEstoque local;
+
+            using (var scope = Program.Container.BeginLifetimeScope())
+            {
+                var repository = scope.Resolve<ILocalEstoqueRepository>();
+
+                LocalParaEditar = repository.ProcurarLocalPorCodigo(codigo);
+            }
+
+            num_codigo.Value = LocalParaEditar.Codigo;
+            txt_nome.Text = LocalParaEditar.Nome;
+            rt_descricao.Text = LocalParaEditar.Descricao;
+
+            this.BringToFront();
+        }
+
+        private void frm_cadLocalEstoque_Load(object sender, EventArgs e)
+        {
+            btn_editar.Visible = false;
+        }
+
+        private void btn_editar_Click(object sender, EventArgs e)
+        {
+            LocalParaEditar.Codigo = int.Parse(num_codigo.Value.ToString());
+            LocalParaEditar.Nome = txt_nome.Text;
+            LocalParaEditar.Descricao = rt_descricao.Text;
+
+
+            using (var scope = Program.Container.BeginLifetimeScope())
+            {
+                var repository = scope.Resolve<ILocalEstoqueRepository>();
+
+                repository.EditaLocal(LocalParaEditar);
+            }
         }
     }
 }

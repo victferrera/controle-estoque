@@ -1,4 +1,4 @@
-﻿namespace EstoqueApp.Telas.frm_cadlocalestoque
+﻿namespace EstoqueApp.Telas.frm_cadlocalEstoque
 {
     partial class frm_cadLocalEstoque
     {
@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.gp_info = new System.Windows.Forms.GroupBox();
+            this.btn_editar = new System.Windows.Forms.Button();
             this.btn_pesquisar = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.rt_descricao = new System.Windows.Forms.RichTextBox();
@@ -43,6 +44,7 @@
             // 
             // gp_info
             // 
+            this.gp_info.Controls.Add(this.btn_editar);
             this.gp_info.Controls.Add(this.btn_pesquisar);
             this.gp_info.Controls.Add(this.label3);
             this.gp_info.Controls.Add(this.rt_descricao);
@@ -58,9 +60,19 @@
             this.gp_info.TabStop = false;
             this.gp_info.Text = "Informações";
             // 
+            // btn_editar
+            // 
+            this.btn_editar.Location = new System.Drawing.Point(85, 275);
+            this.btn_editar.Name = "btn_editar";
+            this.btn_editar.Size = new System.Drawing.Size(108, 23);
+            this.btn_editar.TabIndex = 16;
+            this.btn_editar.Text = "Salvar Edição";
+            this.btn_editar.UseVisualStyleBackColor = true;
+            this.btn_editar.Click += new System.EventHandler(this.btn_editar_Click);
+            // 
             // btn_pesquisar
             // 
-            this.btn_pesquisar.Location = new System.Drawing.Point(85, 275);
+            this.btn_pesquisar.Location = new System.Drawing.Point(469, 275);
             this.btn_pesquisar.Name = "btn_pesquisar";
             this.btn_pesquisar.Size = new System.Drawing.Size(75, 23);
             this.btn_pesquisar.TabIndex = 15;
@@ -128,7 +140,7 @@
             this.btn_cadastrar.Name = "btn_cadastrar";
             this.btn_cadastrar.Size = new System.Drawing.Size(75, 23);
             this.btn_cadastrar.TabIndex = 8;
-            this.btn_cadastrar.Text = "Cadastrar";
+            this.btn_cadastrar.Text = "Salvar";
             this.btn_cadastrar.UseVisualStyleBackColor = true;
             this.btn_cadastrar.Click += new System.EventHandler(this.btn_cadastrar_Click);
             // 
@@ -144,6 +156,7 @@
             this.Name = "frm_cadLocalEstoque";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro de Local de Estoque";
+            this.Load += new System.EventHandler(this.frm_cadLocalEstoque_Load);
             this.gp_info.ResumeLayout(false);
             this.gp_info.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.num_codigo)).EndInit();
@@ -162,5 +175,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btn_cadastrar;
         private System.Windows.Forms.Button btn_pesquisar;
+        private System.Windows.Forms.Button btn_editar;
     }
 }

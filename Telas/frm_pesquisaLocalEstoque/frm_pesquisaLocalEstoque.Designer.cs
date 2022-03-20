@@ -74,6 +74,7 @@
             this.grid_localestoque.Size = new System.Drawing.Size(474, 120);
             this.grid_localestoque.TabIndex = 2;
             this.grid_localestoque.Visible = false;
+            this.grid_localestoque.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.grid_localestoque_KeyPress);
             // 
             // frm_pesquisaLocalEstoque
             // 

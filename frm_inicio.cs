@@ -1,7 +1,7 @@
 ﻿using System.Windows.Forms;
 using EstoqueApp.form_cad_produto;
 using EstoqueApp.form_cadaux_unidade;
-using EstoqueApp.Telas.frm_cadlocalestoque;
+using EstoqueApp.Telas.frm_cadlocalEstoque;
 
 namespace EstoqueApp
 {
