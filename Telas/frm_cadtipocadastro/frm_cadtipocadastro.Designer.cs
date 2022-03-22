@@ -39,6 +39,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.rt_descricao);
             this.groupBox1.Controls.Add(this.label1);
@@ -78,7 +79,9 @@
             // 
             // txt_sigla
             // 
+            this.txt_sigla.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txt_sigla.Location = new System.Drawing.Point(6, 49);
+            this.txt_sigla.MaxLength = 1;
             this.txt_sigla.Name = "txt_sigla";
             this.txt_sigla.Size = new System.Drawing.Size(100, 23);
             this.txt_sigla.TabIndex = 0;
@@ -97,10 +100,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(319, 213);
             this.Controls.Add(this.btn_salvar);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "frm_cadtipocadastro";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tipo de Cadastro";

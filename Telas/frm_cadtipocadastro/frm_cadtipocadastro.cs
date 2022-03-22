@@ -35,12 +35,19 @@ namespace EstoqueApp.Telas
                 {
                     repository.Save(novoTipo);
                     MessageBox.Show("Tipo de cadastro salvo com sucesso!","Alerta!");
+                    LimparCampos();
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
             }
+        }
+
+        private void LimparCampos()
+        {
+            txt_sigla.Text = string.Empty;
+            rt_descricao.Text = string.Empty;
         }
     }
 }
