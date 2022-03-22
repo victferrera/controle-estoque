@@ -34,6 +34,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txt_sigla = new System.Windows.Forms.TextBox();
             this.btn_salvar = new System.Windows.Forms.Button();
+            this.btn_pesquisar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -96,12 +97,23 @@
             this.btn_salvar.UseVisualStyleBackColor = true;
             this.btn_salvar.Click += new System.EventHandler(this.btn_salvar_Click);
             // 
+            // btn_pesquisar
+            // 
+            this.btn_pesquisar.Location = new System.Drawing.Point(232, 178);
+            this.btn_pesquisar.Name = "btn_pesquisar";
+            this.btn_pesquisar.Size = new System.Drawing.Size(75, 23);
+            this.btn_pesquisar.TabIndex = 2;
+            this.btn_pesquisar.Text = "Pesquisar";
+            this.btn_pesquisar.UseVisualStyleBackColor = true;
+            this.btn_pesquisar.Click += new System.EventHandler(this.btn_pesquisar_Click);
+            // 
             // frm_cadtipocadastro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(319, 213);
+            this.Controls.Add(this.btn_pesquisar);
             this.Controls.Add(this.btn_salvar);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -123,5 +135,6 @@
         private System.Windows.Forms.TextBox txt_sigla;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btn_salvar;
+        private System.Windows.Forms.Button btn_pesquisar;
     }
 }

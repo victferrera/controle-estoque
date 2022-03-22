@@ -3,6 +3,7 @@ using EstoqueApp.Interfaces;
 using EstoqueApp.Modelos;
 using System;
 using System.Windows.Forms;
+using EstoqueApp.Telas;
 
 namespace EstoqueApp.Telas
 {
@@ -48,6 +49,12 @@ namespace EstoqueApp.Telas
         {
             txt_sigla.Text = string.Empty;
             rt_descricao.Text = string.Empty;
+        }
+
+        private void btn_pesquisar_Click(object sender, EventArgs e)
+        {
+            var novaTela = new frm_pesquisaCad();
+            novaTela.Show();
         }
     }
 }
