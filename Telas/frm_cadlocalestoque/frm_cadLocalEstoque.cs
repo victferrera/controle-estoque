@@ -77,8 +77,6 @@ namespace EstoqueApp.Telas.frm_cadlocalEstoque
             btn_editar.Visible = true;
             btn_editar.Location = btn_cadastrar.Location;
 
-            LocalEstoque local;
-
             using (var scope = Program.Container.BeginLifetimeScope())
             {
                 var repository = scope.Resolve<ILocalEstoqueRepository>();

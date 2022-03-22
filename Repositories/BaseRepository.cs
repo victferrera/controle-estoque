@@ -2,6 +2,7 @@
 using System;
 using Autofac;
 using EstoqueApp.Interfaces;
+using System.Windows.Forms;
 
 namespace EstoqueApp.Repositories
 {
@@ -19,7 +20,7 @@ namespace EstoqueApp.Repositories
                 }
                 catch (Exception e)
                 {
-                    throw new Exception(e.Message);
+                    MessageBox.Show(e.Message);
                 }
             }
 

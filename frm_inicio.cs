@@ -41,11 +41,16 @@ namespace EstoqueApp
             var novaTela = new frm_cadLocalEstoque();
             novaTela.Show();
         }
-
-        private void cadastroToolStripMenuItem_Click(object sender, System.EventArgs e)
+        private void novoToolStripMenuItem_Click(object sender, System.EventArgs e)
         {
             var novaTela = new frm_cadastros();
             novaTela.Show();
+        }
+
+        private void tiposDeCadastroToolStripMenuItem_Click(object sender, System.EventArgs e)
+        {
+            var formTipoCadastro = new frm_cadtipocadastro();
+            formTipoCadastro.Show();
         }
     }
 }

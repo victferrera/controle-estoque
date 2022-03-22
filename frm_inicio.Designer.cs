@@ -39,6 +39,8 @@
             this.estoqueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.localToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cadastroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.novoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tiposDeCadastroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lbl_link = new System.Windows.Forms.LinkLabel();
             this.lbl_criador1 = new System.Windows.Forms.Label();
             this.frm_menu.SuspendLayout();
@@ -127,10 +129,26 @@
             // 
             // cadastroToolStripMenuItem
             // 
+            this.cadastroToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.novoToolStripMenuItem,
+            this.tiposDeCadastroToolStripMenuItem});
             this.cadastroToolStripMenuItem.Name = "cadastroToolStripMenuItem";
             this.cadastroToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.cadastroToolStripMenuItem.Text = "Cadastro Geral";
-            this.cadastroToolStripMenuItem.Click += new System.EventHandler(this.cadastroToolStripMenuItem_Click);
+            // 
+            // novoToolStripMenuItem
+            // 
+            this.novoToolStripMenuItem.Name = "novoToolStripMenuItem";
+            this.novoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.novoToolStripMenuItem.Text = "Novo";
+            this.novoToolStripMenuItem.Click += new System.EventHandler(this.novoToolStripMenuItem_Click);
+            // 
+            // tiposDeCadastroToolStripMenuItem
+            // 
+            this.tiposDeCadastroToolStripMenuItem.Name = "tiposDeCadastroToolStripMenuItem";
+            this.tiposDeCadastroToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.tiposDeCadastroToolStripMenuItem.Text = "Tipos de Cadastro";
+            this.tiposDeCadastroToolStripMenuItem.Click += new System.EventHandler(this.tiposDeCadastroToolStripMenuItem_Click);
             // 
             // lbl_link
             // 
@@ -192,6 +210,8 @@
         private System.Windows.Forms.ToolStripMenuItem estoqueToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem localToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cadastroToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem novoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tiposDeCadastroToolStripMenuItem;
     }
 }
 
