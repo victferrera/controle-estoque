@@ -99,7 +99,7 @@
             this.MaximizeBox = false;
             this.Name = "frm_pesquisaCad";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "-";
+            this.Text = "Pesquisa de Tipos de Cadastro";
             this.gb_filtro.ResumeLayout(false);
             this.gb_filtro.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dt_tiposcadastro)).EndInit();
