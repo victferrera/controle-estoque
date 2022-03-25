@@ -89,6 +89,7 @@ namespace EstoqueApp.Telas
                     }
                     else
                     {
+                        this.Close();
                         formPesquisa.AtualizaGrid();
                         formPesquisa.BringToFront();
 
