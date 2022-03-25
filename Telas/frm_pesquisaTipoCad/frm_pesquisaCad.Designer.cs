@@ -85,6 +85,7 @@
             this.dt_tiposcadastro.Size = new System.Drawing.Size(390, 124);
             this.dt_tiposcadastro.TabIndex = 3;
             this.dt_tiposcadastro.Visible = false;
+            this.dt_tiposcadastro.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dt_tiposcadastro_KeyPress);
             // 
             // frm_pesquisaCad
             // 

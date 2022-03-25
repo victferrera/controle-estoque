@@ -51,7 +51,7 @@ namespace EstoqueApp.Repositories
 
                 try
                 {
-                    connection.Update<T>(model);
+                    connection.Delete<T>(model);
                 }
                 catch (Exception e)
                 {

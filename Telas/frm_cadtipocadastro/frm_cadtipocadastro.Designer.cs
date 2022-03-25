@@ -35,6 +35,7 @@
             this.txt_sigla = new System.Windows.Forms.TextBox();
             this.btn_salvar = new System.Windows.Forms.Button();
             this.btn_pesquisar = new System.Windows.Forms.Button();
+            this.btn_remover = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -107,12 +108,24 @@
             this.btn_pesquisar.UseVisualStyleBackColor = true;
             this.btn_pesquisar.Click += new System.EventHandler(this.btn_pesquisar_Click);
             // 
+            // btn_remover
+            // 
+            this.btn_remover.Location = new System.Drawing.Point(151, 178);
+            this.btn_remover.Name = "btn_remover";
+            this.btn_remover.Size = new System.Drawing.Size(75, 23);
+            this.btn_remover.TabIndex = 3;
+            this.btn_remover.Text = "Remover";
+            this.btn_remover.UseVisualStyleBackColor = true;
+            this.btn_remover.Visible = false;
+            this.btn_remover.Click += new System.EventHandler(this.btn_remover_Click);
+            // 
             // frm_cadtipocadastro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(319, 213);
+            this.Controls.Add(this.btn_remover);
             this.Controls.Add(this.btn_pesquisar);
             this.Controls.Add(this.btn_salvar);
             this.Controls.Add(this.groupBox1);
@@ -136,5 +149,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btn_salvar;
         private System.Windows.Forms.Button btn_pesquisar;
+        private System.Windows.Forms.Button btn_remover;
     }
 }

@@ -3,12 +3,12 @@ using EstoqueApp.Interfaces;
 using EstoqueApp.Modelos;
 using System;
 using System.Windows.Forms;
-using EstoqueApp.Telas;
 
 namespace EstoqueApp.Telas
 {
     public partial class frm_cadtipocadastro : Form
     {
+        internal TipoCadastro tipoCadastro = null;
         public frm_cadtipocadastro()
         {
             InitializeComponent();
@@ -55,6 +55,51 @@ namespace EstoqueApp.Telas
         {
             var novaTela = new frm_pesquisaCad();
             novaTela.Show();
+        }
+
+        internal void OpenFormToEdit()
+        {
+            txt_sigla.Text = tipoCadastro.Sigla;
+            rt_descricao.Text = tipoCadastro.Descricao;
+
+            btn_salvar.Visible = false;
+
+            btn_remover.Visible = true;
+            btn_remover.Location = btn_salvar.Location;
+
+            this.BringToFront();
+        }
+
+        private void btn_remover_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (var scope = Program.Container.BeginLifetimeScope())
+                {
+                    var repository = scope.Resolve<ITipoCadastroRepository>();
+
+                    repository.Remove(tipoCadastro);
+
+                    MessageBox.Show("Registro deletado com sucesso!","Alerta!");
+                    
+                    var formPesquisa = (frm_pesquisaCad)Application.OpenForms["frm_pesquisaCad"];
+                    if (formPesquisa == null)
+                    {
+                        this.Close();
+                    }
+                    else
+                    {
+                        formPesquisa.AtualizaGrid();
+                        formPesquisa.BringToFront();
+
+                    }
+                }
+            }catch(Exception ex)
+            {
+                MessageBox.Show("Falha ao remover registro" + ex.Message);
+                return;
+            }
+
         }
     }
 }
