@@ -64,6 +64,8 @@ namespace EstoqueApp.Telas
 
             btn_salvar.Visible = false;
 
+            btn_editar.Visible = true;
+
             btn_remover.Visible = true;
             btn_remover.Location = btn_salvar.Location;
 
@@ -101,6 +103,40 @@ namespace EstoqueApp.Telas
                 return;
             }
 
+        }
+
+        private void btn_editar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (var scope = Program.Container.BeginLifetimeScope())
+                {
+                    var repository = scope.Resolve<ITipoCadastroRepository>();
+
+                    tipoCadastro.Sigla = txt_sigla.Text;
+                    tipoCadastro.Descricao = rt_descricao.Text;
+
+                    repository.Update(tipoCadastro);
+                }
+                MessageBox.Show("Registro editado com sucesso!","Alerta!");
+                var formPesquisa = (frm_pesquisaCad)Application.OpenForms["frm_pesquisaCad"];
+
+                if(formPesquisa == null)
+                {
+                    this.Close();
+                }else
+                {
+                    formPesquisa.AtualizaGrid();
+                    formPesquisa.BringToFront();
+                    this.Close();
+                }
+                  
+            }catch(Exception ex)
+            {
+                MessageBox.Show("Falha ao editar o registro!" + ex.Message, "Alerta!");
+                return;
+            }
+            
         }
     }
 }

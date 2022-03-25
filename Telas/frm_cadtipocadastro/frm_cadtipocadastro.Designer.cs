@@ -36,6 +36,7 @@
             this.btn_salvar = new System.Windows.Forms.Button();
             this.btn_pesquisar = new System.Windows.Forms.Button();
             this.btn_remover = new System.Windows.Forms.Button();
+            this.btn_editar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -48,7 +49,7 @@
             this.groupBox1.Controls.Add(this.txt_sigla);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(295, 160);
+            this.groupBox1.Size = new System.Drawing.Size(360, 160);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Informações";
@@ -66,7 +67,7 @@
             // 
             this.rt_descricao.Location = new System.Drawing.Point(7, 104);
             this.rt_descricao.Name = "rt_descricao";
-            this.rt_descricao.Size = new System.Drawing.Size(282, 43);
+            this.rt_descricao.Size = new System.Drawing.Size(347, 43);
             this.rt_descricao.TabIndex = 2;
             this.rt_descricao.Text = "";
             // 
@@ -100,7 +101,7 @@
             // 
             // btn_pesquisar
             // 
-            this.btn_pesquisar.Location = new System.Drawing.Point(232, 178);
+            this.btn_pesquisar.Location = new System.Drawing.Point(291, 178);
             this.btn_pesquisar.Name = "btn_pesquisar";
             this.btn_pesquisar.Size = new System.Drawing.Size(75, 23);
             this.btn_pesquisar.TabIndex = 2;
@@ -110,7 +111,7 @@
             // 
             // btn_remover
             // 
-            this.btn_remover.Location = new System.Drawing.Point(151, 178);
+            this.btn_remover.Location = new System.Drawing.Point(174, 178);
             this.btn_remover.Name = "btn_remover";
             this.btn_remover.Size = new System.Drawing.Size(75, 23);
             this.btn_remover.TabIndex = 3;
@@ -119,12 +120,24 @@
             this.btn_remover.Visible = false;
             this.btn_remover.Click += new System.EventHandler(this.btn_remover_Click);
             // 
+            // btn_editar
+            // 
+            this.btn_editar.Location = new System.Drawing.Point(93, 178);
+            this.btn_editar.Name = "btn_editar";
+            this.btn_editar.Size = new System.Drawing.Size(75, 23);
+            this.btn_editar.TabIndex = 4;
+            this.btn_editar.Text = "Salvar";
+            this.btn_editar.UseVisualStyleBackColor = true;
+            this.btn_editar.Visible = false;
+            this.btn_editar.Click += new System.EventHandler(this.btn_editar_Click);
+            // 
             // frm_cadtipocadastro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(319, 213);
+            this.ClientSize = new System.Drawing.Size(384, 213);
+            this.Controls.Add(this.btn_editar);
             this.Controls.Add(this.btn_remover);
             this.Controls.Add(this.btn_pesquisar);
             this.Controls.Add(this.btn_salvar);
@@ -150,5 +163,6 @@
         private System.Windows.Forms.Button btn_salvar;
         private System.Windows.Forms.Button btn_pesquisar;
         private System.Windows.Forms.Button btn_remover;
+        private System.Windows.Forms.Button btn_editar;
     }
 }
