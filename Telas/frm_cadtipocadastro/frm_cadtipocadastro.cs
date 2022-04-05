@@ -57,8 +57,15 @@ namespace EstoqueApp.Telas
             novaTela.Show();
         }
 
-        internal void OpenFormToEdit()
+        internal void OpenFormToEdit(DataGridViewCellCollection dados)
         {
+            tipoCadastro = new TipoCadastro
+            {
+                Id = int.Parse(dados[0].Value.ToString()),
+                Sigla = dados[1].Value.ToString(),
+                Descricao = dados[2].Value.ToString()
+            };
+
             txt_sigla.Text = tipoCadastro.Sigla;
             rt_descricao.Text = tipoCadastro.Descricao;
 

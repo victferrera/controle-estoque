@@ -32,14 +32,14 @@ namespace EstoqueApp.Telas
         {
             var formCadTipoCadastro = (frm_cadtipocadastro)Application.OpenForms["frm_cadtipocadastro"];
 
-            formCadTipoCadastro.tipoCadastro = new TipoCadastro
+            if (formCadTipoCadastro == null)
             {
-                Id = int.Parse(dt_tiposcadastro.SelectedCells[0].Value.ToString()),
-                Sigla = dt_tiposcadastro.SelectedCells[1].Value.ToString(),
-                Descricao = dt_tiposcadastro.SelectedCells[2].Value.ToString()
-            };
+                formCadTipoCadastro = new frm_cadtipocadastro();
+                formCadTipoCadastro.Show();
+                formCadTipoCadastro.BringToFront();
+            }
 
-            formCadTipoCadastro.OpenFormToEdit();
+            formCadTipoCadastro.OpenFormToEdit(dt_tiposcadastro.CurrentRow.Cells);
         }
 
         internal void AtualizaGrid()
