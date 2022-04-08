@@ -93,5 +93,30 @@ namespace EstoqueApp.Repositories
                 return;
             }
         }
+
+        public List<TipoCadastro> GeraListaTipoCadastro()
+        {
+            var listaTipoCadastro = new List<TipoCadastro>();
+
+            using (var scope = Program.Container.BeginLifetimeScope())
+            {
+                try
+                {
+                    var connection = scope.Resolve<IConnectionService>().CreateConnection();
+
+                    var query = "SELECT Id, Sigla FROM TipoCadastro";
+
+                    listaTipoCadastro = connection.Query<TipoCadastro>(query).ToList();
+
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.Message);
+                    return listaTipoCadastro;
+                }
+            }
+
+            return listaTipoCadastro;
+        }
     }
 }

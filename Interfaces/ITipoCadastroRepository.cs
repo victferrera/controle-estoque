@@ -7,5 +7,6 @@ namespace EstoqueApp.Interfaces
     {
         public List<TipoCadastro> ProcurarPorFiltro(string filtro);
         public TipoCadastro ProcurarPorId(int id);
+        public List<TipoCadastro> GeraListaTipoCadastro();
     }
 }

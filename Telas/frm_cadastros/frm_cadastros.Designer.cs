@@ -360,6 +360,7 @@
             this.txt_cep.Name = "txt_cep";
             this.txt_cep.Size = new System.Drawing.Size(100, 23);
             this.txt_cep.TabIndex = 0;
+            this.txt_cep.Leave += new System.EventHandler(this.txt_cep_Leave);
             // 
             // label7
             // 
@@ -378,6 +379,7 @@
             this.btn_salvar.TabIndex = 5;
             this.btn_salvar.Text = "Salvar";
             this.btn_salvar.UseVisualStyleBackColor = true;
+            this.btn_salvar.Click += new System.EventHandler(this.btn_salvar_Click);
             // 
             // frm_cadastros
             // 

@@ -7,6 +7,9 @@ using System.Linq;
 using System;
 using System.Collections.Generic;
 using EstoqueApp.Enums;
+using Newtonsoft.Json;
+using System.Threading.Tasks;
+using RestSharp;
 
 namespace EstoqueApp.Telas
 {
@@ -32,25 +35,14 @@ namespace EstoqueApp.Telas
 
         private List<TipoCadastro> GeraListaParaPreencherTiposCadastro()
         {
-            var listTipoCadastro = new List<TipoCadastro>();
+            var listaTipoCadastro = new List<TipoCadastro>();
 
             using (var scope = Program.Container.BeginLifetimeScope())
             {
-                try
-                {
-                    var connection = scope.Resolve<IConnectionService>().CreateConnection();
-
-                    var query = "SELECT Id, Sigla FROM TipoCadastro";
-
-                    listTipoCadastro = connection.Query<TipoCadastro>(query).ToList();
-
-                }catch(Exception e)
-                {
-                    MessageBox.Show(e.Message);
-                    return listTipoCadastro;
-                }
+                var repository = scope.Resolve<ITipoCadastroRepository>();
+                listaTipoCadastro = repository.GeraListaTipoCadastro();
             }
-            return listTipoCadastro;
+            return listaTipoCadastro;
         }
 
         private List<Status> GeraListaParaPreencherStatus()
@@ -73,6 +65,41 @@ namespace EstoqueApp.Telas
             lista.Add(inativo);
 
             return lista;
+        }
+
+        private async Task<RestResponse> PesquisarCep()
+        {
+
+            using (var scope = Program.Container.BeginLifetimeScope())
+            {
+                var repository = scope.Resolve<ICepService>();
+
+                var cepInfo = await repository.GetCepInformation(txt_cep.Text);
+
+                return cepInfo;
+
+            }
+        }
+
+        private void btn_salvar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private async void txt_cep_Leave(object sender, EventArgs e)
+        {
+            var cep = await PesquisarCep();
+
+            if (cep.IsSuccessful)
+            {
+                var cepDeserialized = JsonConvert.DeserializeObject<Cep>(cep.Content);
+                txt_logradouro.Text = cepDeserialized.logradouro;
+                txt_numero.Text = String.Empty;
+                txt_bairro.Text = cepDeserialized.bairro;
+                txt_uf.Text = cepDeserialized.uf;
+                txt_cidade.Text = cepDeserialized.localidade;
+                rt_complemento.Text = cepDeserialized.complemento;
+            }
         }
     }
 }
