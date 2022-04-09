@@ -2,7 +2,7 @@
 
 namespace EstoqueApp.Modelos
 {
-    internal class Cep
+    internal class Endereco
     {
         public string cep;
         public string logradouro;

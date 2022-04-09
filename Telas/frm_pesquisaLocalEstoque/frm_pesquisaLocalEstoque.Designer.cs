@@ -66,10 +66,15 @@
             // 
             // grid_localestoque
             // 
+            this.grid_localestoque.AllowUserToAddRows = false;
+            this.grid_localestoque.AllowUserToDeleteRows = false;
             this.grid_localestoque.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.grid_localestoque.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grid_localestoque.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnF2;
+            this.grid_localestoque.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.grid_localestoque.Location = new System.Drawing.Point(12, 75);
             this.grid_localestoque.Name = "grid_localestoque";
+            this.grid_localestoque.ReadOnly = true;
             this.grid_localestoque.RowTemplate.Height = 25;
             this.grid_localestoque.Size = new System.Drawing.Size(474, 120);
             this.grid_localestoque.TabIndex = 2;

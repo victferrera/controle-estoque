@@ -3,7 +3,6 @@ using EstoqueApp.Interfaces;
 using System.Windows.Forms;
 using System.Linq;
 using EstoqueApp.Telas.frm_cadlocalEstoque;
-using EstoqueApp.Modelos;
 
 namespace EstoqueApp.Telas.frm_pesquisalocalestoque
 {
@@ -36,11 +35,14 @@ namespace EstoqueApp.Telas.frm_pesquisalocalestoque
 
         private void grid_localestoque_KeyPress(object sender, KeyPressEventArgs e)
         {
-            var formEdita = (frm_cadLocalEstoque)Application.OpenForms["frm_cadLocalEstoque"];
+            if(e.KeyChar == (char)13)
+            {
+                var formEdita = (frm_cadLocalEstoque)Application.OpenForms["frm_cadLocalEstoque"];
 
-            formEdita.OpenFormToEdit(int.Parse(grid_localestoque.SelectedCells[0].Value.ToString()));
+                formEdita.OpenFormToEdit(int.Parse(grid_localestoque.SelectedCells[0].Value.ToString()));
 
-            this.Close();
+                this.Close();
+            }
         }
     }
 }

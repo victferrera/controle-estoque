@@ -92,7 +92,7 @@ namespace EstoqueApp.Telas
 
             if (cep.IsSuccessful)
             {
-                var cepDeserialized = JsonConvert.DeserializeObject<Cep>(cep.Content);
+                var cepDeserialized = JsonConvert.DeserializeObject<Endereco>(cep.Content);
                 txt_logradouro.Text = cepDeserialized.logradouro;
                 txt_numero.Text = String.Empty;
                 txt_bairro.Text = cepDeserialized.bairro;
