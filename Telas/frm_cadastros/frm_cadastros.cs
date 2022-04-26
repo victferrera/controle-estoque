@@ -85,7 +85,7 @@ namespace EstoqueApp.Telas
             {
                 Codigo = int.Parse(txt_codigo.Text),
                 TipoCadastro = cb_tipoCadastro.SelectedItem.ToString().ToUpper().Substring(0, 1),
-                Status = (EStatus)cb_statusCadastro.SelectedIndex,
+                Status = (EStatus)Enum.Parse(typeof(EStatus), cb_statusCadastro.GetItemText(cb_statusCadastro.SelectedItem)),
                 RazaoSocial = txt_razaoSocial.Text.ToUpper(),
                 NomeFantasia = txt_nomeFantasia.Text.ToUpper(),
                 Cnpj = txt_cnpj.Text.ToUpper(),
