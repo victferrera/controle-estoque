@@ -1,9 +1,7 @@
 ﻿using Autofac;
 using EstoqueApp.Interfaces;
 using System.Windows.Forms;
-using Dapper;
 using EstoqueApp.Modelos;
-using System.Linq;
 using System;
 using System.Collections.Generic;
 using EstoqueApp.Enums;
@@ -83,6 +81,43 @@ namespace EstoqueApp.Telas
 
         private void btn_salvar_Click(object sender, EventArgs e)
         {
+            var novoCadastro = new Cadastro
+            {
+                Codigo = int.Parse(txt_codigo.Text),
+                TipoCadastro = cb_tipoCadastro.SelectedItem.ToString().ToUpper().Substring(0, 1),
+                Status = (EStatus)cb_statusCadastro.SelectedIndex,
+                RazaoSocial = txt_razaoSocial.Text.ToUpper(),
+                NomeFantasia = txt_nomeFantasia.Text.ToUpper(),
+                Cnpj = txt_cnpj.Text.ToUpper(),
+                Telefone = txt_telefone.Text.ToUpper(),
+                Email = txt_email.Text.ToUpper(),
+                Endereco = new Endereco
+                {
+                    cep = txt_cep.Text,
+                    logradouro = txt_logradouro.Text.ToUpper(),
+                    numero = int.Parse(txt_numero.Text.ToString()),
+                    complemento = rt_complemento.Text.ToUpper(),
+                    bairro = txt_bairro.Text.ToUpper(),
+                    localidade = txt_cidade.Text.ToUpper(),
+                    uf = txt_uf.Text.ToUpper(),
+
+                }
+            };
+
+            using (var scope = Program.Container.BeginLifetimeScope())
+            {
+                var cadastroRepository = scope.Resolve<ICadastroRepository>();
+                //var enderecoRepository = scope.Resolve<IEnderecoRepository>();
+
+                try
+                {
+                    cadastroRepository.Save(novoCadastro);
+
+                }catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
 
         }
 

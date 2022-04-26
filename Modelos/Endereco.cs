@@ -10,9 +10,10 @@ namespace EstoqueApp.Modelos
         public string bairro;
         public string localidade;
         public string uf;
-        public string ibge;
-        public string gia;
-        public string ddd;
-        public string siafi;
+        public string? ibge;
+        public string? gia;
+        public string? ddd;
+        public string? siafi;
+        public int? numero;
     }
 }

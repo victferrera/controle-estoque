@@ -160,9 +160,9 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(6, 132);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(34, 15);
+            this.label3.Size = new System.Drawing.Size(60, 15);
             this.label3.TabIndex = 5;
-            this.label3.Text = "CNPJ";
+            this.label3.Text = "CNPJ/CPF";
             // 
             // txt_cnpj
             // 
