@@ -52,5 +52,11 @@ namespace EstoqueApp
             var formTipoCadastro = new frm_cadtipocadastro();
             formTipoCadastro.Show();
         }
+
+        private void entradaToolStripMenuItem_Click(object sender, System.EventArgs e)
+        {
+            var formMovimentacaoEntrada = new frm_moventrada();
+            formMovimentacaoEntrada.Show();
+        }
     }
 }
