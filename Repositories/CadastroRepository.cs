@@ -4,6 +4,8 @@ using EstoqueApp.Modelos;
 using System;
 using System.Windows.Forms;
 using Dapper;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace EstoqueApp.Repositories
 {
@@ -49,6 +51,20 @@ namespace EstoqueApp.Repositories
                 {
                     MessageBox.Show(e.Message);
                 }
+            }
+        }
+
+        public Cadastro GetCadastro(int Codigo)
+        {
+            using (var scope = Program.Container.BeginLifetimeScope())
+            {
+                var connection = scope.Resolve<IConnectionService>().CreateConnection();
+
+                var query = $"SELECT Codigo, RazaoSocial FROM CadastroGeral WHERE Codigo = {Codigo}";
+
+                var retorno = connection.Query<Cadastro>(query).FirstOrDefault();
+
+                return retorno;
             }
         }
 

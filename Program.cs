@@ -21,6 +21,8 @@ namespace EstoqueApp
             builder.RegisterType<CepRepository>().As<ICepService>();
             builder.RegisterType<EnderecoRepository>().As<IEnderecoRepository>();
             builder.RegisterType<CadastroRepository>().As<ICadastroRepository>();
+            builder.RegisterType<MovtoEntradaRepository>().As<IMovtoEntradaRepository>();
+            builder.RegisterType<MovtoEntradaItemRepository>().As<IMovtoEntradaItemRepository>();
             Container = builder.Build();
             
 

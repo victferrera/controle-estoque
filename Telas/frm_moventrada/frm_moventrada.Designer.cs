@@ -34,19 +34,19 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.txt_LocalEstoque = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txt_nomeParticipante = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txt_codigoParticipante = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dt_emissao = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.nm_movtoNumero = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -74,7 +74,7 @@
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nm_movtoNumero)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox4.SuspendLayout();
@@ -112,7 +112,7 @@
             // 
             this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Controls.Add(this.textBox4);
-            this.groupBox3.Controls.Add(this.textBox5);
+            this.groupBox3.Controls.Add(this.txt_LocalEstoque);
             this.groupBox3.Controls.Add(this.button2);
             this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Location = new System.Drawing.Point(6, 190);
@@ -138,12 +138,12 @@
             this.textBox4.Size = new System.Drawing.Size(403, 23);
             this.textBox4.TabIndex = 9;
             // 
-            // textBox5
+            // txt_LocalEstoque
             // 
-            this.textBox5.Location = new System.Drawing.Point(3, 38);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(100, 23);
-            this.textBox5.TabIndex = 6;
+            this.txt_LocalEstoque.Location = new System.Drawing.Point(3, 38);
+            this.txt_LocalEstoque.Name = "txt_LocalEstoque";
+            this.txt_LocalEstoque.Size = new System.Drawing.Size(100, 23);
+            this.txt_LocalEstoque.TabIndex = 6;
             // 
             // button2
             // 
@@ -166,10 +166,10 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.textBox3);
+            this.groupBox2.Controls.Add(this.txt_nomeParticipante);
             this.groupBox2.Controls.Add(this.button1);
             this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.textBox2);
+            this.groupBox2.Controls.Add(this.txt_codigoParticipante);
             this.groupBox2.Location = new System.Drawing.Point(3, 102);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(759, 82);
@@ -186,12 +186,12 @@
             this.label4.TabIndex = 5;
             this.label4.Text = "Razão Social";
             // 
-            // textBox3
+            // txt_nomeParticipante
             // 
-            this.textBox3.Location = new System.Drawing.Point(165, 37);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(403, 23);
-            this.textBox3.TabIndex = 4;
+            this.txt_nomeParticipante.Location = new System.Drawing.Point(165, 37);
+            this.txt_nomeParticipante.Name = "txt_nomeParticipante";
+            this.txt_nomeParticipante.Size = new System.Drawing.Size(403, 23);
+            this.txt_nomeParticipante.TabIndex = 4;
             // 
             // button1
             // 
@@ -201,6 +201,7 @@
             this.button1.TabIndex = 3;
             this.button1.Text = "...";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label3
             // 
@@ -211,18 +212,18 @@
             this.label3.TabIndex = 2;
             this.label3.Text = "Codigo";
             // 
-            // textBox2
+            // txt_codigoParticipante
             // 
-            this.textBox2.Location = new System.Drawing.Point(6, 37);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 23);
-            this.textBox2.TabIndex = 0;
+            this.txt_codigoParticipante.Location = new System.Drawing.Point(6, 37);
+            this.txt_codigoParticipante.Name = "txt_codigoParticipante";
+            this.txt_codigoParticipante.Size = new System.Drawing.Size(100, 23);
+            this.txt_codigoParticipante.TabIndex = 0;
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.dateTimePicker1);
+            this.groupBox1.Controls.Add(this.dt_emissao);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.numericUpDown1);
+            this.groupBox1.Controls.Add(this.nm_movtoNumero);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(3, 6);
             this.groupBox1.Name = "groupBox1";
@@ -231,12 +232,12 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Informações do Documento";
             // 
-            // dateTimePicker1
+            // dt_emissao
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(165, 39);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 23);
-            this.dateTimePicker1.TabIndex = 5;
+            this.dt_emissao.Location = new System.Drawing.Point(165, 39);
+            this.dt_emissao.Name = "dt_emissao";
+            this.dt_emissao.Size = new System.Drawing.Size(200, 23);
+            this.dt_emissao.TabIndex = 5;
             // 
             // label2
             // 
@@ -247,12 +248,12 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Data Emissão";
             // 
-            // numericUpDown1
+            // nm_movtoNumero
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(6, 39);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(120, 23);
-            this.numericUpDown1.TabIndex = 2;
+            this.nm_movtoNumero.Location = new System.Drawing.Point(6, 39);
+            this.nm_movtoNumero.Name = "nm_movtoNumero";
+            this.nm_movtoNumero.Size = new System.Drawing.Size(120, 23);
+            this.nm_movtoNumero.TabIndex = 2;
             // 
             // label1
             // 
@@ -452,6 +453,7 @@
             this.salvarToolStripMenuItem1.Name = "salvarToolStripMenuItem1";
             this.salvarToolStripMenuItem1.Size = new System.Drawing.Size(50, 20);
             this.salvarToolStripMenuItem1.Text = "Salvar";
+            this.salvarToolStripMenuItem1.Click += new System.EventHandler(this.salvarToolStripMenuItem1_Click);
             // 
             // excluirToolStripMenuItem
             // 
@@ -481,7 +483,7 @@
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nm_movtoNumero)).EndInit();
             this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox4.ResumeLayout(false);
@@ -504,18 +506,18 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox txt_LocalEstoque;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txt_nomeParticipante;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txt_codigoParticipante;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown nm_movtoNumero;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.GroupBox groupBox4;
@@ -529,7 +531,7 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dt_emissao;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox textBox1;
