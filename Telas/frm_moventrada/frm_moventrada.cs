@@ -1,6 +1,8 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 using Autofac;
 using EstoqueApp.Interfaces;
+using EstoqueApp.Modelos;
 
 namespace EstoqueApp.Telas
 {
@@ -14,7 +16,26 @@ namespace EstoqueApp.Telas
 
         private void salvarToolStripMenuItem1_Click(object sender, System.EventArgs e)
         {
-            MessageBox.Show(dt_emissao.Value.ToString());
+            var novoMovtoEntrada = new MovtoEntrada
+            {
+                MovtoNumero = int.Parse(nm_movtoNumero.Value.ToString()),
+                DataEmissao = dt_emissao.Value,
+                CodigoParticipante = int.Parse(txt_codigoParticipante.Text)  
+            };
+
+            using (var scope = Program.Container.BeginLifetimeScope())
+            {
+                var movtoEntradaRepository = scope.Resolve<IMovtoEntradaRepository>();
+
+                try
+                {
+                    movtoEntradaRepository.Save(novoMovtoEntrada);
+                    MessageBox.Show("Documento salvo!");
+                }catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
         }
 
         private void PopularInformacoesBasicas()

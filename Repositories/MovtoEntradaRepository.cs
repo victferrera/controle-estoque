@@ -27,7 +27,7 @@ namespace EstoqueApp.Repositories
                         return 0;
                     }else
                     {
-                        return retorno.Value;
+                        return retorno.Value + 1;
                     }
                 }catch(Exception e)
                 {
