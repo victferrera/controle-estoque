@@ -49,15 +49,15 @@
             this.nm_movtoNumero = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dt_itemMovto = new System.Windows.Forms.DataGridView();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btn_adicionarItem = new System.Windows.Forms.Button();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txt_unidadeProduto = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.txt_qtdEntrada = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.txt_nomeProduto = new System.Windows.Forms.TextBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
@@ -76,7 +76,7 @@
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nm_movtoNumero)).BeginInit();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dt_itemMovto)).BeginInit();
             this.groupBox4.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -268,7 +268,7 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.tabPage2.Controls.Add(this.dataGridView1);
+            this.tabPage2.Controls.Add(this.dt_itemMovto);
             this.tabPage2.Controls.Add(this.groupBox4);
             this.tabPage2.Location = new System.Drawing.Point(4, 24);
             this.tabPage2.Name = "tabPage2";
@@ -277,22 +277,22 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Item";
             // 
-            // dataGridView1
+            // dt_itemMovto
             // 
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.AppWorkspace;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 270);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(763, 208);
-            this.dataGridView1.TabIndex = 2;
-            this.dataGridView1.Visible = false;
+            this.dt_itemMovto.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dt_itemMovto.BackgroundColor = System.Drawing.SystemColors.AppWorkspace;
+            this.dt_itemMovto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dt_itemMovto.Location = new System.Drawing.Point(6, 270);
+            this.dt_itemMovto.Name = "dt_itemMovto";
+            this.dt_itemMovto.RowTemplate.Height = 25;
+            this.dt_itemMovto.Size = new System.Drawing.Size(763, 208);
+            this.dt_itemMovto.TabIndex = 2;
+            this.dt_itemMovto.Visible = false;
             // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.button5);
-            this.groupBox4.Controls.Add(this.button4);
+            this.groupBox4.Controls.Add(this.btn_adicionarItem);
             this.groupBox4.Controls.Add(this.groupBox6);
             this.groupBox4.Controls.Add(this.groupBox5);
             this.groupBox4.Location = new System.Drawing.Point(6, 6);
@@ -304,21 +304,22 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(64, 222);
+            this.button5.Location = new System.Drawing.Point(87, 222);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(72, 23);
             this.button5.TabIndex = 11;
             this.button5.Text = "Remover";
             this.button5.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // btn_adicionarItem
             // 
-            this.button4.Location = new System.Drawing.Point(12, 222);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(46, 23);
-            this.button4.TabIndex = 10;
-            this.button4.Text = "Salvar";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btn_adicionarItem.Location = new System.Drawing.Point(12, 222);
+            this.btn_adicionarItem.Name = "btn_adicionarItem";
+            this.btn_adicionarItem.Size = new System.Drawing.Size(69, 23);
+            this.btn_adicionarItem.TabIndex = 10;
+            this.btn_adicionarItem.Text = "Adicionar";
+            this.btn_adicionarItem.UseVisualStyleBackColor = true;
+            this.btn_adicionarItem.Click += new System.EventHandler(this.btn_adicionarItem_Click);
             // 
             // groupBox6
             // 
@@ -326,7 +327,7 @@
             this.groupBox6.Controls.Add(this.label8);
             this.groupBox6.Controls.Add(this.txt_unidadeProduto);
             this.groupBox6.Controls.Add(this.label10);
-            this.groupBox6.Controls.Add(this.textBox9);
+            this.groupBox6.Controls.Add(this.txt_qtdEntrada);
             this.groupBox6.Controls.Add(this.label9);
             this.groupBox6.Controls.Add(this.txt_nomeProduto);
             this.groupBox6.Location = new System.Drawing.Point(6, 96);
@@ -362,12 +363,12 @@
             this.label10.TabIndex = 15;
             this.label10.Text = "Quantidade Entrada";
             // 
-            // textBox9
+            // txt_qtdEntrada
             // 
-            this.textBox9.Location = new System.Drawing.Point(6, 91);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(100, 23);
-            this.textBox9.TabIndex = 14;
+            this.txt_qtdEntrada.Location = new System.Drawing.Point(6, 91);
+            this.txt_qtdEntrada.Name = "txt_qtdEntrada";
+            this.txt_qtdEntrada.Size = new System.Drawing.Size(100, 23);
+            this.txt_qtdEntrada.TabIndex = 14;
             // 
             // label9
             // 
@@ -487,7 +488,7 @@
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nm_movtoNumero)).EndInit();
             this.tabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dt_itemMovto)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
@@ -523,10 +524,10 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btn_adicionarItem;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox txt_qtdEntrada;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txt_nomeProduto;
         private System.Windows.Forms.GroupBox groupBox5;
@@ -537,7 +538,7 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txt_unidadeProduto;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dt_itemMovto;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem salvarToolStripMenuItem;
         private System.Windows.Forms.MenuStrip menuStrip1;

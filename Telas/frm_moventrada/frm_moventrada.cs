@@ -1,13 +1,18 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 using Autofac;
 using EstoqueApp.Interfaces;
 using EstoqueApp.Modelos;
+using EstoqueApp.Modelos.DTO;
 
 namespace EstoqueApp.Telas
 {
     public partial class frm_moventrada : Form
     {
+        private List<ProdutoDTO> listaProduto = new List<ProdutoDTO>();
+
         public frm_moventrada()
         {
             InitializeComponent();
@@ -103,6 +108,27 @@ namespace EstoqueApp.Telas
             txt_codigoProduto.Text = String.Empty;
             txt_nomeProduto.Text = String.Empty;
             txt_unidadeProduto.Text = String.Empty;
+        }
+
+        private void btn_adicionarItem_Click(object sender, EventArgs e)
+        {
+            listaProduto.Add(new ProdutoDTO { 
+                CodigoProduto = int.Parse(txt_codigoProduto.Text),
+                Nome = txt_nomeProduto.Text,
+                UnidadeMedida = txt_unidadeProduto.Text,
+                QtdEntrada = double.Parse(txt_qtdEntrada.Text)
+            });
+
+            AtualizarGridProduto();
+        }
+
+        private void AtualizarGridProduto()
+        {
+            if (dt_itemMovto.Visible == false)
+                dt_itemMovto.Visible = true;
+
+            var colunasProduto = from colunas in listaProduto select new { colunas.CodigoProduto, colunas.Nome, colunas.UnidadeMedida, colunas.QtdEntrada };
+            dt_itemMovto.DataSource = colunasProduto.ToList();
         }
     }
 }
