@@ -55,15 +55,15 @@
             this.button4 = new System.Windows.Forms.Button();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txt_unidadeProduto = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.textBox9 = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.txt_nomeProduto = new System.Windows.Forms.TextBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btn_procurarProduto = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.txt_codigoProduto = new System.Windows.Forms.TextBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.salvarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -324,11 +324,11 @@
             // 
             this.groupBox6.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.groupBox6.Controls.Add(this.label8);
-            this.groupBox6.Controls.Add(this.textBox1);
+            this.groupBox6.Controls.Add(this.txt_unidadeProduto);
             this.groupBox6.Controls.Add(this.label10);
             this.groupBox6.Controls.Add(this.textBox9);
             this.groupBox6.Controls.Add(this.label9);
-            this.groupBox6.Controls.Add(this.textBox8);
+            this.groupBox6.Controls.Add(this.txt_nomeProduto);
             this.groupBox6.Location = new System.Drawing.Point(6, 96);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(454, 120);
@@ -345,13 +345,13 @@
             this.label8.TabIndex = 17;
             this.label8.Text = "Unidade";
             // 
-            // textBox1
+            // txt_unidadeProduto
             // 
-            this.textBox1.Location = new System.Drawing.Point(122, 91);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(51, 23);
-            this.textBox1.TabIndex = 16;
+            this.txt_unidadeProduto.Location = new System.Drawing.Point(122, 91);
+            this.txt_unidadeProduto.Name = "txt_unidadeProduto";
+            this.txt_unidadeProduto.ReadOnly = true;
+            this.txt_unidadeProduto.Size = new System.Drawing.Size(51, 23);
+            this.txt_unidadeProduto.TabIndex = 16;
             // 
             // label10
             // 
@@ -378,20 +378,20 @@
             this.label9.TabIndex = 13;
             this.label9.Text = "Nome";
             // 
-            // textBox8
+            // txt_nomeProduto
             // 
-            this.textBox8.Location = new System.Drawing.Point(6, 39);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.ReadOnly = true;
-            this.textBox8.Size = new System.Drawing.Size(387, 23);
-            this.textBox8.TabIndex = 12;
+            this.txt_nomeProduto.Location = new System.Drawing.Point(6, 39);
+            this.txt_nomeProduto.Name = "txt_nomeProduto";
+            this.txt_nomeProduto.ReadOnly = true;
+            this.txt_nomeProduto.Size = new System.Drawing.Size(387, 23);
+            this.txt_nomeProduto.TabIndex = 12;
             // 
             // groupBox5
             // 
             this.groupBox5.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.groupBox5.Controls.Add(this.button3);
+            this.groupBox5.Controls.Add(this.btn_procurarProduto);
             this.groupBox5.Controls.Add(this.label7);
-            this.groupBox5.Controls.Add(this.textBox6);
+            this.groupBox5.Controls.Add(this.txt_codigoProduto);
             this.groupBox5.Location = new System.Drawing.Point(6, 22);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(454, 65);
@@ -399,14 +399,15 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Buscar Item";
             // 
-            // button3
+            // btn_procurarProduto
             // 
-            this.button3.Location = new System.Drawing.Point(112, 36);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(41, 23);
-            this.button3.TabIndex = 9;
-            this.button3.Text = "...";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btn_procurarProduto.Location = new System.Drawing.Point(112, 36);
+            this.btn_procurarProduto.Name = "btn_procurarProduto";
+            this.btn_procurarProduto.Size = new System.Drawing.Size(41, 23);
+            this.btn_procurarProduto.TabIndex = 9;
+            this.btn_procurarProduto.Text = "...";
+            this.btn_procurarProduto.UseVisualStyleBackColor = true;
+            this.btn_procurarProduto.Click += new System.EventHandler(this.btn_procurarProduto_Click);
             // 
             // label7
             // 
@@ -417,12 +418,12 @@
             this.label7.TabIndex = 1;
             this.label7.Text = "Código";
             // 
-            // textBox6
+            // txt_codigoProduto
             // 
-            this.textBox6.Location = new System.Drawing.Point(6, 36);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(100, 23);
-            this.textBox6.TabIndex = 0;
+            this.txt_codigoProduto.Location = new System.Drawing.Point(6, 36);
+            this.txt_codigoProduto.Name = "txt_codigoProduto";
+            this.txt_codigoProduto.Size = new System.Drawing.Size(100, 23);
+            this.txt_codigoProduto.TabIndex = 0;
             // 
             // contextMenuStrip1
             // 
@@ -527,15 +528,15 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox textBox9;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox txt_nomeProduto;
         private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btn_procurarProduto;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox txt_codigoProduto;
         private System.Windows.Forms.DateTimePicker dt_emissao;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txt_unidadeProduto;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem salvarToolStripMenuItem;

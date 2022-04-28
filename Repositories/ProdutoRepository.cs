@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System;
 using Autofac;
 using EstoqueApp.Interfaces;
+using System.Linq;
 
 namespace EstoqueApp.Repositories
 {
@@ -26,7 +27,7 @@ namespace EstoqueApp.Repositories
                         status = produto.Status,
                         pvenda = produto.PrecoVenda,
                         pcompra = produto.PrecoCompra,
-                        cunidade = produto.unidade.CodigoUnidade
+                        cunidade = produto.Unidade.CodigoUnidade
                     });
                 }
                 catch (Exception e)
@@ -61,7 +62,7 @@ namespace EstoqueApp.Repositories
                         status = produto.Status,
                         pvenda = produto.PrecoVenda,
                         pcompra = produto.PrecoCompra,
-                        cunidade = produto.unidade.CodigoUnidade
+                        cunidade = produto.Unidade.CodigoUnidade
                     });
                 }
                 catch (Exception e)
@@ -94,7 +95,7 @@ namespace EstoqueApp.Repositories
                 {
                     var consulta = connection.Query<Produto, Unidade, Produto>(query, (produto, unidade) =>
                     {
-                        produto.unidade = unidade;
+                        produto.Unidade = unidade;
                         return produto;
                     },
                     new { prm1 = param1 },
@@ -108,10 +109,31 @@ namespace EstoqueApp.Repositories
                 }
             }
         }
-
-        public Produto ProcurarPorCodigo(int Codigo)
+        public Produto ProcurarPorCodigoComUn(int codigo)
         {
-            throw new NotImplementedException();
+            using (var scope = Program.Container.BeginLifetimeScope())
+            {
+                try
+                {
+                    var connection = scope.Resolve<IConnectionService>().CreateConnection();
+
+                    var query = "SELECT * FROM Produto p INNER JOIN Unidade U on p.CodigoUnidade = u.CodigoUnidade WHERE CodigoProduto = @p1";
+
+                    var produtoResultado = connection.Query<Produto, Unidade, Produto>(query,(produto, unidade) =>
+                    {
+                        produto.Unidade = unidade;
+                        return produto;
+                    }, 
+                    new {p1 = codigo},
+                    splitOn: "Sigla").FirstOrDefault();
+
+                    return produtoResultado;
+
+                }catch(Exception)
+                {
+                    return null;
+                }
+            }
         }
     }
 }

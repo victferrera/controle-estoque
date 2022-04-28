@@ -44,7 +44,7 @@ namespace EstoqueApp.Telas.frm_pesquisaProduto
 
                 var consulta = produtoRepository.GetByFilter(filtro);
 
-                var customColumns = from col in consulta select new { Codigo = col.CodigoProduto, Nome = col.Nome, Descricao = col.Descricao, Status = col.Status, Compra = col.PrecoCompra, Venda = col.PrecoVenda, Unidade = col.unidade.Sigla };
+                var customColumns = from col in consulta select new { Codigo = col.CodigoProduto, Nome = col.Nome, Descricao = col.Descricao, Status = col.Status, Compra = col.PrecoCompra, Venda = col.PrecoVenda, Unidade = col.Unidade.Sigla };
 
                 // IEnumerable<> não funciona como fonte para o DataGrid, necessário converter para List<>;
                 grid_produtos.DataSource = customColumns.ToList();

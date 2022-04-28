@@ -76,5 +76,33 @@ namespace EstoqueApp.Telas
                 txt_localDescricao.Text = localRetorno.Descricao;
             }
         }
+
+        private void btn_procurarProduto_Click(object sender, EventArgs e)
+        {
+            using (var scope = Program.Container.BeginLifetimeScope())
+            {
+                var produtoRepository = scope.Resolve<IProdutoRepository>();
+
+                var produto = produtoRepository.ProcurarPorCodigoComUn(int.Parse(txt_codigoProduto.Text));
+
+                if (produto == null)
+                {
+                    LimparCamposAbaItem();
+                    MessageBox.Show("Produto não encontrado");
+                    return;
+                }
+
+                txt_codigoProduto.Text = produto.CodigoProduto.ToString();
+                txt_nomeProduto.Text = produto.Nome;
+                txt_unidadeProduto.Text = produto.Unidade.Sigla.ToString();
+            }
+        }
+
+        private void LimparCamposAbaItem()
+        {
+            txt_codigoProduto.Text = String.Empty;
+            txt_nomeProduto.Text = String.Empty;
+            txt_unidadeProduto.Text = String.Empty;
+        }
     }
 }
