@@ -33,9 +33,9 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txt_localDescricao = new System.Windows.Forms.TextBox();
             this.txt_LocalEstoque = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btn_procurarLocal = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -111,9 +111,9 @@
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.label5);
-            this.groupBox3.Controls.Add(this.textBox4);
+            this.groupBox3.Controls.Add(this.txt_localDescricao);
             this.groupBox3.Controls.Add(this.txt_LocalEstoque);
-            this.groupBox3.Controls.Add(this.button2);
+            this.groupBox3.Controls.Add(this.btn_procurarLocal);
             this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Location = new System.Drawing.Point(6, 190);
             this.groupBox3.Name = "groupBox3";
@@ -131,12 +131,12 @@
             this.label5.TabIndex = 10;
             this.label5.Text = "Descrição";
             // 
-            // textBox4
+            // txt_localDescricao
             // 
-            this.textBox4.Location = new System.Drawing.Point(162, 38);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(403, 23);
-            this.textBox4.TabIndex = 9;
+            this.txt_localDescricao.Location = new System.Drawing.Point(162, 38);
+            this.txt_localDescricao.Name = "txt_localDescricao";
+            this.txt_localDescricao.Size = new System.Drawing.Size(403, 23);
+            this.txt_localDescricao.TabIndex = 9;
             // 
             // txt_LocalEstoque
             // 
@@ -145,14 +145,15 @@
             this.txt_LocalEstoque.Size = new System.Drawing.Size(100, 23);
             this.txt_LocalEstoque.TabIndex = 6;
             // 
-            // button2
+            // btn_procurarLocal
             // 
-            this.button2.Location = new System.Drawing.Point(109, 38);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(41, 23);
-            this.button2.TabIndex = 8;
-            this.button2.Text = "...";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btn_procurarLocal.Location = new System.Drawing.Point(109, 38);
+            this.btn_procurarLocal.Name = "btn_procurarLocal";
+            this.btn_procurarLocal.Size = new System.Drawing.Size(41, 23);
+            this.btn_procurarLocal.TabIndex = 8;
+            this.btn_procurarLocal.Text = "...";
+            this.btn_procurarLocal.UseVisualStyleBackColor = true;
+            this.btn_procurarLocal.Click += new System.EventHandler(this.btn_procurarLocal_Click);
             // 
             // label6
             // 
@@ -505,9 +506,9 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txt_localDescricao;
         private System.Windows.Forms.TextBox txt_LocalEstoque;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btn_procurarLocal;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label4;

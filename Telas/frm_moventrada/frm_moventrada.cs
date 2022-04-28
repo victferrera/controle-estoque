@@ -45,7 +45,7 @@ namespace EstoqueApp.Telas
             using (var scope = Program.Container.BeginLifetimeScope())
             {
                 movtoEntradaRepository = scope.Resolve<IMovtoEntradaRepository>();
-                nm_movtoNumero.Value = movtoEntradaRepository.GetLastId();
+                nm_movtoNumero.Value = 1 + movtoEntradaRepository.GetLastId();
             }
         }
 
@@ -61,6 +61,19 @@ namespace EstoqueApp.Telas
 
                 txt_codigoParticipante.Text = retornoCadastro.Codigo.ToString();
                 txt_nomeParticipante.Text = retornoCadastro.RazaoSocial.ToString();
+            }
+        }
+
+        private void btn_procurarLocal_Click(object sender, EventArgs e)
+        {
+            using (var scope = Program.Container.BeginLifetimeScope())
+            {
+                var localRepository = scope.Resolve<ILocalEstoqueRepository>();
+
+                var localRetorno = localRepository.ProcurarLocalPorCodigo(int.Parse(txt_LocalEstoque.Text));
+
+                txt_LocalEstoque.Text = localRetorno.Codigo.ToString();
+                txt_localDescricao.Text = localRetorno.Descricao;
             }
         }
     }

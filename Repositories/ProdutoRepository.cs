@@ -108,5 +108,10 @@ namespace EstoqueApp.Repositories
                 }
             }
         }
+
+        public Produto ProcurarPorCodigo(int Codigo)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
