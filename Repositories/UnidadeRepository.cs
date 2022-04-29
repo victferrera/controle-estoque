@@ -5,7 +5,7 @@ using Autofac;
 using Dapper;
 using System;
 using System.Collections.Generic;
-using EstoqueApp.Database;
+using System.Linq;
 using EstoqueApp.Interfaces;
 
 namespace EstoqueApp.Repositories
@@ -71,6 +71,26 @@ namespace EstoqueApp.Repositories
                 var query = @"SELECT [Sigla], [CodigoUnidade] FROM [Unidade] WHERE [Status] = @prm";
 
                 return connection.Query<Unidade>(query, new { prm = statusId });
+            }
+        }
+
+        public int GetCodigoUnidadePorSigla(string sigla)
+        {
+            using (var scope = Program.Container.BeginLifetimeScope())
+            {
+                var connection = scope.Resolve<IConnectionService>().CreateConnection();
+                try
+                {
+                    var query = "SELECT CodigoUnidade FROM Unidade WHERE Sigla = @p1";
+
+                    var retornoId = connection.Query<int>(query, new { p1 = sigla }).FirstOrDefault();
+
+                    return retornoId;
+
+                }catch(Exception)
+                {
+                    return -1;
+                }
             }
         }
     }

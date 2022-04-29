@@ -2,7 +2,6 @@
 using EstoqueApp.Database;
 using EstoqueApp.Interfaces;
 using EstoqueApp.Repositories;
-using System;
 using System.Windows.Forms;
 
 namespace EstoqueApp

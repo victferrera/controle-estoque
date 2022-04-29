@@ -21,6 +21,9 @@ namespace EstoqueApp.Telas
 
         private void salvarToolStripMenuItem1_Click(object sender, System.EventArgs e)
         {
+            var unidadeRepository = Program.Container.Resolve<IUnidadeRepository>();
+            var localEstoqueRepository = Program.Container.Resolve<ILocalEstoqueRepository>();
+
             var novoMovtoEntrada = new MovtoEntrada
             {
                 MovtoNumero = int.Parse(nm_movtoNumero.Value.ToString()),
@@ -28,13 +31,31 @@ namespace EstoqueApp.Telas
                 CodigoParticipante = int.Parse(txt_codigoParticipante.Text)  
             };
 
+            var novoMovtoEntradaItem = new MovtoEntradaItem
+            {
+                CodigoProduto = null,
+                LocalEstoque = localEstoqueRepository.ProcurarLocalPorCodigo(int.Parse(txt_LocalEstoque.Text)).Id,
+                QtdEntrada = int.Parse(txt_qtdEntrada.Text),
+                CodigoUnidade = unidadeRepository.GetCodigoUnidadePorSigla(txt_unidadeProduto.Text),
+                MovtoNumero = int.Parse(nm_movtoNumero.Value.ToString())
+            };
+
+            novoMovtoEntradaItem.CodigoProduto = new List<int>();
+
+            foreach(var produtoId in listaProduto)
+            {
+                novoMovtoEntradaItem.CodigoProduto.Add(produtoId.CodigoProduto);
+            }
+
             using (var scope = Program.Container.BeginLifetimeScope())
             {
                 var movtoEntradaRepository = scope.Resolve<IMovtoEntradaRepository>();
+                var movtoEntradaItemRepository = scope.Resolve<IMovtoEntradaItemRepository>();
 
                 try
                 {
                     movtoEntradaRepository.Save(novoMovtoEntrada);
+                    movtoEntradaItemRepository.Save(novoMovtoEntradaItem);
                     MessageBox.Show("Documento salvo!");
                 }catch(Exception ex)
                 {
