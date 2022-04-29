@@ -130,5 +130,13 @@ namespace EstoqueApp.Telas
             var colunasProduto = from colunas in listaProduto select new { colunas.CodigoProduto, colunas.Nome, colunas.UnidadeMedida, colunas.QtdEntrada };
             dt_itemMovto.DataSource = colunasProduto.ToList();
         }
+
+        private void dt_itemMovto_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txt_codigoProduto.Text = dt_itemMovto.CurrentRow.Cells["CodigoProduto"].Value.ToString();
+            txt_nomeProduto.Text = dt_itemMovto.CurrentRow.Cells["Nome"].Value.ToString();
+            txt_unidadeProduto.Text = dt_itemMovto.CurrentRow.Cells["UnidadeMedida"].Value.ToString();
+            txt_qtdEntrada.Text = dt_itemMovto.CurrentRow.Cells["QtdEntrada"].Value.ToString();
+        }
     }
 }

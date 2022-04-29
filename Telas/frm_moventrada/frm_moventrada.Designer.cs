@@ -283,11 +283,14 @@
             this.dt_itemMovto.BackgroundColor = System.Drawing.SystemColors.AppWorkspace;
             this.dt_itemMovto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dt_itemMovto.Location = new System.Drawing.Point(6, 270);
+            this.dt_itemMovto.MultiSelect = false;
             this.dt_itemMovto.Name = "dt_itemMovto";
             this.dt_itemMovto.RowTemplate.Height = 25;
+            this.dt_itemMovto.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dt_itemMovto.Size = new System.Drawing.Size(763, 208);
             this.dt_itemMovto.TabIndex = 2;
             this.dt_itemMovto.Visible = false;
+            this.dt_itemMovto.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dt_itemMovto_CellDoubleClick);
             // 
             // groupBox4
             // 
