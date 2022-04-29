@@ -51,7 +51,7 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.dt_itemMovto = new System.Windows.Forms.DataGridView();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.button5 = new System.Windows.Forms.Button();
+            this.btn_removerProduto = new System.Windows.Forms.Button();
             this.btn_adicionarItem = new System.Windows.Forms.Button();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -294,7 +294,7 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.button5);
+            this.groupBox4.Controls.Add(this.btn_removerProduto);
             this.groupBox4.Controls.Add(this.btn_adicionarItem);
             this.groupBox4.Controls.Add(this.groupBox6);
             this.groupBox4.Controls.Add(this.groupBox5);
@@ -305,14 +305,15 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Informações do Item";
             // 
-            // button5
+            // btn_removerProduto
             // 
-            this.button5.Location = new System.Drawing.Point(87, 222);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(72, 23);
-            this.button5.TabIndex = 11;
-            this.button5.Text = "Remover";
-            this.button5.UseVisualStyleBackColor = true;
+            this.btn_removerProduto.Location = new System.Drawing.Point(87, 222);
+            this.btn_removerProduto.Name = "btn_removerProduto";
+            this.btn_removerProduto.Size = new System.Drawing.Size(72, 23);
+            this.btn_removerProduto.TabIndex = 11;
+            this.btn_removerProduto.Text = "Remover";
+            this.btn_removerProduto.UseVisualStyleBackColor = true;
+            this.btn_removerProduto.Click += new System.EventHandler(this.btn_removerProduto_Click);
             // 
             // btn_adicionarItem
             // 
@@ -538,7 +539,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txt_codigoProduto;
         private System.Windows.Forms.DateTimePicker dt_emissao;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button btn_removerProduto;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txt_unidadeProduto;
         private System.Windows.Forms.DataGridView dt_itemMovto;

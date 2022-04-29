@@ -108,6 +108,7 @@ namespace EstoqueApp.Telas
             txt_codigoProduto.Text = String.Empty;
             txt_nomeProduto.Text = String.Empty;
             txt_unidadeProduto.Text = String.Empty;
+            txt_unidadeProduto.Text = String.Empty;
         }
 
         private void btn_adicionarItem_Click(object sender, EventArgs e)
@@ -137,6 +138,13 @@ namespace EstoqueApp.Telas
             txt_nomeProduto.Text = dt_itemMovto.CurrentRow.Cells["Nome"].Value.ToString();
             txt_unidadeProduto.Text = dt_itemMovto.CurrentRow.Cells["UnidadeMedida"].Value.ToString();
             txt_qtdEntrada.Text = dt_itemMovto.CurrentRow.Cells["QtdEntrada"].Value.ToString();
+        }
+
+        private void btn_removerProduto_Click(object sender, EventArgs e)
+        {
+            listaProduto.RemoveAll(x =>x.CodigoProduto == int.Parse(txt_codigoProduto.Text));
+            LimparCamposAbaItem();
+            AtualizarGridProduto();
         }
     }
 }
