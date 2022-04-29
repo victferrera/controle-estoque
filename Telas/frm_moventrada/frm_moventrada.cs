@@ -12,6 +12,7 @@ namespace EstoqueApp.Telas
     public partial class frm_moventrada : Form
     {
         private List<ProdutoDTO> listaProduto = new List<ProdutoDTO>();
+        private List<ProdutoSaldo> listaProdutoSaldoAnterior = new List<ProdutoSaldo>();
 
         public frm_moventrada()
         {
@@ -23,12 +24,13 @@ namespace EstoqueApp.Telas
         {
             var unidadeRepository = Program.Container.Resolve<IUnidadeRepository>();
             var localEstoqueRepository = Program.Container.Resolve<ILocalEstoqueRepository>();
+            var produtoSaldoRepository = Program.Container.Resolve<IProdutoSaldoRepository>();
 
             var novoMovtoEntrada = new MovtoEntrada
             {
                 MovtoNumero = int.Parse(nm_movtoNumero.Value.ToString()),
                 DataEmissao = dt_emissao.Value,
-                CodigoParticipante = int.Parse(txt_codigoParticipante.Text)  
+                CodigoParticipante = int.Parse(txt_codigoParticipante.Text)
             };
 
             var novoMovtoEntradaItem = new MovtoEntradaItem
@@ -40,24 +42,44 @@ namespace EstoqueApp.Telas
                 MovtoNumero = int.Parse(nm_movtoNumero.Value.ToString())
             };
 
+            listaProdutoSaldoAnterior = new List<ProdutoSaldo>();
             novoMovtoEntradaItem.CodigoProduto = new List<int>();
 
-            foreach(var produtoId in listaProduto)
+            foreach (var produtoId in listaProduto)
             {
                 novoMovtoEntradaItem.CodigoProduto.Add(produtoId.CodigoProduto);
+
+                var saldoAux = produtoSaldoRepository.BuscarSaldoAnterior(produtoId.CodigoProduto, novoMovtoEntradaItem.LocalEstoque);
+
+                listaProdutoSaldoAnterior.Add(new ProdutoSaldo
+                    {
+                        SaldoAnterior = saldoAux,
+                        SaldoAtual = saldoAux + decimal.Parse(txt_qtdEntrada.Text),
+                        CodigoProduto = produtoId.CodigoProduto,
+                        DataAtualizacao = DateTime.Now,
+                        LocalEstoque = novoMovtoEntradaItem.LocalEstoque
+                    }
+                );
+
             }
 
             using (var scope = Program.Container.BeginLifetimeScope())
             {
                 var movtoEntradaRepository = scope.Resolve<IMovtoEntradaRepository>();
                 var movtoEntradaItemRepository = scope.Resolve<IMovtoEntradaItemRepository>();
+                var pdSaldoRepository = scope.Resolve<IProdutoSaldoRepository>();
 
                 try
                 {
                     movtoEntradaRepository.Save(novoMovtoEntrada);
                     movtoEntradaItemRepository.Save(novoMovtoEntradaItem);
+                    foreach (var saldo in listaProdutoSaldoAnterior)
+                    {
+                        pdSaldoRepository.Save(saldo);
+                    }
                     MessageBox.Show("Documento salvo!");
-                }catch(Exception ex)
+                }
+                catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
@@ -81,7 +103,7 @@ namespace EstoqueApp.Telas
 
             using (var scope = Program.Container.BeginLifetimeScope())
             {
-                
+
                 cadastroRepository = scope.Resolve<ICadastroRepository>();
                 var retornoCadastro = cadastroRepository.GetCadastro(int.Parse(txt_codigoParticipante.Text.ToString()));
 
@@ -134,7 +156,8 @@ namespace EstoqueApp.Telas
 
         private void btn_adicionarItem_Click(object sender, EventArgs e)
         {
-            listaProduto.Add(new ProdutoDTO { 
+            listaProduto.Add(new ProdutoDTO
+            {
                 CodigoProduto = int.Parse(txt_codigoProduto.Text),
                 Nome = txt_nomeProduto.Text,
                 UnidadeMedida = txt_unidadeProduto.Text,
@@ -163,7 +186,7 @@ namespace EstoqueApp.Telas
 
         private void btn_removerProduto_Click(object sender, EventArgs e)
         {
-            listaProduto.RemoveAll(x =>x.CodigoProduto == int.Parse(txt_codigoProduto.Text));
+            listaProduto.RemoveAll(x => x.CodigoProduto == int.Parse(txt_codigoProduto.Text));
             LimparCamposAbaItem();
             AtualizarGridProduto();
         }
