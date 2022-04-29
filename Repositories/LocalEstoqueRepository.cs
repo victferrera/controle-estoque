@@ -89,7 +89,6 @@ namespace EstoqueApp.Repositories
                 return local;
             }
         }
-
         public List<LocalEstoque> GetLocalByFilter(string filtro = "")
         {
             using (var scope = Program.Container.BeginLifetimeScope())

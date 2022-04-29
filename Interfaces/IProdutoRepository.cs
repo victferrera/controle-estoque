@@ -7,5 +7,7 @@ namespace EstoqueApp.Interfaces
     {
         public IEnumerable<Produto> GetByFilter(string filtro);
 
+        public Produto ProcurarPorCodigoComUn(int codigo);
+
     }
 }

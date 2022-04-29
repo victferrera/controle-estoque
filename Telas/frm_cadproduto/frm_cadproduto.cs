@@ -68,7 +68,7 @@ namespace EstoqueApp.form_cad_produto
                     {
                         Nome = txtbox_cad_produto_nome.Text,
                         Descricao = txtbox_cad_produto_descricao.Text,
-                        unidade = new Unidade() { CodigoUnidade = int.Parse(cbox_cad_produto_unidade.SelectedValue.ToString()) },
+                        Unidade = new Unidade() { CodigoUnidade = int.Parse(cbox_cad_produto_unidade.SelectedValue.ToString()) },
                         Status = (EStatus)cbox_cad_produto_status.SelectedItem,
                         PrecoCompra = double.Parse(txtbox_cad_produto_compra.Text),
                         PrecoVenda = double.Parse(txtbox_cad_produto_venda.Text)
@@ -97,7 +97,7 @@ namespace EstoqueApp.form_cad_produto
                 {
                     produto.Nome = txtbox_cad_produto_nome.Text;
                     produto.Descricao = txtbox_cad_produto_descricao.Text;
-                    produto.unidade = new Unidade() { CodigoUnidade = int.Parse(cbox_cad_produto_unidade.SelectedValue.ToString()) };
+                    produto.Unidade = new Unidade() { CodigoUnidade = int.Parse(cbox_cad_produto_unidade.SelectedValue.ToString()) };
                     produto.Status = (EStatus)cbox_cad_produto_status.SelectedItem;
                     produto.PrecoCompra = double.Parse(txtbox_cad_produto_compra.Text);
                     produto.PrecoVenda = double.Parse(txtbox_cad_produto_venda.Text);
@@ -142,7 +142,7 @@ namespace EstoqueApp.form_cad_produto
                 Nome = produtoGrid["Nome"].Value.ToString(),
                 Descricao = produtoGrid["Descricao"].Value.ToString(),
                 Status = (EStatus)produtoGrid["Status"].Value,
-                unidade = new Unidade() { Sigla = produtoGrid["Unidade"].Value.ToString() },
+                Unidade = new Unidade() { Sigla = produtoGrid["Unidade"].Value.ToString() },
                 PrecoCompra = double.Parse(produtoGrid["Compra"].Value.ToString()),
                 PrecoVenda = double.Parse(produtoGrid["Venda"].Value.ToString())
             };
@@ -160,7 +160,7 @@ namespace EstoqueApp.form_cad_produto
                 frmCadProduto.txtbox_cad_produto_venda.Text = produto.PrecoVenda.ToString();
                 frmCadProduto.txtbox_cad_produto_compra.Text = produto.PrecoCompra.ToString();
                 frmCadProduto.cbox_cad_produto_status.Text = produto.Status.ToString();
-                frmCadProduto.cbox_cad_produto_unidade.Text = produto.unidade.Sigla;
+                frmCadProduto.cbox_cad_produto_unidade.Text = produto.Unidade.Sigla;
 
                 frmCadProduto.btn_novo.Enabled = false;
                 frmCadProduto.btn_pesquisar.Enabled = false;
@@ -174,7 +174,7 @@ namespace EstoqueApp.form_cad_produto
                 frmCadProduto.txtbox_cad_produto_venda.Text = produto.PrecoVenda.ToString();
                 frmCadProduto.txtbox_cad_produto_compra.Text = produto.PrecoCompra.ToString();
                 frmCadProduto.cbox_cad_produto_status.Text = produto.Status.ToString();
-                frmCadProduto.cbox_cad_produto_unidade.Text = produto.unidade.Sigla;
+                frmCadProduto.cbox_cad_produto_unidade.Text = produto.Unidade.Sigla;
                 frmCadProduto.BringToFront();
             }
 

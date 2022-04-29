@@ -2,7 +2,6 @@
 using EstoqueApp.Database;
 using EstoqueApp.Interfaces;
 using EstoqueApp.Repositories;
-using System;
 using System.Windows.Forms;
 
 namespace EstoqueApp
@@ -21,6 +20,9 @@ namespace EstoqueApp
             builder.RegisterType<CepRepository>().As<ICepService>();
             builder.RegisterType<EnderecoRepository>().As<IEnderecoRepository>();
             builder.RegisterType<CadastroRepository>().As<ICadastroRepository>();
+            builder.RegisterType<MovtoEntradaRepository>().As<IMovtoEntradaRepository>();
+            builder.RegisterType<MovtoEntradaItemRepository>().As<IMovtoEntradaItemRepository>();
+            builder.RegisterType<ProdutoSaldoRepository>().As<IProdutoSaldoRepository>();
             Container = builder.Build();
             
 

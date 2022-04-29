@@ -9,5 +9,6 @@ namespace EstoqueApp.Interfaces
         public IEnumerable<Unidade> GetByFilter(string filtro);
         public IEnumerable<Unidade> GetByStatus(int statusId);
 
+        public int GetCodigoUnidadePorSigla(string sigla);
     }
 }
