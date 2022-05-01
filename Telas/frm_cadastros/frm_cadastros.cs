@@ -7,7 +7,8 @@ using System.Collections.Generic;
 using EstoqueApp.Enums;
 using Newtonsoft.Json;
 using System.Threading.Tasks;
-using RestSharp;
+using System.Net.Http;
+using System.IO;
 
 namespace EstoqueApp.Telas
 {
@@ -65,7 +66,7 @@ namespace EstoqueApp.Telas
             return lista;
         }
 
-        private async Task<RestResponse> PesquisarCep()
+        private async Task<HttpResponseMessage> PesquisarCep()
         {
 
             using (var scope = Program.Container.BeginLifetimeScope())
@@ -113,7 +114,8 @@ namespace EstoqueApp.Telas
                 {
                     cadastroRepository.Save(novoCadastro);
 
-                }catch(Exception ex)
+                }
+                catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
@@ -125,16 +127,21 @@ namespace EstoqueApp.Telas
         {
             var cep = await PesquisarCep();
 
-            if (cep.IsSuccessful)
-            {
-                var cepDeserialized = JsonConvert.DeserializeObject<Endereco>(cep.Content);
-                txt_logradouro.Text = cepDeserialized.logradouro;
-                txt_numero.Text = String.Empty;
-                txt_bairro.Text = cepDeserialized.bairro;
-                txt_uf.Text = cepDeserialized.uf;
-                txt_cidade.Text = cepDeserialized.localidade;
-                rt_complemento.Text = cepDeserialized.complemento;
-            }
+            var contentStream = await cep.Content.ReadAsStreamAsync();
+
+            var streamReader = new StreamReader(contentStream);
+
+            var jsonReader = new JsonTextReader(streamReader);
+
+            JsonSerializer sr = new JsonSerializer();
+
+            var cepDeserialized = sr.Deserialize<Endereco>(jsonReader);
+            txt_logradouro.Text = cepDeserialized.localidade;
+            txt_numero.Text = String.Empty;
+            txt_bairro.Text = cepDeserialized.bairro;
+            txt_uf.Text = cepDeserialized.uf;
+            txt_cidade.Text = cepDeserialized.localidade;
+            rt_complemento.Text = cepDeserialized.complemento;
         }
     }
 }

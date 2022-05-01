@@ -7,7 +7,7 @@ namespace EstoqueApp.Modelos
     internal class MovtoEntradaItem
     {
         public int Id { get; set; }
-        public List<int> CodigoProduto = new List<int>();
+        public List<int> CodigoProduto { get; set; }
         public int LocalEstoque { get; set; }
         public int QtdEntrada { get; set; }
         public int CodigoUnidade { get; set; }

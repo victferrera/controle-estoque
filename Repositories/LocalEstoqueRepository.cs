@@ -38,7 +38,7 @@ namespace EstoqueApp.Repositories
                 }
                 catch (Exception e)
                 {
-                    throw new(e.Message);
+                    //throw new(e.Message);
                 }
             }
         }

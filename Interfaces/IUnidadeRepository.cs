@@ -5,10 +5,10 @@ namespace EstoqueApp.Interfaces
 {
     internal interface IUnidadeRepository : IBaseService<Unidade>
     {
-        public void AlterarStatus(Unidade unidade);
-        public IEnumerable<Unidade> GetByFilter(string filtro);
-        public IEnumerable<Unidade> GetByStatus(int statusId);
+         void AlterarStatus(Unidade unidade);
+         IEnumerable<Unidade> GetByFilter(string filtro);
+         IEnumerable<Unidade> GetByStatus(int statusId);
 
-        public int GetCodigoUnidadePorSigla(string sigla);
+         int GetCodigoUnidadePorSigla(string sigla);
     }
 }

@@ -5,8 +5,8 @@ namespace EstoqueApp.Interfaces
 {
     internal interface ITipoCadastroRepository : IBaseService<TipoCadastro>
     {
-        public List<TipoCadastro> ProcurarPorFiltro(string filtro);
-        public TipoCadastro ProcurarPorId(int id);
-        public List<TipoCadastro> GeraListaTipoCadastro();
+         List<TipoCadastro> ProcurarPorFiltro(string filtro);
+         TipoCadastro ProcurarPorId(int id);
+         List<TipoCadastro> GeraListaTipoCadastro();
     }
 }

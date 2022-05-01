@@ -1,18 +1,18 @@
 ﻿using EstoqueApp.Interfaces;
 using System.Threading.Tasks;
-using RestSharp;
+using System.Net.Http;
 
 namespace EstoqueApp.Repositories
 {
     internal class CepRepository : ICepService
     {
-        public async Task<RestResponse> GetCepInformation(string cep)
+        public async Task<HttpResponseMessage> GetCepInformation(string cep)
         {
-            var client = new RestClient("https://viacep.com.br/ws/");
+            var url = $"https://viacep.com.br/ws/{cep}/json/";
 
-            var request = new RestRequest($"{cep}/json/");
+            var client = new HttpClient();
 
-            var response = await client.ExecuteGetAsync(request);
+            var response = await client.GetAsync(url);
 
             return response;
         }

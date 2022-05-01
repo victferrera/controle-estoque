@@ -5,6 +5,7 @@ using Autofac;
 using System.Linq;
 using System;
 using System.Windows.Forms;
+using System.Collections.Generic;
 
 namespace EstoqueApp.Repositories
 {
