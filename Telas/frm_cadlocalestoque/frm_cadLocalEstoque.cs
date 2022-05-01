@@ -45,7 +45,7 @@ namespace EstoqueApp.Telas.frm_cadlocalEstoque
                 catch (Exception ex)
                 {
                     LimparCampos();
-                    throw new(ex.Message);
+                    //throw new(ex.Message);
                 }
             }
         }

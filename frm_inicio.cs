@@ -3,6 +3,8 @@ using EstoqueApp.form_cad_produto;
 using EstoqueApp.form_cadaux_unidade;
 using EstoqueApp.Telas.frm_cadlocalEstoque;
 using EstoqueApp.Telas;
+using MotorRelatorio;
+using GeradorRelatorio;
 
 namespace EstoqueApp
 {
@@ -57,6 +59,11 @@ namespace EstoqueApp
         {
             var formMovimentacaoEntrada = new frm_moventrada();
             formMovimentacaoEntrada.Show();
+        }
+
+        private void relat_movtoEntrada_Click(object sender, System.EventArgs e)
+        {
+            Teste.AbrirRelatorio();
         }
     }
 }

@@ -1,10 +1,10 @@
 ﻿using System.Threading.Tasks;
-using RestSharp;
+using System.Net.Http;
 
 namespace EstoqueApp.Interfaces
 {
     internal interface ICepService
     {
-        public Task<RestResponse> GetCepInformation(string cep); 
+        Task<HttpResponseMessage> GetCepInformation(string cep);
     }
 }
