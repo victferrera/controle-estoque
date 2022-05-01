@@ -10,6 +10,5 @@ namespace EstoqueApp.Modelos
         public int MovtoNumero { get; set; }
         public DateTime DataEmissao { get; set; }
         public int CodigoParticipante { get; set; }
-        public List<MovtoEntradaItem> MovtoItem { get; set; }
     }
 }
