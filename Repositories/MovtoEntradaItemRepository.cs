@@ -23,7 +23,7 @@ namespace EstoqueApp.Repositories
                         {
                             p1 = produtoId,
                             p2 = novoMovto.LocalEstoque,
-                            p3 = novoMovto.QtdEntrada,
+                            p3 = novoMovto.QtdItem,
                             p4 = novoMovto.CodigoUnidade,
                             p5 = novoMovto.MovtoNumero
                         });

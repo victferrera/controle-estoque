@@ -37,7 +37,7 @@ namespace EstoqueApp.Telas
             {
                 CodigoProduto = null,
                 LocalEstoque = localEstoqueRepository.ProcurarLocalPorCodigo(int.Parse(txt_LocalEstoque.Text)).Id,
-                QtdEntrada = int.Parse(txt_qtdEntrada.Text),
+                QtdItem = int.Parse(txt_qtdEntrada.Text),
                 CodigoUnidade = unidadeRepository.GetCodigoUnidadePorSigla(txt_unidadeProduto.Text),
                 MovtoNumero = int.Parse(nm_movtoNumero.Value.ToString())
             };
