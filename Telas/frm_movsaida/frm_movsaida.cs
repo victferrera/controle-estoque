@@ -103,5 +103,19 @@ namespace EstoqueApp.Telas.frm_movsaida
 
             dt_items.DataSource = produtosPreview.ToList();
         }
+
+        private void btn_remover_Click(object sender, EventArgs e)
+        {
+            items.RemoveAll(x => x.CodigoProduto == int.Parse(txt_codigoProduto.Text));
+            AtualizarGrid();
+        }
+
+        private void dt_items_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txt_codigoProduto.Text = dt_items.CurrentRow.Cells["CodigoProduto"].Value.ToString();
+            txt_nomeProduto.Text = dt_items.CurrentRow.Cells["Nome"].Value.ToString();
+            txt_qtdProduto.Text = dt_items.CurrentRow.Cells["QtdEntrada"].Value.ToString();
+            txt_unidadeProduto.Text = dt_items.CurrentRow.Cells["UnidadeMedida"].Value.ToString();
+        }
     }
 }

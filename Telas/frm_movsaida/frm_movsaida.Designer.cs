@@ -293,6 +293,7 @@
             this.dt_items.Size = new System.Drawing.Size(744, 150);
             this.dt_items.TabIndex = 2;
             this.dt_items.Visible = false;
+            this.dt_items.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dt_items_CellDoubleClick);
             // 
             // groupBox6
             // 
@@ -317,6 +318,7 @@
             this.btn_remover.TabIndex = 6;
             this.btn_remover.Text = "Remover";
             this.btn_remover.UseVisualStyleBackColor = true;
+            this.btn_remover.Click += new System.EventHandler(this.btn_remover_Click);
             // 
             // btn_adicionar
             // 
