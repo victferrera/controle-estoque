@@ -49,18 +49,20 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txt_numero = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dt_items = new System.Windows.Forms.DataGridView();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.btn_remover = new System.Windows.Forms.Button();
+            this.btn_adicionar = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.txt_unidadeProduto = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.txt_qtdProduto = new System.Windows.Forms.TextBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.txt_nomeProduto = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.txt_codigoProduto = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.salvarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.excluirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -71,7 +73,7 @@
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dt_items)).BeginInit();
             this.groupBox6.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -269,7 +271,7 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.dataGridView1);
+            this.tabPage2.Controls.Add(this.dt_items);
             this.tabPage2.Controls.Add(this.groupBox6);
             this.tabPage2.Controls.Add(this.groupBox5);
             this.tabPage2.Location = new System.Drawing.Point(4, 24);
@@ -280,28 +282,51 @@
             this.tabPage2.Text = "Item";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // dt_items
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 200);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(744, 150);
-            this.dataGridView1.TabIndex = 2;
-            this.dataGridView1.Visible = false;
+            this.dt_items.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dt_items.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dt_items.Location = new System.Drawing.Point(6, 200);
+            this.dt_items.Name = "dt_items";
+            this.dt_items.RowTemplate.Height = 25;
+            this.dt_items.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dt_items.Size = new System.Drawing.Size(744, 150);
+            this.dt_items.TabIndex = 2;
+            this.dt_items.Visible = false;
             // 
             // groupBox6
             // 
+            this.groupBox6.Controls.Add(this.btn_remover);
+            this.groupBox6.Controls.Add(this.btn_adicionar);
             this.groupBox6.Controls.Add(this.label10);
-            this.groupBox6.Controls.Add(this.textBox9);
+            this.groupBox6.Controls.Add(this.txt_unidadeProduto);
             this.groupBox6.Controls.Add(this.label9);
-            this.groupBox6.Controls.Add(this.textBox8);
+            this.groupBox6.Controls.Add(this.txt_qtdProduto);
             this.groupBox6.Location = new System.Drawing.Point(6, 91);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(744, 103);
             this.groupBox6.TabIndex = 1;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Informações de Saída";
+            // 
+            // btn_remover
+            // 
+            this.btn_remover.Location = new System.Drawing.Point(81, 70);
+            this.btn_remover.Name = "btn_remover";
+            this.btn_remover.Size = new System.Drawing.Size(70, 23);
+            this.btn_remover.TabIndex = 6;
+            this.btn_remover.Text = "Remover";
+            this.btn_remover.UseVisualStyleBackColor = true;
+            // 
+            // btn_adicionar
+            // 
+            this.btn_adicionar.Location = new System.Drawing.Point(6, 70);
+            this.btn_adicionar.Name = "btn_adicionar";
+            this.btn_adicionar.Size = new System.Drawing.Size(69, 23);
+            this.btn_adicionar.TabIndex = 5;
+            this.btn_adicionar.Text = "Adicionar";
+            this.btn_adicionar.UseVisualStyleBackColor = true;
+            this.btn_adicionar.Click += new System.EventHandler(this.btn_adicionar_Click);
             // 
             // label10
             // 
@@ -312,12 +337,12 @@
             this.label10.TabIndex = 4;
             this.label10.Text = "Unidade";
             // 
-            // textBox9
+            // txt_unidadeProduto
             // 
-            this.textBox9.Location = new System.Drawing.Point(112, 41);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(51, 23);
-            this.textBox9.TabIndex = 3;
+            this.txt_unidadeProduto.Location = new System.Drawing.Point(112, 41);
+            this.txt_unidadeProduto.Name = "txt_unidadeProduto";
+            this.txt_unidadeProduto.Size = new System.Drawing.Size(51, 23);
+            this.txt_unidadeProduto.TabIndex = 3;
             // 
             // label9
             // 
@@ -328,20 +353,20 @@
             this.label9.TabIndex = 2;
             this.label9.Text = "Quantidade";
             // 
-            // textBox8
+            // txt_qtdProduto
             // 
-            this.textBox8.Location = new System.Drawing.Point(6, 41);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(100, 23);
-            this.textBox8.TabIndex = 1;
+            this.txt_qtdProduto.Location = new System.Drawing.Point(6, 41);
+            this.txt_qtdProduto.Name = "txt_qtdProduto";
+            this.txt_qtdProduto.Size = new System.Drawing.Size(100, 23);
+            this.txt_qtdProduto.TabIndex = 1;
             // 
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.label8);
-            this.groupBox5.Controls.Add(this.textBox7);
+            this.groupBox5.Controls.Add(this.txt_nomeProduto);
             this.groupBox5.Controls.Add(this.button3);
             this.groupBox5.Controls.Add(this.label7);
-            this.groupBox5.Controls.Add(this.textBox6);
+            this.groupBox5.Controls.Add(this.txt_codigoProduto);
             this.groupBox5.Location = new System.Drawing.Point(6, 6);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(744, 79);
@@ -358,12 +383,12 @@
             this.label8.TabIndex = 4;
             this.label8.Text = "Nome do Produto";
             // 
-            // textBox7
+            // txt_nomeProduto
             // 
-            this.textBox7.Location = new System.Drawing.Point(180, 38);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(382, 23);
-            this.textBox7.TabIndex = 3;
+            this.txt_nomeProduto.Location = new System.Drawing.Point(180, 38);
+            this.txt_nomeProduto.Name = "txt_nomeProduto";
+            this.txt_nomeProduto.Size = new System.Drawing.Size(382, 23);
+            this.txt_nomeProduto.TabIndex = 3;
             // 
             // button3
             // 
@@ -383,12 +408,12 @@
             this.label7.TabIndex = 1;
             this.label7.Text = "Código do Produto";
             // 
-            // textBox6
+            // txt_codigoProduto
             // 
-            this.textBox6.Location = new System.Drawing.Point(6, 38);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(100, 23);
-            this.textBox6.TabIndex = 0;
+            this.txt_codigoProduto.Location = new System.Drawing.Point(6, 38);
+            this.txt_codigoProduto.Name = "txt_codigoProduto";
+            this.txt_codigoProduto.Size = new System.Drawing.Size(100, 23);
+            this.txt_codigoProduto.TabIndex = 0;
             // 
             // menuStrip1
             // 
@@ -438,7 +463,7 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.tabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dt_items)).EndInit();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             this.groupBox5.ResumeLayout(false);
@@ -473,20 +498,22 @@
         private System.Windows.Forms.TextBox txt_participante;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker dt_dataEmissao;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dt_items;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox txt_unidadeProduto;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox txt_qtdProduto;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox txt_nomeProduto;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox txt_codigoProduto;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem salvarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem excluirToolStripMenuItem;
+        private System.Windows.Forms.Button btn_remover;
+        private System.Windows.Forms.Button btn_adicionar;
     }
 }
