@@ -60,7 +60,6 @@ namespace EstoqueApp.Telas
                         LocalEstoque = novoMovtoEntradaItem.LocalEstoque
                     }
                 );
-
             }
 
             using (var scope = Program.Container.BeginLifetimeScope())

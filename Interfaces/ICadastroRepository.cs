@@ -1,4 +1,5 @@
 ﻿using EstoqueApp.Modelos;
+using System;
 using System.Collections.Generic;
 
 namespace EstoqueApp.Interfaces

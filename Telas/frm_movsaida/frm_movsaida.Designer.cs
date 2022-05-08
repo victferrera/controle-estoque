@@ -35,17 +35,17 @@
             this.label5 = new System.Windows.Forms.Label();
             this.txt_descriacaoLocal = new System.Windows.Forms.TextBox();
             this.txt_localestoque = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btn_procuraLocal = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txt_razaoSocial = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btn_procuraCliente = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.txt_participante = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dt_dataEmissao = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.txt_numero = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -61,6 +61,9 @@
             this.button3 = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.textBox6 = new System.Windows.Forms.TextBox();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.salvarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.excluirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -71,14 +74,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox6.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.tabControl1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(12, 27);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(776, 426);
+            this.groupBox1.Size = new System.Drawing.Size(776, 432);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Informações";
@@ -111,7 +115,7 @@
             this.groupBox4.Controls.Add(this.label5);
             this.groupBox4.Controls.Add(this.txt_descriacaoLocal);
             this.groupBox4.Controls.Add(this.txt_localestoque);
-            this.groupBox4.Controls.Add(this.button2);
+            this.groupBox4.Controls.Add(this.btn_procuraLocal);
             this.groupBox4.Controls.Add(this.label6);
             this.groupBox4.Location = new System.Drawing.Point(6, 203);
             this.groupBox4.Name = "groupBox4";
@@ -143,14 +147,15 @@
             this.txt_localestoque.Size = new System.Drawing.Size(100, 23);
             this.txt_localestoque.TabIndex = 6;
             // 
-            // button2
+            // btn_procuraLocal
             // 
-            this.button2.Location = new System.Drawing.Point(112, 44);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(43, 23);
-            this.button2.TabIndex = 8;
-            this.button2.Text = "...";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btn_procuraLocal.Location = new System.Drawing.Point(112, 44);
+            this.btn_procuraLocal.Name = "btn_procuraLocal";
+            this.btn_procuraLocal.Size = new System.Drawing.Size(43, 23);
+            this.btn_procuraLocal.TabIndex = 8;
+            this.btn_procuraLocal.Text = "...";
+            this.btn_procuraLocal.UseVisualStyleBackColor = true;
+            this.btn_procuraLocal.Click += new System.EventHandler(this.btn_procuraLocal_Click);
             // 
             // label6
             // 
@@ -165,7 +170,7 @@
             // 
             this.groupBox3.Controls.Add(this.label4);
             this.groupBox3.Controls.Add(this.txt_razaoSocial);
-            this.groupBox3.Controls.Add(this.button1);
+            this.groupBox3.Controls.Add(this.btn_procuraCliente);
             this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Controls.Add(this.txt_participante);
             this.groupBox3.Location = new System.Drawing.Point(6, 104);
@@ -191,14 +196,15 @@
             this.txt_razaoSocial.Size = new System.Drawing.Size(383, 23);
             this.txt_razaoSocial.TabIndex = 4;
             // 
-            // button1
+            // btn_procuraCliente
             // 
-            this.button1.Location = new System.Drawing.Point(112, 44);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(43, 23);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "...";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btn_procuraCliente.Location = new System.Drawing.Point(112, 44);
+            this.btn_procuraCliente.Name = "btn_procuraCliente";
+            this.btn_procuraCliente.Size = new System.Drawing.Size(43, 23);
+            this.btn_procuraCliente.TabIndex = 3;
+            this.btn_procuraCliente.Text = "...";
+            this.btn_procuraCliente.UseVisualStyleBackColor = true;
+            this.btn_procuraCliente.Click += new System.EventHandler(this.btn_procuraCliente_Click);
             // 
             // label3
             // 
@@ -219,7 +225,7 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.dateTimePicker1);
+            this.groupBox2.Controls.Add(this.dt_dataEmissao);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.txt_numero);
             this.groupBox2.Location = new System.Drawing.Point(6, 6);
@@ -238,12 +244,12 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Emissão";
             // 
-            // dateTimePicker1
+            // dt_dataEmissao
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(141, 44);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 23);
-            this.dateTimePicker1.TabIndex = 2;
+            this.dt_dataEmissao.Location = new System.Drawing.Point(141, 44);
+            this.dt_dataEmissao.Name = "dt_dataEmissao";
+            this.dt_dataEmissao.Size = new System.Drawing.Size(200, 23);
+            this.dt_dataEmissao.TabIndex = 2;
             // 
             // label1
             // 
@@ -384,13 +390,39 @@
             this.textBox6.Size = new System.Drawing.Size(100, 23);
             this.textBox6.TabIndex = 0;
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.salvarToolStripMenuItem,
+            this.excluirToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip1.TabIndex = 1;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // salvarToolStripMenuItem
+            // 
+            this.salvarToolStripMenuItem.Name = "salvarToolStripMenuItem";
+            this.salvarToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
+            this.salvarToolStripMenuItem.Text = "Salvar";
+            this.salvarToolStripMenuItem.Click += new System.EventHandler(this.salvarToolStripMenuItem_Click);
+            // 
+            // excluirToolStripMenuItem
+            // 
+            this.excluirToolStripMenuItem.Name = "excluirToolStripMenuItem";
+            this.excluirToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
+            this.excluirToolStripMenuItem.Text = "Excluir";
+            // 
             // frm_movsaida
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 467);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.Name = "frm_movsaida";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -410,7 +442,10 @@
             this.groupBox6.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -427,16 +462,16 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txt_descriacaoLocal;
         private System.Windows.Forms.TextBox txt_localestoque;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btn_procuraLocal;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txt_razaoSocial;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn_procuraCliente;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txt_participante;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dt_dataEmissao;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.Label label10;
@@ -449,5 +484,8 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem salvarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem excluirToolStripMenuItem;
     }
 }
