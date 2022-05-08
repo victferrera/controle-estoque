@@ -66,5 +66,11 @@ namespace EstoqueApp.Telas.frm_movsaida
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void frm_movsaida_Load(object sender, EventArgs e)
+        {
+            var movtoSaidaRepository = Program.Container.Resolve<IMovtoSaidaRepository>();
+            txt_numero.Text = (movtoSaidaRepository.GetLastId() +1 ).ToString();
+        }
     }
 }

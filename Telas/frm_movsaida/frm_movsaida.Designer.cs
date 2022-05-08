@@ -427,6 +427,7 @@
             this.Name = "frm_movsaida";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Movimentação de Saída";
+            this.Load += new System.EventHandler(this.frm_movsaida_Load);
             this.groupBox1.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
