@@ -12,6 +12,8 @@ namespace EstoqueApp.Telas.frm_movsaida
     public partial class frm_movsaida : Form
     {
         List<ProdutoDTO> items = new List<ProdutoDTO>();
+        List<MovtoSaidaItem> movtoSaidaItems = new List<MovtoSaidaItem>();
+        List<ProdutoSaldo> listaProdutoSaldoAnterior = new List<ProdutoSaldo>();
 
         public frm_movsaida()
         {
@@ -21,7 +23,6 @@ namespace EstoqueApp.Telas.frm_movsaida
         private void salvarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var unidadeRepository = Program.Container.Resolve<IUnidadeRepository>();
-            var localEstoqueRepository = Program.Container.Resolve<ILocalEstoqueRepository>();
             var produtoSaldoRepository = Program.Container.Resolve<IProdutoSaldoRepository>();
 
             var novoMovtoSaida = new MovtoSaida
@@ -31,12 +32,50 @@ namespace EstoqueApp.Telas.frm_movsaida
                 CodigoParticipante = int.Parse(txt_participante.Text)
             };
 
+            foreach (var produto in items)
+            {
+                movtoSaidaItems.Add(new MovtoSaidaItem
+                    {
+                        CodigoProduto = produto.CodigoProduto,
+                        LocalEstoque = int.Parse(txt_localestoque.Text),
+                        QtdItem = produto.Qtd,
+                        CodigoUnidade = unidadeRepository.GetCodigoUnidadePorSigla(txt_unidadeProduto.Text),
+                        MovtoNumero = int.Parse(txt_numero.Text)
+                    }
+                );
+            }
+
+            foreach (var produto in movtoSaidaItems)
+            {
+                var saldoAux = produtoSaldoRepository.BuscarSaldoAnterior(produto.CodigoProduto, produto.LocalEstoque);
+
+                listaProdutoSaldoAnterior.Add(new ProdutoSaldo
+                    {
+                        SaldoAnterior = saldoAux,
+                        SaldoAtual = (saldoAux - decimal.Parse(produto.QtdItem.ToString())),
+                        CodigoProduto = produto.CodigoProduto,
+                        DataAtualizacao = DateTime.Now,
+                        LocalEstoque = produto.LocalEstoque
+                    }
+                );
+            }
+
+
             using (var scope = Program.Container.BeginLifetimeScope())
             {
                 var movtoSaidaRepository = scope.Resolve<IMovtoSaidaRepository>();
+                var movtoSaidaItemRepository = scope.Resolve<IMovtoSaidaItemRepository>();
                 try
                 {
                     movtoSaidaRepository.Save(novoMovtoSaida);
+                    foreach(var movtoItem in movtoSaidaItems)
+                    {
+                        movtoSaidaItemRepository.Save(movtoItem);
+                    }
+                    foreach(var pdSaldo in listaProdutoSaldoAnterior)
+                    {
+                        produtoSaldoRepository.Save(pdSaldo);
+                    }
                     MessageBox.Show("Documento salvo");
                 }
                 catch (Exception ex)
@@ -66,7 +105,7 @@ namespace EstoqueApp.Telas.frm_movsaida
 
             try
             {
-                var retorno = localRepository.ProcurarLocalPorId(int.Parse(txt_localestoque.Text));
+                var retorno = localRepository.ProcurarLocalPorCodigo(int.Parse(txt_localestoque.Text));
                 txt_descriacaoLocal.Text = retorno.Descricao;
             }
             catch (Exception ex)
@@ -84,12 +123,12 @@ namespace EstoqueApp.Telas.frm_movsaida
         private void btn_adicionar_Click(object sender, EventArgs e)
         {
             items.Add(new ProdutoDTO
-                {
-                    CodigoProduto = int.Parse(txt_codigoProduto.Text),
-                    Nome = txt_nomeProduto.Text,
-                    UnidadeMedida = txt_unidadeProduto.Text,
-                    QtdEntrada = double.Parse(txt_qtdProduto.Text)
-                }
+            {
+                CodigoProduto = int.Parse(txt_codigoProduto.Text),
+                Nome = txt_nomeProduto.Text,
+                UnidadeMedida = txt_unidadeProduto.Text,
+                Qtd = int.Parse(txt_qtdProduto.Text)
+            }
             );
             AtualizarGrid();
         }
@@ -99,7 +138,7 @@ namespace EstoqueApp.Telas.frm_movsaida
             if (dt_items.Visible == false)
                 dt_items.Visible = true;
 
-            var produtosPreview = from colunas in items select new { colunas.CodigoProduto, colunas.Nome, colunas.UnidadeMedida, colunas.QtdEntrada };
+            var produtosPreview = from colunas in items select new { colunas.CodigoProduto, colunas.Nome, colunas.UnidadeMedida, colunas.Qtd };
 
             dt_items.DataSource = produtosPreview.ToList();
         }

@@ -23,7 +23,7 @@ namespace EstoqueApp.Telas
         {
             cb_tipoCadastro.DataSource = GeraListaParaPreencherTiposCadastro();
             cb_tipoCadastro.DisplayMember = "Sigla";
-            cb_tipoCadastro.ValueMember = "Id";
+            cb_tipoCadastro.ValueMember = "Sigla";
 
             cb_statusCadastro.DataSource = GeraListaParaPreencherStatus();
             cb_statusCadastro.DisplayMember = "Nome";
@@ -94,24 +94,24 @@ namespace EstoqueApp.Telas
                 Email = txt_email.Text.ToUpper(),
                 Endereco = new Endereco
                 {
-                    cep = txt_cep.Text,
-                    logradouro = txt_logradouro.Text.ToUpper(),
+                    Cep = txt_cep.Text,
+                    Logradouro = txt_logradouro.Text.ToUpper(),
                     numero = int.Parse(txt_numero.Text.ToString()),
-                    complemento = rt_complemento.Text.ToUpper(),
-                    bairro = txt_bairro.Text.ToUpper(),
-                    localidade = txt_cidade.Text.ToUpper(),
-                    uf = txt_uf.Text.ToUpper(),
-
+                    Complemento = rt_complemento.Text.ToUpper(),
+                    Bairro = txt_bairro.Text.ToUpper(),
+                    Localidade = txt_cidade.Text.ToUpper(),
+                    Uf = txt_uf.Text.ToUpper(),
                 }
             };
 
             using (var scope = Program.Container.BeginLifetimeScope())
             {
                 var cadastroRepository = scope.Resolve<ICadastroRepository>();
-                //var enderecoRepository = scope.Resolve<IEnderecoRepository>();
+                var enderecoRepository = scope.Resolve<IEnderecoRepository>();
 
                 try
                 {
+                    enderecoRepository.Save(novoCadastro.Endereco);
                     cadastroRepository.Save(novoCadastro);
 
                 }
@@ -136,12 +136,12 @@ namespace EstoqueApp.Telas
             JsonSerializer sr = new JsonSerializer();
 
             var cepDeserialized = sr.Deserialize<Endereco>(jsonReader);
-            txt_logradouro.Text = cepDeserialized.localidade;
+            txt_logradouro.Text = cepDeserialized.Localidade;
             txt_numero.Text = String.Empty;
-            txt_bairro.Text = cepDeserialized.bairro;
-            txt_uf.Text = cepDeserialized.uf;
-            txt_cidade.Text = cepDeserialized.localidade;
-            rt_complemento.Text = cepDeserialized.complemento;
+            txt_bairro.Text = cepDeserialized.Bairro;
+            txt_uf.Text = cepDeserialized.Uf;
+            txt_cidade.Text = cepDeserialized.Localidade;
+            rt_complemento.Text = cepDeserialized.Complemento;
         }
     }
 }

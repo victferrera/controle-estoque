@@ -27,7 +27,7 @@ namespace EstoqueApp.Telas.frm_pesquisalocalestoque
 
                 var localEstoqueList = repository.GetLocalByFilter(filtro);
 
-                var customColumnsName = from local in localEstoqueList select new { Id = local.Id, Codigo = local.Codigo, Nome = local.Nome };
+                var customColumnsName = from local in localEstoqueList select new { Codigo = local.Codigo, Nome = local.Nome };
 
                 grid_localestoque.DataSource = customColumnsName.ToList();
             }

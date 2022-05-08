@@ -11,6 +11,6 @@ namespace EstoqueApp.Modelos.DTO
         public int CodigoProduto { get; set; }
         public string Nome { get; set; }
         public string UnidadeMedida { get; set; }
-        public double QtdEntrada { get; set; }
+        public decimal Qtd { get; set; }
     }
 }

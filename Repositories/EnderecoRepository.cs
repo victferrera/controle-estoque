@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace EstoqueApp.Repositories
 {
-    internal class EnderecoRepository : IEnderecoRepository
+    internal class EnderecoRepository : BaseRepository<Endereco>, IEnderecoRepository
     {
         public int GetLast()
         {
@@ -28,46 +28,6 @@ namespace EstoqueApp.Repositories
                     return -1;
                 }
             }
-        }
-
-        public void Remove(Endereco model)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void Save(Endereco model)
-        {
-            using (var scope = Program.Container.BeginLifetimeScope())
-            {
-                var connection = scope.Resolve<IConnectionService>().CreateConnection();
-
-                var query = $@"
-                INSERT INTO [Endereco]
-                VALUES
-                (@p1, @p2, @p3, @p4, @p5, @p6, @p7)
-                ";
-                try
-                {
-                    connection.Execute(query, new
-                    {
-                        p1 = model.cep,
-                        p2 = model.logradouro,
-                        p3 = model.numero,
-                        p4 = model.bairro,
-                        p5 = model.uf,
-                        p6 = model.localidade,
-                        p7 = model.complemento
-                    });
-                }catch(Exception e)
-                {
-                    MessageBox.Show(e.Message);
-                }
-            }
-        }
-
-        public void Update(Endereco model)
-        {
-            throw new System.NotImplementedException();
         }
     }
 }

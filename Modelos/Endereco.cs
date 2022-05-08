@@ -1,19 +1,26 @@
 ﻿using Newtonsoft.Json;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EstoqueApp.Modelos
 {
+    [Table("Endereco")]
     internal class Endereco
     {
-        public string cep;
-        public string logradouro;
-        public string complemento;
-        public string bairro;
-        public string localidade;
-        public string uf;
-        public string ibge;
-        public string gia;
-        public string ddd;
-        public string siafi;
-        public int? numero;
+        [Key]
+        public int Id { get; set; }
+        [JsonProperty("cep")]
+        public string Cep { get; set; }
+        [JsonProperty("logradouro")]
+        public string Logradouro { get; set; }
+        [JsonProperty("complemento")]
+        public string Complemento { get; set; }
+        [JsonProperty("bairro")]
+        public string Bairro { get; set; }
+        [JsonProperty("localidade")]
+        public string Localidade { get; set; }
+        [JsonProperty("uf")]
+        public string Uf { get; set; }
+        public int numero { get; set; }
     }
 }
