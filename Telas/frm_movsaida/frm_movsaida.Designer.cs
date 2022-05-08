@@ -60,7 +60,7 @@
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txt_nomeProduto = new System.Windows.Forms.TextBox();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btn_procurarProduto = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.txt_codigoProduto = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -366,7 +366,7 @@
             // 
             this.groupBox5.Controls.Add(this.label8);
             this.groupBox5.Controls.Add(this.txt_nomeProduto);
-            this.groupBox5.Controls.Add(this.button3);
+            this.groupBox5.Controls.Add(this.btn_procurarProduto);
             this.groupBox5.Controls.Add(this.label7);
             this.groupBox5.Controls.Add(this.txt_codigoProduto);
             this.groupBox5.Location = new System.Drawing.Point(6, 6);
@@ -392,14 +392,15 @@
             this.txt_nomeProduto.Size = new System.Drawing.Size(382, 23);
             this.txt_nomeProduto.TabIndex = 3;
             // 
-            // button3
+            // btn_procurarProduto
             // 
-            this.button3.Location = new System.Drawing.Point(112, 38);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(39, 23);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "...";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btn_procurarProduto.Location = new System.Drawing.Point(112, 38);
+            this.btn_procurarProduto.Name = "btn_procurarProduto";
+            this.btn_procurarProduto.Size = new System.Drawing.Size(39, 23);
+            this.btn_procurarProduto.TabIndex = 2;
+            this.btn_procurarProduto.Text = "...";
+            this.btn_procurarProduto.UseVisualStyleBackColor = true;
+            this.btn_procurarProduto.Click += new System.EventHandler(this.btn_procurarProduto_Click);
             // 
             // label7
             // 
@@ -509,7 +510,7 @@
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txt_nomeProduto;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btn_procurarProduto;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txt_codigoProduto;
         private System.Windows.Forms.MenuStrip menuStrip1;

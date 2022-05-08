@@ -117,5 +117,15 @@ namespace EstoqueApp.Telas.frm_movsaida
             txt_qtdProduto.Text = dt_items.CurrentRow.Cells["QtdEntrada"].Value.ToString();
             txt_unidadeProduto.Text = dt_items.CurrentRow.Cells["UnidadeMedida"].Value.ToString();
         }
+
+        private void btn_procurarProduto_Click(object sender, EventArgs e)
+        {
+            var produtoRepository = Program.Container.Resolve<IProdutoRepository>();
+
+            var produto = produtoRepository.ProcurarPorCodigoComUn(int.Parse(txt_codigoProduto.Text));
+
+            txt_nomeProduto.Text = produto.Nome;
+            txt_unidadeProduto.Text = produto.Unidade.Sigla;
+        }
     }
 }
