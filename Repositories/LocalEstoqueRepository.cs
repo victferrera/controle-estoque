@@ -68,27 +68,6 @@ namespace EstoqueApp.Repositories
                 return local;
             }
         }
-
-        public LocalEstoque ProcurarLocalPorId(int id)
-        {
-            using (var scope = Program.Container.BeginLifetimeScope())
-            {
-                var connection = scope.Resolve<IConnectionService>().CreateConnection();
-
-                var query = @"
-                SELECT * FROM
-                [LocalEstoque]
-                WHERE Id = @p1
-                ";
-
-                var local = connection.Query<LocalEstoque>(query, new
-                {
-                    p1 = id
-                }).FirstOrDefault();
-
-                return local;
-            }
-        }
         public List<LocalEstoque> GetLocalByFilter(string filtro = "")
         {
             using (var scope = Program.Container.BeginLifetimeScope())
@@ -118,7 +97,7 @@ namespace EstoqueApp.Repositories
             {
                 var connection = scope.Resolve<IConnectionService>().CreateConnection();
 
-                var localResult = ProcurarLocalPorId(local.Id);
+                var localResult = ProcurarLocalPorCodigo(local.Codigo);
 
                 var query = @"UPDATE [LocalEstoque] SET Codigo = @p1, Nome = @p2, Descricao = @p3 WHERE Id = @p4";
                 try
@@ -128,7 +107,7 @@ namespace EstoqueApp.Repositories
                         p1 = local.Codigo,
                         p2 = local.Nome,
                         p3 = local.Descricao,
-                        p4 = localResult.Id
+                        p4 = localResult.Codigo
                     });
                     MessageBox.Show("Informações alteradas com sucesso!", "Alerta");
                 }
@@ -145,7 +124,7 @@ namespace EstoqueApp.Repositories
             {
                 var connection = scope.Resolve<IConnectionService>().CreateConnection();
 
-                var local = ProcurarLocalPorId(id);
+                var local = ProcurarLocalPorCodigo(id);
 
                 if (local != null)
                 {

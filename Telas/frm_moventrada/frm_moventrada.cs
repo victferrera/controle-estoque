@@ -11,19 +11,18 @@ namespace EstoqueApp.Telas
 {
     public partial class frm_moventrada : Form
     {
-        private List<ProdutoDTO> listaProduto = new List<ProdutoDTO>();
-        private List<ProdutoSaldo> listaProdutoSaldoAnterior = new List<ProdutoSaldo>();
+        private List<ProdutoDTO> listaProdutoPreview = new List<ProdutoDTO>();
+        private List<ProdutoSaldo> listaProdutoSaldoAnterior = null;
+        private List<MovtoEntradaItem> movtoItems = null;
 
         public frm_moventrada()
         {
             InitializeComponent();
-            PopularInformacoesBasicas();
         }
 
         private void salvarToolStripMenuItem1_Click(object sender, System.EventArgs e)
         {
             var unidadeRepository = Program.Container.Resolve<IUnidadeRepository>();
-            var localEstoqueRepository = Program.Container.Resolve<ILocalEstoqueRepository>();
             var produtoSaldoRepository = Program.Container.Resolve<IProdutoSaldoRepository>();
 
             var novoMovtoEntrada = new MovtoEntrada
@@ -33,34 +32,39 @@ namespace EstoqueApp.Telas
                 CodigoParticipante = int.Parse(txt_codigoParticipante.Text)
             };
 
-            var novoMovtoEntradaItem = new MovtoEntradaItem
+            //adiciona o produto na lista de produtos a ser salva com algumas informações de listaProdutoPreview
+            movtoItems = new List<MovtoEntradaItem>();
+
+            foreach(var produto in listaProdutoPreview)
             {
-                CodigoProduto = null,
-                LocalEstoque = localEstoqueRepository.ProcurarLocalPorCodigo(int.Parse(txt_LocalEstoque.Text)).Id,
-                QtdEntrada = int.Parse(txt_qtdEntrada.Text),
-                CodigoUnidade = unidadeRepository.GetCodigoUnidadePorSigla(txt_unidadeProduto.Text),
-                MovtoNumero = int.Parse(nm_movtoNumero.Value.ToString())
-            };
+                movtoItems.Add(new MovtoEntradaItem
+                    {
+                        CodigoProduto = produto.CodigoProduto,
+                        LocalEstoque = int.Parse(txt_LocalEstoque.Text),
+                        QtdItem = produto.Qtd,
+                        CodigoUnidade = unidadeRepository.GetCodigoUnidadePorSigla(txt_unidadeProduto.Text),
+                        MovtoNumero = int.Parse(nm_movtoNumero.Value.ToString())
+                    }
+                );
+            }
 
             listaProdutoSaldoAnterior = new List<ProdutoSaldo>();
-            novoMovtoEntradaItem.CodigoProduto = new List<int>();
 
-            foreach (var produtoId in listaProduto)
+            //percorre os itens que foram adicionados na aba item
+            //busca as informações de saldo para atualizar o saldo do produto
+            foreach (var produto in movtoItems)
             {
-                novoMovtoEntradaItem.CodigoProduto.Add(produtoId.CodigoProduto);
-
-                var saldoAux = produtoSaldoRepository.BuscarSaldoAnterior(produtoId.CodigoProduto, novoMovtoEntradaItem.LocalEstoque);
+                var saldoAux = produtoSaldoRepository.BuscarSaldoAnterior(produto.CodigoProduto, produto.LocalEstoque);
 
                 listaProdutoSaldoAnterior.Add(new ProdutoSaldo
                     {
                         SaldoAnterior = saldoAux,
-                        SaldoAtual = saldoAux + decimal.Parse(txt_qtdEntrada.Text),
-                        CodigoProduto = produtoId.CodigoProduto,
+                        SaldoAtual = saldoAux + decimal.Parse(produto.QtdItem.ToString()),
+                        CodigoProduto = produto.CodigoProduto,
                         DataAtualizacao = DateTime.Now,
-                        LocalEstoque = novoMovtoEntradaItem.LocalEstoque
+                        LocalEstoque = produto.LocalEstoque
                     }
                 );
-
             }
 
             using (var scope = Program.Container.BeginLifetimeScope())
@@ -72,7 +76,8 @@ namespace EstoqueApp.Telas
                 try
                 {
                     movtoEntradaRepository.Save(novoMovtoEntrada);
-                    movtoEntradaItemRepository.Save(novoMovtoEntradaItem);
+                    foreach (var movto in movtoItems)
+                        movtoEntradaItemRepository.Save(movto);
                     foreach (var saldo in listaProdutoSaldoAnterior)
                     {
                         pdSaldoRepository.Save(saldo);
@@ -156,12 +161,12 @@ namespace EstoqueApp.Telas
 
         private void btn_adicionarItem_Click(object sender, EventArgs e)
         {
-            listaProduto.Add(new ProdutoDTO
+            listaProdutoPreview.Add(new ProdutoDTO
             {
                 CodigoProduto = int.Parse(txt_codigoProduto.Text),
                 Nome = txt_nomeProduto.Text,
                 UnidadeMedida = txt_unidadeProduto.Text,
-                QtdEntrada = double.Parse(txt_qtdEntrada.Text)
+                Qtd = decimal.Parse(txt_qtdEntrada.Text)
             });
 
             AtualizarGridProduto();
@@ -172,7 +177,7 @@ namespace EstoqueApp.Telas
             if (dt_itemMovto.Visible == false)
                 dt_itemMovto.Visible = true;
 
-            var colunasProduto = from colunas in listaProduto select new { colunas.CodigoProduto, colunas.Nome, colunas.UnidadeMedida, colunas.QtdEntrada };
+            var colunasProduto = from colunas in listaProdutoPreview select new { colunas.CodigoProduto, colunas.Nome, colunas.UnidadeMedida, colunas.Qtd };
             dt_itemMovto.DataSource = colunasProduto.ToList();
         }
 
@@ -186,9 +191,14 @@ namespace EstoqueApp.Telas
 
         private void btn_removerProduto_Click(object sender, EventArgs e)
         {
-            listaProduto.RemoveAll(x => x.CodigoProduto == int.Parse(txt_codigoProduto.Text));
+            listaProdutoPreview.RemoveAll(x => x.CodigoProduto == int.Parse(txt_codigoProduto.Text));
             LimparCamposAbaItem();
             AtualizarGridProduto();
+        }
+
+        private void frm_moventrada_Load(object sender, EventArgs e)
+        {
+            PopularInformacoesBasicas();
         }
     }
 }

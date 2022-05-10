@@ -61,7 +61,6 @@ namespace EstoqueApp.Telas
         {
             tipoCadastro = new TipoCadastro
             {
-                Id = int.Parse(dados[0].Value.ToString()),
                 Sigla = dados[1].Value.ToString(),
                 Descricao = dados[2].Value.ToString()
             };

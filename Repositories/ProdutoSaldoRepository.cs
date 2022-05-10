@@ -16,11 +16,16 @@ namespace EstoqueApp.Repositories
                 var connection = scope.Resolve<IConnectionService>().CreateConnection();
                 try
                 {
-                    var query = "SELECT CASE WHEN SUM(SaldoAtual) IS NULL THEN 0 WHEN SUM(SaldoAtual) is not null then SUM(SaldoAtual) END as SaldoAtual FROM ProdutoSaldo WHERE CodigoProduto = @p1 AND LocalEstoque = @p2";
+                    var query = "" +
+                        "SELECT CASE WHEN SUM(SaldoAtual) IS NULL THEN 0 WHEN SUM(SaldoAtual) is not null then SUM(SaldoAtual) END as SaldoAtual " +
+                        "FROM ProdutoSaldo " +
+                        "WHERE CodigoProduto = @p1 AND LocalEstoque = @p2 " +
+                        "GROUP BY DataAtualizacao " +
+                        "ORDER BY DataAtualizacao DESC";
 
                     decimal saldoAtual = connection.Query<decimal>(query, new { p1 = codigoProduto, p2 = localEstoque }).FirstOrDefault();
 
-                    if (saldoAtual<= 0)
+                    if (saldoAtual <= 0)
                     {
                         return 0;
                     }

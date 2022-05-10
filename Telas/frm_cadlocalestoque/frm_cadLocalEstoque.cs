@@ -118,7 +118,7 @@ namespace EstoqueApp.Telas.frm_cadlocalEstoque
             {
                 var repository = scope.Resolve<ILocalEstoqueRepository>();
 
-                repository.DeletaLocal(LocalParaEditar.Id);
+                repository.DeletaLocal(LocalParaEditar.Codigo);
             }
         }
     }

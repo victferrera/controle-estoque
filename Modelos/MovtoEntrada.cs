@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using EstoqueApp.Abstract;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EstoqueApp.Modelos
 {
     [Table("MovtoEntrada")]
-    internal class MovtoEntrada
+    internal class MovtoEntrada : Movimentacao
     {
-        public int MovtoNumero { get; set; }
-        public DateTime DataEmissao { get; set; }
-        public int CodigoParticipante { get; set; }
     }
 }

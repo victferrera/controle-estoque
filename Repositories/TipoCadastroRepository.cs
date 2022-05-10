@@ -104,7 +104,7 @@ namespace EstoqueApp.Repositories
                 {
                     var connection = scope.Resolve<IConnectionService>().CreateConnection();
 
-                    var query = "SELECT Id, Sigla FROM TipoCadastro";
+                    var query = "SELECT Sigla FROM TipoCadastro";
 
                     listaTipoCadastro = connection.Query<TipoCadastro>(query).ToList();
 

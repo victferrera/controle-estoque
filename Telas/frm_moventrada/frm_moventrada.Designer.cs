@@ -482,6 +482,7 @@
             this.Name = "frm_moventrada";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Movimentação de Entrada";
+            this.Load += new System.EventHandler(this.frm_moventrada_Load);
             this.tab_informacoes.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);

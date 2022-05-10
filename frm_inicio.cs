@@ -3,6 +3,7 @@ using EstoqueApp.form_cad_produto;
 using EstoqueApp.form_cadaux_unidade;
 using EstoqueApp.Telas.frm_cadlocalEstoque;
 using EstoqueApp.Telas;
+using EstoqueApp.Telas.frm_movsaida;
 
 namespace EstoqueApp
 {
@@ -62,6 +63,12 @@ namespace EstoqueApp
         private void relat_movtoEntrada_Click(object sender, System.EventArgs e)
         {
             
+        }
+
+        private void saídaToolStripMenuItem_Click(object sender, System.EventArgs e)
+        {
+            frm_movsaida frm = new frm_movsaida();
+            frm.Show();
         }
     }
 }

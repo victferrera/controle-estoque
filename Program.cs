@@ -23,6 +23,8 @@ namespace EstoqueApp
             builder.RegisterType<MovtoEntradaRepository>().As<IMovtoEntradaRepository>();
             builder.RegisterType<MovtoEntradaItemRepository>().As<IMovtoEntradaItemRepository>();
             builder.RegisterType<ProdutoSaldoRepository>().As<IProdutoSaldoRepository>();
+            builder.RegisterType<MovtoSaidaRepository>().As<IMovtoSaidaRepository>();
+            builder.RegisterType<MovtoSaidaItemRepository>().As<IMovtoSaidaItemRepository>();
             Container = builder.Build();
             
 

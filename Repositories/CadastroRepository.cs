@@ -4,19 +4,13 @@ using EstoqueApp.Modelos;
 using System;
 using System.Windows.Forms;
 using Dapper;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace EstoqueApp.Repositories
 {
-    internal class CadastroRepository : ICadastroRepository
+    internal class CadastroRepository : BaseRepository<Cadastro>, ICadastroRepository
     {
-        public void Remove(Cadastro model)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void Save(Cadastro model)
+        public override void Save(Cadastro model)
         {
             using (var scope = Program.Container.BeginLifetimeScope())
             {
@@ -26,7 +20,6 @@ namespace EstoqueApp.Repositories
 
                 try
                 {
-                    enderecoRepository.Save(model.Endereco);
                     var lastId = enderecoRepository.GetLast();
 
                     var query = $@"
@@ -66,11 +59,6 @@ namespace EstoqueApp.Repositories
 
                 return retorno;
             }
-        }
-
-        public void Update(Cadastro model)
-        {
-            throw new System.NotImplementedException();
         }
     }
 }

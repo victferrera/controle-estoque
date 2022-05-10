@@ -91,15 +91,16 @@
             // entradaToolStripMenuItem
             // 
             this.entradaToolStripMenuItem.Name = "entradaToolStripMenuItem";
-            this.entradaToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
+            this.entradaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.entradaToolStripMenuItem.Text = "Entrada";
             this.entradaToolStripMenuItem.Click += new System.EventHandler(this.entradaToolStripMenuItem_Click);
             // 
             // saídaToolStripMenuItem
             // 
             this.saídaToolStripMenuItem.Name = "saídaToolStripMenuItem";
-            this.saídaToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
+            this.saídaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saídaToolStripMenuItem.Text = "Saída";
+            this.saídaToolStripMenuItem.Click += new System.EventHandler(this.saídaToolStripMenuItem_Click);
             // 
             // cadastroAuxiliarToolStripMenuItem
             // 
@@ -114,7 +115,7 @@
             // menu_cadaux_unidade
             // 
             this.menu_cadaux_unidade.Name = "menu_cadaux_unidade";
-            this.menu_cadaux_unidade.Size = new System.Drawing.Size(151, 22);
+            this.menu_cadaux_unidade.Size = new System.Drawing.Size(180, 22);
             this.menu_cadaux_unidade.Text = "Unidade";
             this.menu_cadaux_unidade.Click += new System.EventHandler(this.menu_cadaux_unidade_Click);
             // 
@@ -123,7 +124,7 @@
             this.estoqueToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.localToolStripMenuItem});
             this.estoqueToolStripMenuItem.Name = "estoqueToolStripMenuItem";
-            this.estoqueToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.estoqueToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.estoqueToolStripMenuItem.Text = "Estoque";
             // 
             // localToolStripMenuItem
@@ -139,7 +140,7 @@
             this.novoToolStripMenuItem,
             this.tiposDeCadastroToolStripMenuItem});
             this.cadastroToolStripMenuItem.Name = "cadastroToolStripMenuItem";
-            this.cadastroToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.cadastroToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.cadastroToolStripMenuItem.Text = "Cadastro Geral";
             // 
             // novoToolStripMenuItem
@@ -170,7 +171,7 @@
             this.enToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.relat_movtoEntrada});
             this.enToolStripMenuItem.Name = "enToolStripMenuItem";
-            this.enToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.enToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
             this.enToolStripMenuItem.Text = "Entrada";
             // 
             // relat_movtoEntrada
@@ -183,7 +184,7 @@
             // saidaToolStripMenuItem
             // 
             this.saidaToolStripMenuItem.Name = "saidaToolStripMenuItem";
-            this.saidaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saidaToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
             this.saidaToolStripMenuItem.Text = "Saida";
             // 
             // lbl_link
